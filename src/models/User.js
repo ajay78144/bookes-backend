@@ -1,25 +1,29 @@
-/**
- * Modular User Model Schema Definition
- */
-class UserModel {
-  static schema = {
-    id: { type: 'Number', primaryKey: true },
-    name: { type: 'String', required: true },
-    email: { type: 'String', required: true, unique: true, index: true },
-    password: { type: 'String', required: true },
-    role: { type: 'String', enum: ['admin', 'customer'], default: 'customer' },
-    country: { type: 'String', default: 'IN' },
-    currency: { type: 'String', default: 'INR' },
-    library: [{ type: 'Number', ref: 'Book' }],
+const mongoose = require('mongoose');
+
+const userSchema = new mongoose.Schema(
+  {
+    id: { type: Number, index: true },
+    name: { type: String, required: true, trim: true },
+    email: { type: String, required: true, unique: true, lowercase: true, trim: true },
+    password: { type: String, required: true },
+    role: { type: String, enum: ['admin', 'customer'], default: 'customer' },
+    country: { type: String, default: 'IN' },
+    currency: { type: String, default: 'INR' },
+    phone: { type: String, default: '' },
+    library: [{ type: Number }],
     licenses: [
       {
-        bookId: { type: 'Number' },
-        title: { type: 'String' },
-        licenseKey: { type: 'String' }
+        bookId: { type: Number },
+        title: { type: String },
+        licenseKey: { type: String },
+        unlockedAt: { type: Date, default: Date.now }
       }
-    ],
-    createdAt: { type: 'Date', default: () => new Date().toISOString() }
-  };
-}
+    ]
+  },
+  {
+    timestamps: true
+  }
+);
 
-module.exports = UserModel;
+const User = mongoose.models.User || mongoose.model('User', userSchema);
+module.exports = User;

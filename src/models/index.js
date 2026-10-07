@@ -1,13 +1,19 @@
-const OrderModel = require('./Order');
-const BookModel = require('./Book');
-const UserModel = require('./User');
-const SettingModel = require('./Setting');
+const User = require('./User');
+const Book = require('./Book');
+const Order = require('./Order');
+const Setting = require('./Setting');
+const Coupon = require('./Coupon');
+const PricingRule = require('./PricingRule');
+const Blog = require('./Blog');
 const db = require('../db/jsonDb');
 
 module.exports = {
-  Order: OrderModel,
-  Book: BookModel,
-  User: UserModel,
-  Setting: SettingModel,
+  User,
+  Book,
+  Order,
+  Setting,
+  Coupon,
+  PricingRule,
+  Blog,
   db
 };

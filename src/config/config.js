@@ -5,6 +5,7 @@ module.exports = {
   PORT: process.env.PORT || 8000,
   JWT_SECRET: process.env.JWT_SECRET || 'booksaw_super_secure_jwt_secret_key_2026',
   NODE_ENV: process.env.NODE_ENV || 'development',
+  MONGO_URI: process.env.MONGO_URI || '',
   DATA_DIR: path.resolve(__dirname, '../../data'),
   UPLOADS_DIR: path.resolve(__dirname, '../../uploads'),
   COVERS_DIR: path.resolve(__dirname, '../../uploads/covers'),
