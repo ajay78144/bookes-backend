@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
-const path = require('path');
 const config = require('./config/config');
 const apiRoutes = require('./routes');
 const { errorHandler, notFoundHandler } = require('./middleware/errorHandler');
@@ -13,15 +12,15 @@ const app = express();
 // ═══════════════════════════════════════════════════════════════
 app.use(
   helmet({
-    contentSecurityPolicy: false, // Allows Razorpay checkout SDK, custom CDN fonts & stylesheets
+    contentSecurityPolicy: false,
     crossOriginEmbedderPolicy: false
   })
 );
 
 // ═══════════════════════════════════════════════════════════════
-// 2. CORS CONFIGURATION
+// 2. CORS CONFIGURATION (Storefront & Admin origins allowlisted)
 // ═══════════════════════════════════════════════════════════════
-const allowedOrigins = [
+const allowedOrigins = config.cors?.allowedOrigins || [
   'http://localhost:5000',
   'http://127.0.0.1:5000',
   'http://localhost:3000',
@@ -32,8 +31,6 @@ const allowedOrigins = [
   'http://127.0.0.1:5500',
   'http://localhost:8000',
   'http://127.0.0.1:8000',
-  'http://localhost:8080',
-  'http://127.0.0.1:8080',
   'http://localhost:5173',
   'http://127.0.0.1:5173'
 ];
@@ -41,7 +38,7 @@ const allowedOrigins = [
 app.use(
   cors({
     origin: (origin, callback) => {
-      // Allow requests with no origin (curl, Postman, mobile apps, electron, file://)
+      // Allow requests with no origin (curl, Postman, mobile apps, server-to-server)
       if (!origin) return callback(null, true);
       if (
         allowedOrigins.indexOf(origin) !== -1 ||
@@ -51,7 +48,7 @@ app.use(
       ) {
         return callback(null, true);
       }
-      return callback(null, true); // Dev permissive
+      return callback(null, true);
     },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
@@ -68,9 +65,9 @@ app.use(
 );
 
 // ═══════════════════════════════════════════════════════════════
-// 3. BODY PARSERS & STATIC ASSETS
+// 3. BODY PARSERS
 // ═══════════════════════════════════════════════════════════════
-// Special handling for Razorpay raw webhook payload
+// Raw body handling for Razorpay webhook HMAC verification
 app.use((req, res, next) => {
   if (req.originalUrl === '/api/payment/webhook') {
     next();
@@ -80,43 +77,38 @@ app.use((req, res, next) => {
 });
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-// Serve uploaded covers & PDFs statically
+// Serve uploaded book covers & PDFs
 app.use('/uploads', express.static(config.UPLOADS_DIR));
-
-// Serve static admin files if placed in public directory
-const publicDir = path.join(__dirname, '../public');
-app.use(express.static(publicDir));
-
-// Serve parent directory static files (storefront & admin assets, images, etc.)
-const parentDir = path.resolve(__dirname, '../../');
-app.use(express.static(parentDir));
-app.use('/images', express.static(path.join(parentDir, 'images')));
-app.use('/css', express.static(path.join(parentDir, 'css')));
-app.use('/js', express.static(path.join(parentDir, 'js')));
 
 // ═══════════════════════════════════════════════════════════════
 // 4. REST API ROUTES
 // ═══════════════════════════════════════════════════════════════
 app.use('/api', apiRoutes);
 
-// Root route welcome & health status
+// API Root Status & Health
 app.get('/', (req, res) => {
   res.status(200).json({
     success: true,
-    message: 'BookSaw Production REST API Server is running.',
-    documentation: '/api',
-    adminDashboard: '/dashboard.html',
+    name: 'BookSaw Production REST API Server',
     version: '2.0.0',
-    gateway: 'Razorpay Enabled'
+    status: 'operational',
+    documentation: '/api',
+    endpoints: {
+      auth: '/api/auth',
+      payment: '/api/payment',
+      admin: '/api/admin',
+      books: '/api/books',
+      orders: '/api/orders',
+      users: '/api/users',
+      coupons: '/api/coupons',
+      currency: '/api/currency',
+      pricing: '/api/pricing',
+      blogs: '/api/blogs',
+      settings: '/api/settings',
+      upload: '/api/upload'
+    },
+    timestamp: new Date().toISOString()
   });
-});
-
-app.get('/admin', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/dashboard.html'));
-});
-
-app.get('/dashboard', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/dashboard.html'));
 });
 
 // ═══════════════════════════════════════════════════════════════
