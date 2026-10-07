@@ -20,7 +20,7 @@ async function connectDB() {
     });
 
     isConnected = true;
-    const dbName = conn.connection.name || 'Crickotv-Backend';
+    const dbName = conn.connection.name || 'book-Backend';
     const host = conn.connection.host || 'cluster0';
     console.log(`🍃 Connected to MongoDB Atlas: ${host}/${dbName}`);
     return true;

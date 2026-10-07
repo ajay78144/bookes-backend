@@ -20,7 +20,7 @@ const server = app.listen(PORT, () => {
   console.log(`🚀 BookSaw Production REST API Server running on port ${PORT}`);
   console.log(`🌐 Local URL:          http://localhost:${PORT}`);
   console.log(`📚 API Root:           http://localhost:${PORT}/api`);
-  console.log(`🍃 MongoDB Database:   Crickotv-Backend (Atlas Connected)`);
+  console.log(`🍃 MongoDB Database:   book-Backend (Atlas Connected)`);
   console.log(`💳 Razorpay Gateway:   ${rzp.enabled ? 'ACTIVE' : 'DISABLED'} (${rzp.mode.toUpperCase()} MODE)`);
   console.log(`🔑 Razorpay Key ID:    ${rzp.keyId}`);
   console.log(`🛍️ Storefront Origin:   Allowlisted for http://localhost:5000`);
