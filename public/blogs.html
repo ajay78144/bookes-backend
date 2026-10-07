@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Blog Posts - Admin | BookSaw</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/favicon.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="icomoon/icomoon.css">
+  <link rel="stylesheet" href="css/vendor.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/ecommerce.css">
+  <link rel="stylesheet" href="css/admin-theme.css">
+</head>
+<body>
+
+  <!-- Mobile Topbar Header -->
+  <div class="adm-mobile-bar">
+    <div class="d-flex align-items-center gap-2">
+      <div class="brand-logo-badge" style="width:30px;height:30px;border-radius:8px;">
+        <img src="images/favicon.svg" alt="BookSaw" style="width:22px;height:22px;">
+      </div>
+      <div class="brand-text-block">
+        <span class="brand-name-title" style="font-size:14px;">Book<span class="highlight">Saw</span></span>
+        <span class="brand-name-subtitle" style="font-size:8px;">ADMIN PANEL</span>
+      </div>
+    </div>
+    <button class="adm-mobile-toggle" onclick="document.getElementById('admin-sidebar').classList.toggle('open');document.getElementById('adm-backdrop').classList.toggle('active');">
+      <svg class="adm-icon" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
+  </div>
+  <div class="adm-backdrop" id="adm-backdrop" onclick="document.getElementById('admin-sidebar').classList.remove('open');this.classList.remove('active');"></div>
+
+  <div class="admin-layout">
+    <div class="admin-sidebar" id="admin-sidebar">
+      <a href="dashboard.html" class="sidebar-brand">
+        <div class="brand-logo-badge">
+          <img src="images/favicon.svg" alt="BookSaw" class="brand-logo-img">
+        </div>
+        <div class="brand-text-block">
+          <span class="brand-name-title">Book<span class="highlight">Saw</span></span>
+          <span class="brand-name-subtitle">ADMIN PANEL</span>
+        </div>
+      </a>
+      
+      <div class="sidebar-section-label">Catalog &amp; Sales</div>
+      
+      <a href="dashboard.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+        <span>Dashboard</span>
+      </a>
+
+      <a href="books.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+        <span>Books</span>
+      </a>
+
+      <a href="country-pricing.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        <span>Country Pricing</span>
+      </a>
+
+      <a href="orders.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+        <span>Orders</span>
+      </a>
+
+      <a href="coupons.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+        <span>Coupons</span>
+      </a>
+
+      <a href="blogs.html" class="nav-item active">
+        <svg class="adm-icon" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+        <span>Blog Posts</span>
+      </a>
+
+      <a href="users.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        <span>Users</span>
+      </a>
+
+      <div class="sidebar-section-label">Preferences</div>
+
+      <a href="currency.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+        <span>Currency Rates</span>
+      </a>
+
+      <a href="settings.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+        <span>Site Settings</span>
+      </a>
+
+      <div class="sidebar-footer">
+        <a href="#" onclick="DB.logout();window.location.href='login.html'" class="btn-logout">
+          <svg class="adm-icon" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          <span>Logout</span>
+        </a>
+      </div>
+    </div>
+    <div class="admin-main">
+      <div class="admin-topbar">
+        <h1>Blog Posts</h1>
+        <div class="topbar-right">
+          <button class="btn-add" onclick="openAddBlog()">
+            <svg class="adm-icon-sm" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span>New Blog Post</span>
+          </button>
+        </div>
+      </div>
+      <div class="admin-content">
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <h3>All Posts (<span id="blogs-count">0</span>)</h3>
+            <input type="text" id="blog-search" placeholder="Search posts..." oninput="renderBlogs()" style="padding:8px 14px;border:1px solid #e0e0e0;border-radius:6px;font-size:14px;width:220px;">
+          </div>
+          <div style="padding:0;">
+            <table class="admin-table">
+              <thead>
+                <tr><th>Image</th><th>Title</th><th>Category</th><th>Author</th><th>Published</th><th>Date</th><th>Actions</th></tr>
+              </thead>
+              <tbody id="blogs-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Blog Modal -->
+  <div class="modal-overlay" id="blog-modal">
+    <div class="modal-box" style="max-width:700px;">
+      <div class="modal-header">
+        <h3 id="blog-modal-title">
+          <svg class="adm-icon text-primary" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+          <span id="blog-modal-title-text">New Blog Post</span>
+        </h3>
+        <button type="button" class="modal-close" onclick="closeBlogModal()" title="Close dialog" aria-label="Close">
+          <svg class="adm-icon" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <form id="blog-form" onsubmit="handleBlogFormSubmit(event)">
+        <div class="modal-body">
+          <input type="hidden" id="blog-id-field">
+
+          <div class="form-group">
+            <label for="bl-title">Post Title <span class="required-star">*</span></label>
+            <input type="text" id="bl-title" required placeholder="e.g. 10 Essential Books Every Fiction Lover Should Read" autocomplete="off">
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 col-12">
+              <div class="form-group">
+                <label for="bl-category">Category <span class="required-star">*</span></label>
+                <select id="bl-category" required>
+                  <option value="">Select category</option>
+                  <option value="Reading Lists">Reading Lists</option>
+                  <option value="Book Reviews">Book Reviews</option>
+                  <option value="Science">Science</option>
+                  <option value="Lifestyle">Lifestyle</option>
+                  <option value="Author Interviews">Author Interviews</option>
+                  <option value="News">News</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6 col-12">
+              <div class="form-group">
+                <label for="bl-author">Author</label>
+                <input type="text" id="bl-author" value="Admin" placeholder="Author name">
+              </div>
+            </div>
+          </div>
+
+          <!-- Featured Image with Live Preview and File Upload -->
+          <div class="form-group">
+            <label for="bl-image">Featured Cover Image</label>
+            <div style="display:flex;gap:14px;align-items:center;">
+              <div class="cover-preview-box" style="width:80px;height:56px;border-radius:8px;">
+                <img id="bl-image-preview" src="images/post-img1.jpg" alt="Preview" onerror="this.src='images/default.png'">
+              </div>
+              <div style="flex:1;">
+                <div style="display:flex;gap:8px;align-items:center;">
+                  <input type="text" id="bl-image" placeholder="images/post-img1.jpg or image URL" oninput="updateBlogImagePreview(this.value)">
+                  <label class="btn-cancel" style="cursor:pointer;padding:8px 14px;font-size:12.5px;margin:0;white-space:nowrap;">
+                    <span>📁 Choose</span>
+                    <input type="file" id="bl-cover-file" accept="image/*" onchange="handleBlogImageUpload(event)" style="display:none;">
+                  </label>
+                </div>
+                <span class="form-help-text">Select an image file or enter relative image path.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="bl-excerpt">Excerpt (Short Description) <span class="required-star">*</span></label>
+            <textarea id="bl-excerpt" rows="2" required placeholder="Brief summary displayed in article cards and search results..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="bl-content">Full Content (HTML supported) <span class="required-star">*</span></label>
+            <textarea id="bl-content" rows="7" required placeholder="<p>Write your full article paragraphs here...</p>"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="bl-tags">Tags (Comma-separated)</label>
+            <input type="text" id="bl-tags" placeholder="books, reading, lifestyle, fiction">
+          </div>
+
+          <div class="form-group mb-0" style="background:#f8fafc;padding:12px 14px;border-radius:10px;border:1.5px solid var(--adm-border);display:flex;align-items:center;justify-content:space-between;">
+            <div>
+              <div style="font-size:13.5px;font-weight:700;color:var(--adm-text);">Publish Post Immediately</div>
+              <div style="font-size:11.5px;color:var(--adm-text-muted);">When turned off, post remains in draft status</div>
+            </div>
+            <label class="form-switch">
+              <input type="checkbox" id="bl-published" checked>
+              <span class="form-switch-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" onclick="closeBlogModal()" class="btn-cancel">Cancel</button>
+          <button type="submit" class="btn-save">
+            <svg class="adm-icon adm-icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Publish Post</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    if (!DB.isAdmin()) window.location.href = 'login.html';
+    if (typeof BSLoader !== 'undefined') BSLoader.init();
+    let editingBlogId = null;
+
+    function updateBlogImagePreview(src) {
+      const img = document.getElementById('bl-image-preview');
+      if (!img) return;
+      if (src && src.trim()) {
+        img.src = src.trim();
+      } else {
+        img.src = 'images/default.png';
+      }
+    }
+
+    function handleBlogImageUpload(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        document.getElementById('bl-image').value = evt.target.result;
+        updateBlogImagePreview(evt.target.result);
+        showToast(`Image loaded: ${file.name}`, 'info');
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function renderBlogs() {
+      const search = document.getElementById('blog-search').value.toLowerCase();
+      let blogs = DB.getBlogs();
+      if (search) blogs = blogs.filter(b => b.title.toLowerCase().includes(search) || b.category?.toLowerCase().includes(search));
+      blogs.sort((a,b) => new Date(b.createdAt)-new Date(a.createdAt));
+
+      document.getElementById('blogs-count').textContent = blogs.length;
+      const tbody = document.getElementById('blogs-tbody');
+
+      if (!blogs.length) {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:36px;color:#888;">No blog posts yet. Create your first post!</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = blogs.map(b => `
+        <tr>
+          <td><img src="${b.image}" alt="${b.title}" style="width:70px;height:50px;object-fit:cover;border-radius:6px;box-shadow:0 1px 3px rgba(0,0,0,0.1);" onerror="this.src='images/default.png'"></td>
+          <td><strong>${b.title}</strong><br><span style="font-size:12px;color:#888;">${b.excerpt?.substring(0,60)}...</span></td>
+          <td>${b.category}</td>
+          <td>${b.author}</td>
+          <td>
+            <button onclick="togglePublish(${b.id})" class="status-badge ${b.published ? 'status-delivered' : 'status-cancelled'}" style="border:none;cursor:pointer;">
+              ${b.published ? '● Published' : '○ Draft'}
+            </button>
+          </td>
+          <td style="font-size:13px;">${new Date(b.createdAt).toLocaleDateString()}</td>
+          <td style="white-space:nowrap;">
+            <div class="action-btn-group">
+              <a href="blog-single.html?id=${b.id}" target="_blank" class="btn-icon-action btn-icon-view" title="View Blog" aria-label="View">
+                <svg class="adm-icon" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              </a>
+              <button class="btn-icon-action btn-icon-edit" onclick="openEditBlog(${b.id})" title="Edit Blog" aria-label="Edit">
+                <svg class="adm-icon" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+              </button>
+              <button class="btn-icon-action btn-icon-delete" onclick="deleteBlog(${b.id})" title="Delete Blog" aria-label="Delete">
+                <svg class="adm-icon" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+              </button>
+            </div>
+          </td>
+        </tr>`).join('');
+    }
+
+    function openAddBlog() {
+      editingBlogId = null;
+      document.getElementById('blog-modal-title-text').textContent = 'New Blog Post';
+      document.getElementById('blog-form').reset();
+      document.getElementById('bl-author').value = 'Admin';
+      document.getElementById('bl-image').value = 'images/post-img1.jpg';
+      updateBlogImagePreview('images/post-img1.jpg');
+      document.getElementById('bl-published').checked = true;
+      document.getElementById('blog-modal').classList.add('active');
+      document.getElementById('bl-title').focus();
+    }
+
+    function openEditBlog(id) {
+      const blog = DB.getBlog(id);
+      if (!blog) return;
+      editingBlogId = id;
+      document.getElementById('blog-modal-title-text').textContent = 'Edit Blog Post';
+      document.getElementById('blog-id-field').value = id;
+      document.getElementById('bl-title').value = blog.title;
+      document.getElementById('bl-category').value = blog.category;
+      document.getElementById('bl-author').value = blog.author;
+      document.getElementById('bl-image').value = blog.image || 'images/post-img1.jpg';
+      updateBlogImagePreview(blog.image || 'images/post-img1.jpg');
+      document.getElementById('bl-excerpt').value = blog.excerpt || '';
+      document.getElementById('bl-content').value = blog.content || '';
+      document.getElementById('bl-tags').value = (blog.tags || []).join(', ');
+      document.getElementById('bl-published').checked = !!blog.published;
+      document.getElementById('blog-modal').classList.add('active');
+    }
+
+    function closeBlogModal() {
+      document.getElementById('blog-modal').classList.remove('active');
+    }
+
+    function handleBlogFormSubmit(e) {
+      if (e) e.preventDefault();
+      saveBlog();
+    }
+
+    function saveBlog() {
+      const title = document.getElementById('bl-title').value.trim();
+      const category = document.getElementById('bl-category').value;
+      const excerpt = document.getElementById('bl-excerpt').value.trim();
+      const content = document.getElementById('bl-content').value.trim();
+
+      if (!title || !category || !excerpt || !content) {
+        showToast('Please fill all required fields', 'error');
+        return;
+      }
+
+      const tagsStr = document.getElementById('bl-tags').value;
+      const tags = tagsStr ? tagsStr.split(',').map(t => t.trim()).filter(Boolean) : [];
+
+      const blogData = {
+        title, category,
+        author: document.getElementById('bl-author').value || 'Admin',
+        image: document.getElementById('bl-image').value || 'images/post-img1.jpg',
+        excerpt, content, tags,
+        published: document.getElementById('bl-published').checked
+      };
+
+      if (editingBlogId) {
+        DB.updateBlog(editingBlogId, blogData);
+        showToast(`✓ Blog post "${title}" updated!`, 'success');
+      } else {
+        DB.addBlog(blogData);
+        showToast(`✓ Blog post "${title}" published!`, 'success');
+      }
+      closeBlogModal();
+      renderBlogs();
+    }
+
+    function togglePublish(id) {
+      const blog = DB.getBlog(id);
+      if (blog) {
+        DB.updateBlog(id, { published: !blog.published });
+        renderBlogs();
+        showToast(`Post ${!blog.published ? 'published' : 'unpublished'}`, 'info');
+      }
+    }
+
+    function deleteBlog(id) {
+      const blog = DB.getBlog(id);
+      if (confirm(`Delete "${blog?.title}"?`)) {
+        DB.deleteBlog(id);
+        renderBlogs();
+        showToast('Blog post deleted', 'info');
+      }
+    }
+
+    document.getElementById('blog-modal').addEventListener('click', function(e) {
+      if (e.target === this) closeBlogModal();
+    });
+
+    renderBlogs();
+  </script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title id="page-title">Blog Post - BookSaw</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/favicon.png">
+  <meta name="description" id="page-desc" content="Read this article on BookSaw.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="icomoon/icomoon.css">
+  <link rel="stylesheet" href="css/vendor.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/ecommerce.css">
+</head>
+<body>
+  <div id="page-header"></div>
+
+  <section class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8" id="blog-content">
+          <div class="page-loader"><div class="spinner"></div></div>
+        </div>
+        <div class="col-lg-4">
+          <div class="shop-sidebar">
+            <div class="sidebar-section">
+              <h4>Recent Posts</h4>
+              <div id="recent-posts"></div>
+            </div>
+            <div class="sidebar-section">
+              <h4>Tags</h4>
+              <div class="tag-list" id="post-tags"></div>
+            </div>
+            <div class="sidebar-section" style="text-align:center;background:linear-gradient(135deg,var(--primary),var(--primary-dark));border-radius:10px;padding:24px;color:#fff;">
+              <h4 style="color:#fff;">📚 Find Your Next Read</h4>
+              <p style="color:rgba(255,255,255,.8);font-size:14px;">Explore our full collection of books</p>
+              <a href="shop.html" style="display:block;background:#fff;color:var(--primary-dark);padding:10px;border-radius:6px;text-decoration:none;font-weight:700;font-size:14px;">Browse Shop →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="page-footer"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    initPage('blog');
+
+    const params = new URLSearchParams(window.location.search);
+    const blogId = parseInt(params.get('id'));
+    const blog = DB.getBlog(blogId);
+    const contentEl = document.getElementById('blog-content');
+
+    if (!blog) {
+      contentEl.innerHTML = `<div class="empty-state"><span class="empty-icon">📝</span><h3>Article not found</h3><a href="blog.html">Back to Blog</a></div>`;
+    } else {
+      document.getElementById('page-title').textContent = `${blog.title} - BookSaw`;
+      document.getElementById('page-desc').setAttribute('content', blog.excerpt);
+
+      contentEl.innerHTML = `
+        <nav aria-label="breadcrumb" style="margin-bottom:20px;">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><a href="blog.html">Blog</a></li>
+            <li class="breadcrumb-item active">${blog.title}</li>
+          </ol>
+        </nav>
+
+        <img src="${blog.image}" alt="${blog.title}" style="width:100%;height:350px;object-fit:cover;border-radius:12px;margin-bottom:24px;">
+
+        <div class="blog-meta" style="margin-bottom:16px;">
+          <span>📅 ${new Date(blog.createdAt).toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'})}</span>
+          <span>✍️ ${blog.author}</span>
+          <span>🏷 <a href="blog.html" style="color:var(--primary);">${blog.category}</a></span>
+        </div>
+
+        <h1 style="font-size:2rem;margin-bottom:20px;">${blog.title}</h1>
+        <p style="font-size:18px;color:#888;font-style:italic;margin-bottom:24px;padding-bottom:20px;border-bottom:2px solid #e8e0d5;">${blog.excerpt}</p>
+
+        <div class="blog-body" style="line-height:1.9;font-size:16px;color:#444;">${blog.content}</div>
+
+        <div class="tag-list mt-4">
+          ${(blog.tags || []).map(t => `<span class="tag">${t}</span>`).join('')}
+        </div>
+
+        <div style="margin-top:30px;padding:20px;background:#f9f7f4;border-radius:10px;display:flex;align-items:center;gap:14px;">
+          <img src="images/client-image1.png" alt="${blog.author}" style="width:60px;height:60px;border-radius:50%;border:3px solid var(--primary);">
+          <div>
+            <h5 style="margin:0 0 4px;">${blog.author}</h5>
+            <p style="margin:0;font-size:13px;color:#888;">Book enthusiast & content writer at BookSaw. Passionate about literature and helping readers discover great books.</p>
+          </div>
+        </div>
+
+        <div style="margin-top:30px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+          <a href="blog.html" style="color:var(--primary);text-decoration:none;font-weight:600;">← Back to Blog</a>
+          <div style="display:flex;gap:10px;">
+            <span style="font-size:14px;color:#888;">Share: </span>
+            <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(blog.title)}" target="_blank" style="color:var(--primary);">Twitter</a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}" target="_blank" style="color:var(--primary);">Facebook</a>
+          </div>
+        </div>`;
+
+      // Tags sidebar
+      document.getElementById('post-tags').innerHTML = (blog.tags || []).map(t => `<span class="tag">${t}</span>`).join('');
+
+      // Recent posts
+      const recent = DB.getBlogs().filter(b => b.published && b.id !== blog.id).slice(0,4);
+      document.getElementById('recent-posts').innerHTML = recent.map(b => `
+        <div style="display:flex;gap:10px;margin-bottom:14px;">
+          <img src="${b.image}" style="width:55px;height:55px;object-fit:cover;border-radius:6px;flex-shrink:0;">
+          <div>
+            <a href="blog-single.html?id=${b.id}" style="font-size:13px;font-weight:600;color:var(--dark-color);text-decoration:none;line-height:1.4;display:block;">${b.title}</a>
+            <span style="font-size:11px;color:#999;">${new Date(b.createdAt).toLocaleDateString()}</span>
+          </div>
+        </div>`).join('');
+    }
+  </script>
+</body>
+</html>

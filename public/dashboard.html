@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Admin Dashboard - BookSaw</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/favicon.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="icomoon/icomoon.css">
+  <link rel="stylesheet" href="css/vendor.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/ecommerce.css">
+  <link rel="stylesheet" href="css/admin-theme.css">
+</head>
+
+<body>
+
+  <!-- Mobile Topbar Header -->
+  <div class="adm-mobile-bar">
+    <div class="d-flex align-items-center gap-2">
+      <div class="brand-logo-badge" style="width:30px;height:30px;border-radius:8px;">
+        <img src="images/favicon.svg" alt="BookSaw" style="width:22px;height:22px;">
+      </div>
+      <div class="brand-text-block">
+        <span class="brand-name-title" style="font-size:14px;">Book<span class="highlight">Saw</span></span>
+        <span class="brand-name-subtitle" style="font-size:8px;">ADMIN PANEL</span>
+      </div>
+    </div>
+    <button class="adm-mobile-toggle"
+      onclick="document.getElementById('admin-sidebar').classList.toggle('open');document.getElementById('adm-backdrop').classList.toggle('active');">
+      <svg class="adm-icon" viewBox="0 0 24 24">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+  <div class="adm-backdrop" id="adm-backdrop"
+    onclick="document.getElementById('admin-sidebar').classList.remove('open');this.classList.remove('active');"></div>
+
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <div class="admin-sidebar" id="admin-sidebar">
+      <a href="dashboard.html" class="sidebar-brand">
+        <div class="brand-logo-badge">
+          <img src="images/favicon.svg" alt="BookSaw" class="brand-logo-img">
+        </div>
+        <div class="brand-text-block">
+          <span class="brand-name-title">Book<span class="highlight">Saw</span></span>
+          <span class="brand-name-subtitle">ADMIN PANEL</span>
+        </div>
+      </a>
+      <div class="sidebar-section-label">Catalog &amp; Sales</div>
+
+      <a href="dashboard.html" class="nav-item active">
+        <svg class="adm-icon" viewBox="0 0 24 24">
+          <rect x="3" y="3" width="7" height="9"></rect>
+          <rect x="14" y="3" width="7" height="5"></rect>
+          <rect x="14" y="12" width="7" height="9"></rect>
+          <rect x="3" y="16" width="7" height="5"></rect>
+        </svg>
+        <span>Dashboard</span>
+      </a>
+
+      <a href="books.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+        </svg>
+        <span>Books</span>
+      </a>
+
+      <a href="country-pricing.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="2" y1="12" x2="22" y2="12"></line>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        </svg>
+        <span>Country Pricing</span>
+      </a>
+
+      <a href="orders.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24">
+          <path
+            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+          </path>
+          <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+          <line x1="12" y1="22.08" x2="12" y2="12"></line>
+        </svg>
+        <span>Orders</span>
+      </a>
+
+      <a href="coupons.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24">
+          <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+          <line x1="7" y1="7" x2="7.01" y2="7"></line>
+        </svg>
+        <span>Coupons</span>
+      </a>
+
+      <a href="blogs.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24">
+          <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+          <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+        </svg>
+        <span>Blog Posts</span>
+      </a>
+
+      <a href="users.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+          <circle cx="9" cy="7" r="4"></circle>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+        </svg>
+        <span>Users</span>
+      </a>
+
+      <div class="sidebar-section-label">Preferences</div>
+
+      <a href="currency.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24">
+          <line x1="12" y1="1" x2="12" y2="23"></line>
+          <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+        </svg>
+        <span>Currency Rates</span>
+      </a>
+
+      <a href="settings.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path
+            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+          </path>
+        </svg>
+        <span>Site Settings</span>
+      </a>
+
+      <div class="sidebar-footer">
+        <a href="#" onclick="doLogout()" class="btn-logout">
+          <svg class="adm-icon" viewBox="0 0 24 24">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
+          <span>Logout</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Main -->
+    <div class="admin-main">
+      <div class="admin-topbar">
+        <div>
+          <h1 style="margin:0;">Dashboard Overview</h1>
+          <span style="font-size:12.5px;color:var(--adm-text-muted);">BookSaw E-Books &amp; Razorpay Gateway Analytics</span>
+        </div>
+        <div class="topbar-right">
+          <!-- Live Razorpay Status Badge -->
+          <div id="razorpay-topbar-badge" style="display:flex;align-items:center;gap:8px;background:#f8fafc;padding:6px 14px;border-radius:20px;border:1px solid #e2e8f0;font-size:12.5px;font-weight:600;">
+            <span class="status-dot" style="width:8px;height:8px;border-radius:50%;background:#eab308;display:inline-block;"></span>
+            <span id="rzp-mode-label">🟡 Test Mode Sandbox</span>
+            <a href="settings.html#razorpay-section" style="color:var(--primary);margin-left:4px;text-decoration:none;font-size:11.5px;font-weight:700;">⚙️ Config</a>
+          </div>
+          <span style="font-size:13px;color:#888;" id="admin-date"></span>
+          <div class="admin-user">
+            <img src="images/client-image1.png" alt="Admin" onerror="this.src='images/favicon.svg'">
+            <span id="admin-name">Admin</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-content">
+        <!-- Razorpay Connection Announcement Banner -->
+        <div id="rzp-banner" style="background:linear-gradient(135deg, #0f172a 0%, #1e293b 100%);color:#fff;border-radius:14px;padding:16px 20px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;box-shadow:0 4px 15px rgba(15,23,42,0.15);">
+          <div style="display:flex;align-items:center;gap:14px;">
+            <div style="width:42px;height:42px;background:rgba(255,255,255,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;">
+              💳
+            </div>
+            <div>
+              <div style="font-weight:700;font-size:15px;display:flex;align-items:center;gap:8px;">
+                <span>Official Razorpay Payment Gateway</span>
+                <span id="rzp-badge-pill" style="font-size:11px;background:#fef08a;color:#854d0e;padding:2px 8px;border-radius:12px;font-weight:700;">🟡 Test Mode Active</span>
+              </div>
+              <p style="margin:2px 0 0 0;font-size:12.5px;color:#cbd5e1;" id="rzp-banner-desc">Accepting UPI, Credit/Debit Cards, NetBanking, and Instant E-Book Delivery.</p>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <button type="button" onclick="testRazorpayLive()" class="btn-save" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);padding:8px 14px;font-size:12.5px;color:#fff;cursor:pointer;">
+              ⚡ Ping Connection
+            </button>
+            <a href="settings.html#razorpay-section" class="btn-save" style="background:#0284c7;padding:8px 16px;font-size:12.5px;text-decoration:none;color:#fff;display:inline-flex;align-items:center;gap:6px;">
+              Configure Keys →
+            </a>
+          </div>
+        </div>
+
+        <!-- 4 Key Metrics Cards: Total Sales, Razorpay Collected, Success Rate, Active Books -->
+        <div class="stats-grid" id="stats-grid" style="grid-template-columns:repeat(auto-fit, minmax(210px, 1fr));">
+          <div class="stat-card green">
+            <div class="stat-icon">💰</div>
+            <div class="stat-info">
+              <h3 id="stat-total-sales">₹0</h3>
+              <p>Total Sales</p>
+            </div>
+            <span class="stat-trend trend-up" id="stat-paid-count">0 Paid Orders</span>
+          </div>
+
+          <div class="stat-card blue">
+            <div class="stat-icon">💳</div>
+            <div class="stat-info">
+              <h3 id="stat-rzp-collected">₹0</h3>
+              <p>Razorpay Collected</p>
+            </div>
+            <span class="stat-trend trend-up" style="background:#e0f2fe;color:#0369a1;">Razorpay SDK</span>
+          </div>
+
+          <div class="stat-card amber">
+            <div class="stat-icon">📈</div>
+            <div class="stat-info">
+              <h3 id="stat-success-rate">100%</h3>
+              <p>Success Rate</p>
+            </div>
+            <span class="stat-trend trend-up" style="background:#fef3c7;color:#b45309;" id="stat-orders-count">0 Orders</span>
+          </div>
+
+          <div class="stat-card purple">
+            <div class="stat-icon">📚</div>
+            <div class="stat-info">
+              <h3 id="stat-active-books">0</h3>
+              <p>Active Books</p>
+            </div>
+            <span class="stat-trend trend-up" style="background:#f3e8ff;color:#7e22ce;">Digital Catalog</span>
+          </div>
+
+          <div class="stat-card pink">
+            <div class="stat-icon">👥</div>
+            <div class="stat-info">
+              <h3 id="stat-users">0</h3>
+              <p>Registered Readers</p>
+            </div>
+            <span class="stat-trend trend-up" style="background:#fce7f3;color:#be185d;">Verified Accounts</span>
+          </div>
+        </div>
+
+        <div class="row g-4 mt-2">
+          <!-- Recent Orders -->
+          <div class="col-lg-8">
+            <div class="admin-card">
+              <div class="admin-card-header">
+                <div>
+                  <h3 style="margin:0;">Recent Transactions</h3>
+                  <small style="color:var(--adm-text-muted);font-size:12px;">Live order stream with customer name, amount, date, and Razorpay pay_... ID</small>
+                </div>
+                <a href="orders.html" style="font-size:13px;font-weight:600;color:var(--primary);text-decoration:none;">View All →</a>
+              </div>
+              <div class="admin-card-body" style="padding:0;">
+                <table class="admin-table" id="recent-orders-table">
+                  <thead>
+                    <tr>
+                      <th>Order ID</th>
+                      <th>Customer</th>
+                      <th>Razorpay Payment ID</th>
+                      <th>Amount</th>
+                      <th>Status</th>
+                      <th>Date</th>
+                    </tr>
+                  </thead>
+                  <tbody id="recent-orders-body">
+                    <tr>
+                      <td colspan="6" style="text-align:center;padding:24px;color:#94a3b8;">Loading transactions...</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Top Books -->
+          <div class="col-lg-4">
+            <div class="admin-card">
+              <div class="admin-card-header">
+                <h3>Top Books</h3>
+                <a href="books.html" style="font-size:13px;color:var(--primary);text-decoration:none;">Manage →</a>
+              </div>
+              <div class="admin-card-body">
+                <div id="top-books-list"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Blog Posts -->
+          <div class="col-12">
+            <div class="admin-card">
+              <div class="admin-card-header">
+                <h3>Recent Blog Posts</h3>
+                <a href="blogs.html" class="btn-add">
+                  <svg class="adm-icon adm-icon-sm" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                  <span>New Post</span>
+                </a>
+              </div>
+              <div class="admin-card-body" style="padding:0;">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>Title</th>
+                      <th>Category</th>
+                      <th>Published</th>
+                      <th>Date</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="recent-blogs-body">
+                    <tr>
+                      <td colspan="5" style="text-align:center;padding:20px;color:#bbb;">No blog posts yet</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    if (!DB.isAdmin()) window.location.href = 'login.html';
+    if (typeof BSLoader !== 'undefined') BSLoader.init();
+
+    const user = DB.getCurrentUser() || { name: 'Admin' };
+    document.getElementById('admin-name').textContent = user.name || 'Admin';
+    document.getElementById('admin-date').textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+    function doLogout() {
+      if (typeof API !== 'undefined') API.logout();
+      else { DB.logout(); window.location.href = 'login.html'; }
+    }
+
+    async function renderDashboard() {
+      let stats = null;
+      let recentOrders = [];
+
+      // Attempt live fetch from Backend REST API
+      try {
+        const res = await API.adminGetStats();
+        if (res && res.stats) {
+          stats = res.stats;
+          recentOrders = res.recentOrders || [];
+        }
+      } catch (err) {
+        console.warn('Backend REST API unavailable, reading local store:', err);
+      }
+
+      // Fallback to local DB if backend not reachable
+      const books = DB.getBooks();
+      const orders = DB.getOrders();
+      const users = DB.getUsers();
+      const blogs = DB.getBlogs();
+
+      if (!stats) {
+        const paidOrders = orders.filter(o => o.status === 'paid');
+        const rev = paidOrders.reduce((s, o) => s + (o.amount || o.totalINR || (o.totalUSD ? o.totalUSD * 85 : 0)), 0);
+        stats = {
+          totalRevenue: Math.round(rev),
+          razorpayCollected: Math.round(rev),
+          totalOrders: orders.length,
+          paidOrdersCount: paidOrders.length,
+          registeredReaders: users.filter(u => u.role !== 'admin').length,
+          activeBooks: books.length,
+          successRate: orders.length ? Math.round((paidOrders.length / orders.length) * 100) : 100,
+          currency: 'INR',
+          razorpayStatus: { enabled: true, mode: 'test', keyId: 'rzp_test_...' }
+        };
+        recentOrders = [...orders].sort((a,b) => new Date(b.createdAt)-new Date(a.createdAt)).slice(0, 8);
+      }
+
+      // Update Metrics Cards
+      const currSymbol = stats.currency === 'USD' ? '$' : '₹';
+      document.getElementById('stat-total-sales').textContent = `${currSymbol}${stats.totalRevenue.toLocaleString()}`;
+      document.getElementById('stat-rzp-collected').textContent = `${currSymbol}${stats.razorpayCollected.toLocaleString()}`;
+      document.getElementById('stat-success-rate').textContent = `${stats.successRate}%`;
+      document.getElementById('stat-active-books').textContent = stats.activeBooks || books.length;
+      document.getElementById('stat-users').textContent = stats.registeredReaders || users.length;
+      document.getElementById('stat-paid-count').textContent = `${stats.paidOrdersCount} Paid Transactions`;
+      document.getElementById('stat-orders-count').textContent = `${stats.totalOrders} Orders Total`;
+
+      // Update Razorpay Gateway Status Badge
+      const rzp = stats.razorpayStatus || {};
+      const mode = (rzp.mode || 'test').toLowerCase();
+      const topBadge = document.getElementById('razorpay-topbar-badge');
+      const pill = document.getElementById('rzp-badge-pill');
+
+      if (!rzp.enabled) {
+        topBadge.innerHTML = `<span class="status-dot" style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;"></span><span>🔴 Gateway Disabled</span> <a href="settings.html#razorpay-section" style="color:var(--primary);margin-left:4px;font-size:11.5px;font-weight:700;">⚙️ Config</a>`;
+        pill.innerHTML = `🔴 Gateway Disabled`;
+        pill.style.background = '#fee2e2';
+        pill.style.color = '#991b1b';
+      } else if (mode === 'live') {
+        topBadge.innerHTML = `<span class="status-dot" style="width:8px;height:8px;border-radius:50%;background:#10b981;display:inline-block;"></span><span>🟢 Live Mode Active</span> <a href="settings.html#razorpay-section" style="color:var(--primary);margin-left:4px;font-size:11.5px;font-weight:700;">⚙️ Config</a>`;
+        pill.innerHTML = `🟢 Live Mode Active`;
+        pill.style.background = '#dcfce7';
+        pill.style.color = '#15803d';
+      } else {
+        topBadge.innerHTML = `<span class="status-dot" style="width:8px;height:8px;border-radius:50%;background:#eab308;display:inline-block;"></span><span>🟡 Test Mode Sandbox</span> <a href="settings.html#razorpay-section" style="color:var(--primary);margin-left:4px;font-size:11.5px;font-weight:700;">⚙️ Config</a>`;
+        pill.innerHTML = `🟡 Test Mode Sandbox`;
+        pill.style.background = '#fef08a';
+        pill.style.color = '#854d0e';
+      }
+
+      // Render Recent Transactions
+      const tbody = document.getElementById('recent-orders-body');
+      if (recentOrders.length) {
+        tbody.innerHTML = recentOrders.map(o => {
+          const amt = o.amount || o.totalINR || (o.totalUSD ? o.totalUSD * 85 : 0);
+          const payId = o.razorpay_payment_id || (o.paymentMethod === 'razorpay' ? '<span style="color:#94a3b8;font-style:italic;">Pending RZP</span>' : 'Manual / Other');
+          const isPaid = o.status === 'paid';
+          const badgeClass = isPaid ? 'status-delivered' : (o.status === 'refunded' ? 'status-cancelled' : 'status-pending');
+          const badgeText = isPaid ? 'Paid' : (o.status === 'refunded' ? 'Refunded' : 'Pending');
+
+          return `
+            <tr>
+              <td><a href="orders.html?search=${encodeURIComponent(o.orderId || o.id)}" style="font-weight:700;color:var(--primary);text-decoration:none;">${o.orderId || `#BS-${String(o.id).padStart(5,'0')}`}</a></td>
+              <td>
+                <div style="font-weight:600;font-size:13px;">${o.customerName || 'Customer'}</div>
+                <div style="font-size:11.5px;color:#94a3b8;">${o.customerEmail || o.email || ''}</div>
+              </td>
+              <td>
+                ${o.razorpay_payment_id ? `<code style="background:#f1f5f9;color:#0f172a;font-weight:600;padding:2px 6px;border-radius:4px;font-size:12px;">${o.razorpay_payment_id}</code>` : payId}
+              </td>
+              <td><strong>₹${Math.round(amt).toLocaleString()}</strong></td>
+              <td><span class="status-badge ${badgeClass}">${badgeText}</span></td>
+              <td style="font-size:12.5px;color:#64748b;">${new Date(o.createdAt || Date.now()).toLocaleDateString()}</td>
+            </tr>`;
+        }).join('');
+      } else {
+        tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:24px;color:#94a3b8;">No orders found yet.</td></tr>`;
+      }
+
+      // Render Top Books list
+      const topBooks = [...books].sort((a, b) => (b.reviews || 0) - (a.reviews || 0)).slice(0, 5);
+      const topList = document.getElementById('top-books-list');
+      topList.innerHTML = topBooks.map((b, i) => `
+        <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f5;">
+          <span style="font-size:16px;font-weight:700;color:${i === 0 ? '#f59e0b' : i === 1 ? '#9ca3af' : '#cd7c5e'};width:20px;">#${i + 1}</span>
+          <img src="${b.image}" onerror="this.src='images/favicon.svg'" style="width:36px;height:48px;object-fit:cover;border-radius:4px;">
+          <div style="flex:1;min-width:0;">
+            <div style="font-weight:600;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${b.title}</div>
+            <div style="font-size:11px;color:#999;">${b.reviews || 0} reviews · ₹${b.priceINR || (b.priceUSD ? b.priceUSD * 85 : 999)}</div>
+          </div>
+        </div>`).join('');
+
+      // Recent blog posts
+      const recentBlogs = [...blogs].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).slice(0, 5);
+      const blogsTbody = document.getElementById('recent-blogs-body');
+      if (recentBlogs.length) {
+        blogsTbody.innerHTML = recentBlogs.map(b => `
+          <tr>
+            <td><strong>${b.title}</strong></td>
+            <td>${b.category}</td>
+            <td><span class="status-badge ${b.published ? 'status-delivered' : 'status-cancelled'}">${b.published ? 'Published' : 'Draft'}</span></td>
+            <td>${new Date(b.createdAt).toLocaleDateString()}</td>
+            <td>
+              <div class="d-flex gap-1 align-items-center">
+                <a href="blogs.html" class="btn-icon-action btn-icon-edit" title="Edit Post">
+                  <svg class="adm-icon adm-icon-sm" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                </a>
+                <a href="blog-single.html?id=${b.id}" target="_blank" class="btn-icon-action btn-icon-view" title="View Blog">
+                  <svg class="adm-icon adm-icon-sm" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                </a>
+              </div>
+            </td>
+          </tr>`).join('');
+      }
+    }
+
+    async function testRazorpayLive() {
+      if (typeof showToast === 'function') showToast('Testing Razorpay API connection...', 'info');
+      try {
+        const res = await API.adminTestRazorpayConnection();
+        if (res && res.data && res.data.success) {
+          if (typeof showToast === 'function') showToast(res.data.message || 'Razorpay Connected Successfully!', 'success');
+        } else {
+          if (typeof showToast === 'function') showToast((res && res.data && res.data.message) || 'Connection test failed', 'error');
+        }
+      } catch (err) {
+        if (typeof showToast === 'function') showToast('Error testing connection: ' + err.message, 'error');
+      }
+    }
+
+    renderDashboard();
+  </script>
+</body>
+
+</html>

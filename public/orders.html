@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Orders - Admin | BookSaw</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/favicon.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="icomoon/icomoon.css">
+  <link rel="stylesheet" href="css/vendor.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/ecommerce.css">
+  <link rel="stylesheet" href="css/admin-theme.css">
+</head>
+<body>
+
+  <!-- Mobile Topbar Header -->
+  <div class="adm-mobile-bar">
+    <div class="d-flex align-items-center gap-2">
+      <div class="brand-logo-badge" style="width:30px;height:30px;border-radius:8px;">
+        <img src="images/favicon.svg" alt="BookSaw" style="width:22px;height:22px;">
+      </div>
+      <div class="brand-text-block">
+        <span class="brand-name-title" style="font-size:14px;">Book<span class="highlight">Saw</span></span>
+        <span class="brand-name-subtitle" style="font-size:8px;">ADMIN PANEL</span>
+      </div>
+    </div>
+    <button class="adm-mobile-toggle" onclick="document.getElementById('admin-sidebar').classList.toggle('open');document.getElementById('adm-backdrop').classList.toggle('active');">
+      <svg class="adm-icon" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
+  </div>
+  <div class="adm-backdrop" id="adm-backdrop" onclick="document.getElementById('admin-sidebar').classList.remove('open');this.classList.remove('active');"></div>
+
+  <div class="admin-layout">
+    <div class="admin-sidebar" id="admin-sidebar">
+      <a href="dashboard.html" class="sidebar-brand">
+        <div class="brand-logo-badge">
+          <img src="images/favicon.svg" alt="BookSaw" class="brand-logo-img">
+        </div>
+        <div class="brand-text-block">
+          <span class="brand-name-title">Book<span class="highlight">Saw</span></span>
+          <span class="brand-name-subtitle">ADMIN PANEL</span>
+        </div>
+      </a>
+      
+      <div class="sidebar-section-label">Catalog &amp; Sales</div>
+      
+      <a href="dashboard.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+        <span>Dashboard</span>
+      </a>
+
+      <a href="books.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+        <span>Books</span>
+      </a>
+
+      <a href="country-pricing.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        <span>Country Pricing</span>
+      </a>
+
+      <a href="orders.html" class="nav-item active">
+        <svg class="adm-icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+        <span>Orders</span>
+      </a>
+
+      <a href="coupons.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+        <span>Coupons</span>
+      </a>
+
+      <a href="blogs.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+        <span>Blog Posts</span>
+      </a>
+
+      <a href="users.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        <span>Users</span>
+      </a>
+
+      <div class="sidebar-section-label">Preferences</div>
+
+      <a href="currency.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+        <span>Currency Rates</span>
+      </a>
+
+      <a href="settings.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+        <span>Site Settings</span>
+      </a>
+
+      <div class="sidebar-footer">
+        <a href="#" onclick="DB.logout();window.location.href='login.html'" class="btn-logout">
+          <svg class="adm-icon" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          <span>Logout</span>
+        </a>
+      </div>
+    </div>
+    <div class="admin-main">
+      <div class="admin-topbar">
+        <h1>Orders Management</h1>
+        <div class="topbar-right">
+          <div class="adm-select-wrap">
+            <svg class="adm-icon adm-icon-sm" viewBox="0 0 24 24" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);pointer-events:none;color:#64748b;"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            <select id="filter-status" onchange="renderOrders()" class="adm-select">
+              <option value="all">All Orders</option>
+              <option value="paid">Paid &amp; Completed</option>
+              <option value="pending">Pending Payment</option>
+              <option value="refunded">Refunded</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="admin-content">
+        <!-- Stats -->
+        <div class="stats-grid">
+          <div class="stat-card blue"><div class="stat-icon">📦</div><div class="stat-info"><h3 id="s-total">0</h3><p>Total Orders</p></div></div>
+          <div class="stat-card green"><div class="stat-icon">✅</div><div class="stat-info"><h3 id="s-paid">0</h3><p>Paid (Razorpay)</p></div></div>
+          <div class="stat-card amber"><div class="stat-icon">⏳</div><div class="stat-info"><h3 id="s-pending">0</h3><p>Pending</p></div></div>
+          <div class="stat-card purple"><div class="stat-icon">💰</div><div class="stat-info"><h3 id="s-revenue">₹0</h3><p>Revenue</p></div></div>
+        </div>
+
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div>
+              <h3 style="margin:0;">Orders &amp; Razorpay Transactions (<span id="orders-count">0</span>)</h3>
+              <small style="color:var(--adm-text-muted);font-size:12px;">Search by Order ID, Razorpay Payment ID, or Customer Email</small>
+            </div>
+            <div class="adm-search-box">
+              <svg class="adm-icon adm-icon-sm" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input type="text" id="order-search" placeholder="Search Order ID, pay_..., or email..." oninput="renderOrders()">
+            </div>
+          </div>
+          <div style="padding:0;overflow-x:auto;">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Customer</th>
+                  <th>Razorpay Payment ID</th>
+                  <th>Items</th>
+                  <th>Total</th>
+                  <th>Status</th>
+                  <th>Date</th>
+                  <th style="min-width:130px;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="orders-tbody">
+                <tr><td colspan="8" style="text-align:center;padding:24px;">Loading orders...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Order Detail & License Modal -->
+  <div class="modal-overlay" id="order-modal">
+    <div class="modal-box" style="max-width:700px;">
+      <div class="modal-header">
+        <h3 id="order-modal-title">
+          <svg class="adm-icon text-primary" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          <span id="order-modal-title-text">Order Details</span>
+        </h3>
+        <button type="button" class="modal-close" onclick="closeOrderModal()" title="Close dialog" aria-label="Close">
+          <svg class="adm-icon" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="modal-body" id="order-modal-body"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn-cancel" onclick="closeOrderModal()">Close</button>
+        <button type="button" class="btn-save" onclick="window.print()" style="background:#0f172a;">
+          <svg class="adm-icon adm-icon-sm" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+          <span>Print / Export Invoice</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Razorpay Refund Modal -->
+  <div class="modal-overlay" id="refund-modal">
+    <div class="modal-box" style="max-width:500px;">
+      <div class="modal-header">
+        <h3>
+          <span style="font-size:20px;">🔄</span>
+          <span>Process Razorpay Refund</span>
+        </h3>
+        <button type="button" class="modal-close" onclick="closeRefundModal()" title="Close dialog">
+          <svg class="adm-icon" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="refund-form" onsubmit="submitRefund(event)">
+          <input type="hidden" id="rf-order-id">
+          <div style="background:#f8fafc;padding:12px;border-radius:8px;margin-bottom:15px;font-size:13px;">
+            <p style="margin:0 0 4px 0;"><strong>Order:</strong> <span id="rf-order-label"></span></p>
+            <p style="margin:0 0 4px 0;"><strong>Customer:</strong> <span id="rf-customer-label"></span></p>
+            <p style="margin:0;"><strong>Razorpay Payment ID:</strong> <code id="rf-payment-id-label" style="font-weight:700;"></code></p>
+          </div>
+          <div class="form-group mb-3">
+            <label for="rf-amount">Refund Amount (INR) <span class="required-star">*</span></label>
+            <input type="number" id="rf-amount" step="1" min="1" required style="font-weight:700;font-size:15px;">
+            <span class="form-help-text">Can be partial or full refund amount.</span>
+          </div>
+          <div class="form-group mb-3">
+            <label for="rf-reason">Reason for Refund</label>
+            <select id="rf-reason">
+              <option value="Customer requested cancellation">Customer requested cancellation</option>
+              <option value="Duplicate payment">Duplicate payment</option>
+              <option value="Digital file issue">Digital file issue</option>
+              <option value="Other administrative adjustment">Other administrative adjustment</option>
+            </select>
+          </div>
+          <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:20px;">
+            <button type="button" class="btn-cancel" onclick="closeRefundModal()">Cancel</button>
+            <button type="submit" class="btn-save" id="btn-submit-refund" style="background:#dc2626;">
+              <span id="btn-submit-refund-text">Confirm Refund via Razorpay</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    if (!DB.isAdmin()) window.location.href = 'login.html';
+    if (typeof BSLoader !== 'undefined') BSLoader.init();
+
+    let cachedOrders = [];
+
+    async function fetchOrders() {
+      try {
+        const res = await API.adminGetOrders();
+        if (res && res.orders) {
+          cachedOrders = res.orders;
+          return cachedOrders;
+        }
+      } catch (err) {
+        console.warn('API error, reading local DB:', err);
+      }
+      cachedOrders = DB.getOrders();
+      return cachedOrders;
+    }
+
+    async function renderOrders() {
+      let orders = cachedOrders.length ? cachedOrders : await fetchOrders();
+      const status = document.getElementById('filter-status').value;
+      const search = document.getElementById('order-search').value.toLowerCase().trim();
+
+      if (status !== 'all') {
+        orders = orders.filter(o => {
+          if (status === 'paid') return o.status === 'paid';
+          if (status === 'pending') return o.status === 'pending' || o.status === 'pending_payment';
+          if (status === 'refunded') return o.status === 'refunded';
+          if (status === 'cancelled') return o.status === 'cancelled' || o.status === 'failed';
+          return o.status === status;
+        });
+      }
+
+      if (search) {
+        orders = orders.filter(o =>
+          (o.customerName && o.customerName.toLowerCase().includes(search)) ||
+          (o.customerEmail && o.customerEmail.toLowerCase().includes(search)) ||
+          (o.email && o.email.toLowerCase().includes(search)) ||
+          String(o.id).toLowerCase().includes(search) ||
+          (o.orderId && o.orderId.toLowerCase().includes(search)) ||
+          (o.razorpay_payment_id && o.razorpay_payment_id.toLowerCase().includes(search)) ||
+          (o.razorpay_order_id && o.razorpay_order_id.toLowerCase().includes(search))
+        );
+      }
+
+      orders.sort((a,b) => new Date(b.createdAt)-new Date(a.createdAt));
+      document.getElementById('orders-count').textContent = orders.length;
+
+      const all = cachedOrders;
+      const paidList = all.filter(o => o.status === 'paid');
+      const pendingList = all.filter(o => o.status === 'pending' || o.status === 'pending_payment');
+      const totalRev = paidList.reduce((s,o) => s + (o.amount || o.totalINR || (o.totalUSD ? o.totalUSD * 85 : 0)), 0);
+
+      document.getElementById('s-total').textContent = all.length;
+      document.getElementById('s-paid').textContent = paidList.length;
+      document.getElementById('s-pending').textContent = pendingList.length;
+      document.getElementById('s-revenue').textContent = `₹${Math.round(totalRev).toLocaleString()}`;
+
+      const tbody = document.getElementById('orders-tbody');
+      if (!orders.length) {
+        tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:36px;color:#888;">No orders found matching search criteria.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = orders.map(o => {
+        const amt = o.amount || o.totalINR || (o.totalUSD ? o.totalUSD * 85 : 0);
+        const isPaid = o.status === 'paid';
+        const isRefunded = o.status === 'refunded';
+        const badgeClass = isPaid ? 'status-delivered' : (isRefunded ? 'status-cancelled' : 'status-pending');
+        const badgeText = isPaid ? 'Paid' : (isRefunded ? 'Refunded' : (o.status === 'pending_payment' ? 'Pending' : o.status));
+
+        const rzpPaymentBadge = o.razorpay_payment_id
+          ? `<code style="background:#f1f5f9;color:#0f172a;padding:2px 6px;border-radius:4px;font-size:12px;font-weight:700;">${o.razorpay_payment_id}</code>`
+          : `<span style="color:#94a3b8;font-size:12px;font-style:italic;">Manual / None</span>`;
+
+        return `
+          <tr>
+            <td><strong>${o.orderId || `#BS-${String(o.id).padStart(5,'0')}`}</strong></td>
+            <td>
+              <strong>${o.customerName || 'Customer'}</strong>
+              <div style="font-size:12px;color:var(--adm-text-muted);">${o.customerEmail || o.email || ''}</div>
+            </td>
+            <td>${rzpPaymentBadge}</td>
+            <td>${o.items?.length || 1} book(s)</td>
+            <td>
+              <strong>₹${Math.round(amt).toLocaleString()}</strong>
+              ${o.couponCode ? `<div style="margin-top:2px;"><span style="background:#dcfce7;color:#15803d;font-size:10.5px;font-weight:700;padding:2px 5px;border-radius:4px;">🏷️ ${o.couponCode}</span></div>` : ''}
+            </td>
+            <td>
+              <span class="status-badge ${badgeClass}">${badgeText}</span>
+            </td>
+            <td style="font-size:12.5px;color:var(--adm-text-muted);">${new Date(o.createdAt).toLocaleDateString()}</td>
+            <td>
+              <div style="display:flex;gap:6px;align-items:center;">
+                <!-- View Details & License -->
+                <button type="button" class="btn-icon-action btn-icon-view" onclick="viewOrder('${o.id}')" title="View Order & Customer License Keys">
+                  <svg class="adm-icon" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                </button>
+
+                <!-- Resend Digital Access -->
+                <button type="button" class="btn-icon-action" onclick="resendAccess('${o.id}')" title="Re-send E-Book Access & License Email" style="background:#e0f2fe;color:#0284c7;">
+                  <svg class="adm-icon adm-icon-sm" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </button>
+
+                <!-- Process Razorpay Refund -->
+                ${isPaid && o.razorpay_payment_id ? `
+                <button type="button" class="btn-icon-action" onclick="openRefundModal('${o.id}')" title="Process Refund via Razorpay" style="background:#fee2e2;color:#dc2626;">
+                  <span style="font-size:12px;font-weight:700;">₹↩</span>
+                </button>` : ''}
+              </div>
+            </td>
+          </tr>`;
+      }).join('');
+    }
+
+    async function viewOrder(id) {
+      const order = cachedOrders.find(o => String(o.id) === String(id));
+      if (!order) return;
+
+      const amt = order.amount || order.totalINR || (order.totalUSD ? order.totalUSD * 85 : 0);
+      const licenses = order.licenses || [];
+
+      document.getElementById('order-modal-title-text').textContent = `Order ${order.orderId || '#BS-' + String(order.id).padStart(5,'0')}`;
+      document.getElementById('order-modal-body').innerHTML = `
+        <div class="row g-3 mb-3">
+          <div class="col-6">
+            <h5 style="font-size:13px;color:#888;margin-bottom:6px;text-transform:uppercase;">Customer Information</h5>
+            <p style="margin:0;font-weight:700;">${order.customerName}</p>
+            <p style="margin:0;font-size:13px;color:#666;">${order.customerEmail || order.email || ''}</p>
+            <p style="margin:0;font-size:13px;color:#666;">${order.customerPhone || order.phone || ''}</p>
+          </div>
+          <div class="col-6">
+            <h5 style="font-size:13px;color:#888;margin-bottom:6px;text-transform:uppercase;">Payment &amp; Gateway</h5>
+            <p style="margin:0;font-size:13px;">Status: <strong>${order.status.toUpperCase()}</strong></p>
+            <p style="margin:0;font-size:13px;">Method: <strong>Razorpay</strong></p>
+            ${order.razorpay_payment_id ? `<p style="margin:2px 0 0 0;font-size:12px;">Payment ID: <code style="background:#f1f5f9;font-weight:700;">${order.razorpay_payment_id}</code></p>` : ''}
+            ${order.razorpay_order_id ? `<p style="margin:2px 0 0 0;font-size:12px;">Razorpay Order: <code>${order.razorpay_order_id}</code></p>` : ''}
+          </div>
+        </div>
+
+        <!-- Digital Book Licenses -->
+        <div style="background:#f0fdf4;border:1px solid #bbf7d0;padding:12px 14px;border-radius:8px;margin-bottom:16px;">
+          <h5 style="margin:0 0 6px 0;color:#166534;font-size:13.5px;font-weight:700;">🔑 Digital Book License Keys</h5>
+          ${licenses.length ? licenses.map(lic => `
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:4px 0;border-bottom:1px dashed #dcfce7;font-size:13px;">
+              <span><strong>${lic.title || 'Digital Book'}</strong></span>
+              <code style="background:#ffffff;padding:2px 8px;border-radius:4px;border:1px solid #86efac;color:#15803d;font-weight:700;">${lic.licenseKey}</code>
+            </div>`).join('') : '<p style="margin:0;font-size:12.5px;color:#15803d;">Automatic license key activated for customer library.</p>'}
+        </div>
+
+        <h5 style="font-size:13px;color:#888;margin-bottom:8px;text-transform:uppercase;">Order Items</h5>
+        ${(order.items || []).map(item => `
+          <div class="order-item" style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #f1f5f9;">
+            <div style="font-weight:600;font-size:13.5px;">${item.title}</div>
+            <div style="font-weight:700;font-size:14px;">₹${item.price || item.priceINR || 999}</div>
+          </div>`).join('')}
+
+        <div style="margin-top:16px;padding:14px;background:#f8fafc;border-radius:8px;">
+          <div style="display:flex;justify-content:space-between;font-size:15px;font-weight:800;color:#0f172a;">
+            <span>Total Amount:</span>
+            <span>₹${Math.round(amt).toLocaleString()}</span>
+          </div>
+        </div>`;
+
+      document.getElementById('order-modal').classList.add('active');
+    }
+
+    function closeOrderModal() {
+      document.getElementById('order-modal').classList.remove('active');
+    }
+
+    async function resendAccess(id) {
+      if (!confirm('Re-send digital license and receipt email to customer?')) return;
+      showToast('Dispatching digital license email...', 'info');
+      try {
+        const res = await API.adminResendAccess(id);
+        if (res && res.data && res.data.success) {
+          showToast(res.data.message || 'Access resent successfully!', 'success');
+        } else {
+          showToast('Failed to resend: ' + (res.data?.message || 'Error'), 'error');
+        }
+      } catch (err) {
+        showToast('Error: ' + err.message, 'error');
+      }
+    }
+
+    function openRefundModal(id) {
+      const order = cachedOrders.find(o => String(o.id) === String(id));
+      if (!order) return;
+
+      const amt = order.amount || order.totalINR || 0;
+      document.getElementById('rf-order-id').value = order.id;
+      document.getElementById('rf-order-label').textContent = order.orderId || `#BS-${order.id}`;
+      document.getElementById('rf-customer-label').textContent = order.customerName + ` (${order.customerEmail || ''})`;
+      document.getElementById('rf-payment-id-label').textContent = order.razorpay_payment_id || 'N/A';
+      document.getElementById('rf-amount').value = amt;
+      document.getElementById('rf-amount').max = amt;
+
+      document.getElementById('refund-modal').classList.add('active');
+    }
+
+    function closeRefundModal() {
+      document.getElementById('refund-modal').classList.remove('active');
+    }
+
+    async function submitRefund(e) {
+      e.preventDefault();
+      const orderId = document.getElementById('rf-order-id').value;
+      const amount = parseFloat(document.getElementById('rf-amount').value);
+      const reason = document.getElementById('rf-reason').value;
+
+      if (!confirm(`Are you sure you want to process a refund of ₹${amount} via Razorpay? This will immediately return funds to the customer.`)) {
+        return;
+      }
+
+      const btn = document.getElementById('btn-submit-refund');
+      const text = document.getElementById('btn-submit-refund-text');
+      btn.disabled = true;
+      text.textContent = '⏳ Processing with Razorpay...';
+
+      try {
+        const res = await API.adminRefundOrder(orderId, amount, reason);
+        if (res && res.data && res.data.success) {
+          showToast(res.data.message || 'Refund successfully processed!', 'success');
+          closeRefundModal();
+          await fetchOrders();
+          renderOrders();
+        } else {
+          showToast((res && res.data && res.data.message) || 'Refund failed', 'error');
+        }
+      } catch (err) {
+        showToast('Refund error: ' + err.message, 'error');
+      } finally {
+        btn.disabled = false;
+        text.textContent = 'Confirm Refund via Razorpay';
+      }
+    }
+
+    document.getElementById('order-modal').addEventListener('click', function(e) {
+      if (e.target === this) closeOrderModal();
+    });
+    document.getElementById('refund-modal').addEventListener('click', function(e) {
+      if (e.target === this) closeRefundModal();
+    });
+
+    renderOrders();
+  </script>
+</body>
+</html>

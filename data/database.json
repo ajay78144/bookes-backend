@@ -1,0 +1,1707 @@
+{
+  "settings": {
+    "siteName": "BookSaw",
+    "siteTagline": "Instant PDF E-Books & Online Digital Reader",
+    "defaultCurrency": "USD",
+    "taxRate": 5,
+    "shippingFee": 0,
+    "freeShippingAbove": 50,
+    "exchangeRates": {
+      "USD": 1,
+      "EUR": 0.92,
+      "GBP": 0.79,
+      "INR": 83.5,
+      "CAD": 1.36,
+      "AUD": 1.52,
+      "JPY": 155,
+      "AED": 3.67,
+      "SAR": 3.75,
+      "PKR": 278.5,
+      "BDT": 117.2,
+      "SGD": 1.35
+    },
+    "lastSyncTime": "2026-10-04T11:04:48.393Z"
+  },
+  "users": [
+    {
+      "id": 1,
+      "name": "System Admin",
+      "email": "admin@booksaw.com",
+      "passwordHash": "d42ba6643b547914b30e28fe8e86a37169628a818e60aec22277ecb93453cd8e",
+      "role": "admin",
+      "library": [],
+      "createdAt": "2026-09-30T07:20:30.394Z",
+      "password": "$2b$10$5UqLMYAXaQ2iNhbUusQXkOqHRaogMPqYShvF27PRbYi3yonks7DOK",
+      "updatedAt": "2026-10-04T11:03:24.843Z"
+    },
+    {
+      "id": 2,
+      "name": "John Reader",
+      "email": "client@example.com",
+      "passwordHash": "24b723077c1b7d12ab23b30577748af7b79761097e8e4e049c8f6f50b91222e9",
+      "role": "customer",
+      "library": [
+        1
+      ],
+      "createdAt": "2026-09-30T07:20:30.401Z"
+    },
+    {
+      "id": 3,
+      "name": "Rahul Sharma",
+      "email": "rahul_1790753002775@test.com",
+      "passwordHash": "fa79936cb901747b07abc10b830dc01a76b3a3b4b418babd21531bfae882f192",
+      "role": "customer",
+      "library": [
+        2
+      ],
+      "createdAt": "2026-09-30T07:23:22.798Z"
+    },
+    {
+      "id": 4,
+      "name": "Pooja Verma",
+      "email": "pooja_1790753002902@test.com",
+      "passwordHash": "fa79936cb901747b07abc10b830dc01a76b3a3b4b418babd21531bfae882f192",
+      "role": "customer",
+      "library": [],
+      "createdAt": "2026-09-30T07:23:22.909Z"
+    },
+    {
+      "id": 5,
+      "name": "Aarav Sharma",
+      "email": "aarav_1790762422749@example.com",
+      "passwordHash": "fa79936cb901747b07abc10b830dc01a76b3a3b4b418babd21531bfae882f192",
+      "role": "customer",
+      "country": "IN",
+      "currency": "INR",
+      "phone": "+91 9876543210",
+      "library": [],
+      "createdAt": "2026-09-30T10:00:22.991Z"
+    },
+    {
+      "id": 6,
+      "name": "Oliver Smith",
+      "email": "oliver_1790762423041@example.com",
+      "passwordHash": "fa79936cb901747b07abc10b830dc01a76b3a3b4b418babd21531bfae882f192",
+      "role": "customer",
+      "country": "GB",
+      "currency": "GBP",
+      "phone": "+44 7911 123456",
+      "library": [],
+      "createdAt": "2026-09-30T10:00:23.049Z"
+    },
+    {
+      "id": 7,
+      "name": "Fatima Al Mansoor",
+      "email": "fatima_1790762423063@example.com",
+      "passwordHash": "fa79936cb901747b07abc10b830dc01a76b3a3b4b418babd21531bfae882f192",
+      "role": "customer",
+      "country": "AE",
+      "currency": "AED",
+      "phone": "+971 50 123 4567",
+      "library": [],
+      "createdAt": "2026-09-30T10:00:23.069Z"
+    },
+    {
+      "id": 8,
+      "name": "Test Customer",
+      "email": "user_1790765284263@example.com",
+      "passwordHash": "fa79936cb901747b07abc10b830dc01a76b3a3b4b418babd21531bfae882f192",
+      "role": "customer",
+      "country": "IN",
+      "currency": "INR",
+      "phone": "+91 9876543210",
+      "library": [],
+      "createdAt": "2026-09-30T10:48:04.472Z"
+    }
+  ],
+  "books": [
+    {
+      "id": 1,
+      "title": "Simple Way of Peaceful Life",
+      "author": "Armor Ramsey",
+      "priceUSD": 40,
+      "originalPriceUSD": null,
+      "category": "lifestyle",
+      "rating": 4.5,
+      "reviews": 128,
+      "image": "images/product-item1.jpg",
+      "pdfFile": "/uploads/pdfs/sample-reading.pdf",
+      "samplePages": [
+        {
+          "pageNumber": 1,
+          "chapterTitle": "Chapter 1",
+          "content": "Chapter 1: The Still Mind. Peace is not the absence of trouble, but the presence of serenity in the midst of it."
+        },
+        {
+          "pageNumber": 2,
+          "chapterTitle": "Chapter 2",
+          "content": "Chapter 2: The Art of Breathing. Every conscious breath dissolves lingering anxieties and reconnects the nervous system to the present moment."
+        },
+        {
+          "pageNumber": 3,
+          "chapterTitle": "Chapter 3",
+          "content": "Chapter 3: Mindful Morning Rituals. How you greet the sunrise determines how you process the obstacles of the afternoon."
+        },
+        {
+          "pageNumber": 4,
+          "chapterTitle": "Chapter 4",
+          "content": "Chapter 4: Digital Minimalism. Turning down the constant notification buzz creates fertile ground for creative breakthroughs."
+        },
+        {
+          "pageNumber": 5,
+          "chapterTitle": "Chapter 5",
+          "content": "Chapter 5: Gratitude as a Habit. Write down three unexpected blessings each evening to rewire cognitive positivity."
+        },
+        {
+          "pageNumber": 6,
+          "chapterTitle": "Chapter 6",
+          "content": "Chapter 6: Serenity in Solitude. Walking alone in nature teaches us the quiet rhythm that restores the soul."
+        }
+      ],
+      "isFeatured": true,
+      "isBestSeller": true,
+      "isPopular": true,
+      "isSpecialOffer": false,
+      "isAudiobook": false,
+      "audioUrl": "",
+      "description": "A transformative guide to living peacefully in a chaotic world. Discover mindfulness techniques and simple daily practices.",
+      "stock": 997,
+      "createdAt": "2026-09-30T07:20:30.401Z",
+      "updatedAt": "2026-10-04T11:05:08.068Z"
+    },
+    {
+      "id": 2,
+      "title": "Great Travel at Desert",
+      "author": "Sanchit Howdy",
+      "priceUSD": 26,
+      "originalPriceUSD": 35,
+      "category": "adventure",
+      "rating": 4.2,
+      "reviews": 89,
+      "image": "images/product-item2.jpg",
+      "pdfFile": "/uploads/pdfs/sample-reading.pdf",
+      "samplePages": [
+        {
+          "pageNumber": 1,
+          "chapterTitle": "Chapter 1",
+          "content": "Prologue: The Golden Horizon. The desert does not reveal its secrets willingly."
+        },
+        {
+          "pageNumber": 2,
+          "chapterTitle": "Chapter 2",
+          "content": "Chapter 1: Preparing the Caravan. Salt, water, dried dates, and compass readings."
+        },
+        {
+          "pageNumber": 3,
+          "chapterTitle": "Chapter 3",
+          "content": "Chapter 2: The Oasis of Zagora. Palm fronds whispering ancient Berber folklore."
+        },
+        {
+          "pageNumber": 4,
+          "chapterTitle": "Chapter 4",
+          "content": "Chapter 3: Crossing the Sand Sea. When dunes rise like golden tidal waves under blistering heat."
+        },
+        {
+          "pageNumber": 5,
+          "chapterTitle": "Chapter 5",
+          "content": "Chapter 4: Stargazing in the Sahara. The celestial compass that guided caravans for ten centuries."
+        },
+        {
+          "pageNumber": 6,
+          "chapterTitle": "Chapter 6",
+          "content": "Chapter 5: Lost City in the Mirage. Finding forgotten trade outposts buried under sand."
+        }
+      ],
+      "isFeatured": true,
+      "isBestSeller": false,
+      "isPopular": false,
+      "isSpecialOffer": true,
+      "isAudiobook": false,
+      "audioUrl": "",
+      "description": "An epic journey through the golden sands of the Sahara desert. Experience the thrill of exploration and ancient wonders.",
+      "stock": 999,
+      "createdAt": "2026-09-30T07:20:30.401Z",
+      "updatedAt": "2026-10-04T11:04:48.391Z"
+    },
+    {
+      "id": 3,
+      "title": "The Lady Beauty Scarlett",
+      "author": "Arthur Doyle",
+      "priceUSD": 45,
+      "originalPriceUSD": null,
+      "category": "romantic",
+      "rating": 4.7,
+      "reviews": 234,
+      "image": "images/product-item3.jpg",
+      "pdfFile": "/uploads/pdfs/sample-reading.pdf",
+      "samplePages": [
+        {
+          "pageNumber": 1,
+          "chapterTitle": "Chapter 1",
+          "content": "Chapter 1: The Gaslit Ball. Beneath the gaslit lanterns of cobblestone streets, their eyes met."
+        },
+        {
+          "pageNumber": 2,
+          "chapterTitle": "Chapter 2",
+          "content": "Chapter 2: Letters Across Mayfair. Wax-sealed envelopes carried by hurried footmen."
+        },
+        {
+          "pageNumber": 3,
+          "chapterTitle": "Chapter 3",
+          "content": "Chapter 3: Kensington Gardens at Twilight. Secret meetings amidst blooming lilacs."
+        },
+        {
+          "pageNumber": 4,
+          "chapterTitle": "Chapter 4",
+          "content": "Chapter 4: The Threat of Betrothal. Family fortunes clashing with unspoken devotions."
+        },
+        {
+          "pageNumber": 5,
+          "chapterTitle": "Chapter 5",
+          "content": "Chapter 5: Midnight at Thames Embankment. Choosing love over aristocratic legacy."
+        }
+      ],
+      "isFeatured": true,
+      "isBestSeller": true,
+      "isPopular": true,
+      "isSpecialOffer": false,
+      "isAudiobook": false,
+      "audioUrl": "",
+      "description": "A beautiful love story set in Victorian England. A tale of passion, loss, and rediscovery under the London skies.",
+      "stock": 999,
+      "createdAt": "2026-09-30T07:20:30.401Z",
+      "updatedAt": "2026-10-04T11:04:48.391Z"
+    },
+    {
+      "id": 4,
+      "title": "Once Upon a Time",
+      "author": "Klein Marry",
+      "priceUSD": 28,
+      "originalPriceUSD": 38,
+      "category": "fictional",
+      "rating": 4.3,
+      "reviews": 156,
+      "image": "images/product-item4.jpg",
+      "pdfFile": "/uploads/pdfs/sample-reading.pdf",
+      "samplePages": [
+        {
+          "pageNumber": 1,
+          "chapterTitle": "Chapter 1",
+          "content": "Chapter 1: The Mirror in the Tower. Legends say that mirrors in the high tower reflect your destiny."
+        },
+        {
+          "pageNumber": 2,
+          "chapterTitle": "Chapter 2",
+          "content": "Chapter 2: Whispers in the Clockwork Forest. Trees of brass and leaves of woven silver."
+        },
+        {
+          "pageNumber": 3,
+          "chapterTitle": "Chapter 3",
+          "content": "Chapter 3: The Riddle of the Moonstone. Three answers that unlock the obsidian gate."
+        },
+        {
+          "pageNumber": 4,
+          "chapterTitle": "Chapter 4",
+          "content": "Chapter 4: Flying Above Cloudsea. Riding winged galleons into the twilight storm."
+        },
+        {
+          "pageNumber": 5,
+          "chapterTitle": "Chapter 5",
+          "content": "Chapter 5: The Spell Broken. Returning to earth with memories written in starlight."
+        }
+      ],
+      "isFeatured": true,
+      "isBestSeller": true,
+      "isPopular": false,
+      "isSpecialOffer": true,
+      "isAudiobook": false,
+      "audioUrl": "",
+      "description": "A magical tale that transports you to a world where fairy tales come alive with modern wit and wonder.",
+      "stock": 999,
+      "createdAt": "2026-09-30T07:20:30.401Z",
+      "updatedAt": "2026-10-04T11:04:48.391Z"
+    },
+    {
+      "id": 5,
+      "title": "Portrait Photography",
+      "author": "Adam Silber",
+      "priceUSD": 40,
+      "originalPriceUSD": null,
+      "category": "technology",
+      "rating": 4.6,
+      "reviews": 98,
+      "image": "images/tab-item1.jpg",
+      "pdfFile": "/uploads/pdfs/sample-reading.pdf",
+      "samplePages": [
+        {
+          "pageNumber": 1,
+          "chapterTitle": "Chapter 1",
+          "content": "Module 1: The Essence of the Face. Capturing authentic human emotion."
+        },
+        {
+          "pageNumber": 2,
+          "chapterTitle": "Chapter 2",
+          "content": "Module 2: The Three-Point Lighting Setup. Key, fill, and rim light positioning."
+        },
+        {
+          "pageNumber": 3,
+          "chapterTitle": "Chapter 3",
+          "content": "Module 3: Lens Selection for Flattering Perspectives. Why 85mm and 105mm reign supreme."
+        },
+        {
+          "pageNumber": 4,
+          "chapterTitle": "Chapter 4",
+          "content": "Module 4: Environmental Portraits. Blending the subject with their craft and surroundings."
+        },
+        {
+          "pageNumber": 5,
+          "chapterTitle": "Chapter 5",
+          "content": "Module 5: Color Grading and Skin Tone Retouching in Post-Production."
+        }
+      ],
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isPopular": true,
+      "isSpecialOffer": false,
+      "isAudiobook": false,
+      "audioUrl": "",
+      "description": "Master the art of portrait photography with professional lighting techniques, aperture mastery, and real-world studio examples.",
+      "stock": 999,
+      "createdAt": "2026-09-30T07:20:30.401Z",
+      "updatedAt": "2026-10-04T11:04:48.392Z"
+    },
+    {
+      "id": 6,
+      "title": "Tips of Simple Lifestyle",
+      "author": "Bratt Smith",
+      "priceUSD": 40,
+      "originalPriceUSD": null,
+      "category": "lifestyle",
+      "rating": 4.1,
+      "reviews": 67,
+      "image": "images/tab-item3.jpg",
+      "pdfFile": "/uploads/pdfs/sample-reading.pdf",
+      "samplePages": [
+        {
+          "pageNumber": 1,
+          "chapterTitle": "Chapter 1",
+          "content": "Section 1: Postponed Decisions. Why clutter drains creative energy."
+        },
+        {
+          "pageNumber": 2,
+          "chapterTitle": "Chapter 2",
+          "content": "Section 2: The 30-Day Purge. One room, one drawer, one mindful hour at a time."
+        },
+        {
+          "pageNumber": 3,
+          "chapterTitle": "Chapter 3",
+          "content": "Section 3: The Capsule Wardrobe. Quality essentials over transient trends."
+        },
+        {
+          "pageNumber": 4,
+          "chapterTitle": "Chapter 4",
+          "content": "Section 4: Financial Serenity. Aligning expenditures with your genuine values."
+        },
+        {
+          "pageNumber": 5,
+          "chapterTitle": "Chapter 5",
+          "content": "Section 5: Living Lightly on the Earth. Sustainable habits for peaceful living."
+        }
+      ],
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isPopular": false,
+      "isSpecialOffer": false,
+      "isAudiobook": false,
+      "audioUrl": "",
+      "description": "Practical tips for embracing minimalism, decluttering your mental space, and finding lasting joy in everyday moments.",
+      "stock": 999,
+      "createdAt": "2026-09-30T07:20:30.401Z",
+      "updatedAt": "2026-10-04T11:04:48.392Z"
+    },
+    {
+      "id": 7,
+      "title": "Just Felt from Outside",
+      "author": "Nicole Wilson",
+      "priceUSD": 40,
+      "originalPriceUSD": null,
+      "category": "fictional",
+      "rating": 4.4,
+      "reviews": 112,
+      "image": "images/tab-item4.jpg",
+      "pdfFile": "/uploads/pdfs/sample-reading.pdf",
+      "samplePages": [
+        {
+          "pageNumber": 1,
+          "chapterTitle": "Chapter 1",
+          "content": "Part 1: The Observer on the Platform. Standing outside looking in."
+        },
+        {
+          "pageNumber": 2,
+          "chapterTitle": "Chapter 2",
+          "content": "Part 2: The Architecture of Strangers. How cities isolate and connect simultaneously."
+        },
+        {
+          "pageNumber": 3,
+          "chapterTitle": "Chapter 3",
+          "content": "Part 3: Finding Kinship in the Margins. The poets, night-workers, and quiet dreamers."
+        },
+        {
+          "pageNumber": 4,
+          "chapterTitle": "Chapter 4",
+          "content": "Part 4: The Courage to Belong. Stepping across the threshold on your own terms."
+        }
+      ],
+      "isFeatured": false,
+      "isBestSeller": true,
+      "isPopular": false,
+      "isSpecialOffer": false,
+      "isAudiobook": false,
+      "audioUrl": "",
+      "description": "A philosophical novel exploring the feeling of being an outsider in society and finding belonging in unexpected places.",
+      "stock": 999,
+      "createdAt": "2026-09-30T07:20:30.401Z",
+      "updatedAt": "2026-10-04T11:04:48.392Z"
+    },
+    {
+      "id": 8,
+      "title": "Peaceful Enlightenment",
+      "author": "Marmik Lama",
+      "priceUSD": 32,
+      "originalPriceUSD": 42,
+      "category": "lifestyle",
+      "rating": 4.8,
+      "reviews": 189,
+      "image": "images/tab-item5.jpg",
+      "pdfFile": "/uploads/pdfs/sample-reading.pdf",
+      "samplePages": [
+        {
+          "pageNumber": 1,
+          "chapterTitle": "Chapter 1",
+          "content": "Teaching 1: Anchoring Beneath the Waves. Stillness amidst chaos."
+        },
+        {
+          "pageNumber": 2,
+          "chapterTitle": "Chapter 2",
+          "content": "Teaching 2: The Nature of Attachment. Holding experiences with open hands."
+        },
+        {
+          "pageNumber": 3,
+          "chapterTitle": "Chapter 3",
+          "content": "Teaching 3: Compassion for the Inner Critic. Transforming self-judgment into gentle wisdom."
+        },
+        {
+          "pageNumber": 4,
+          "chapterTitle": "Chapter 4",
+          "content": "Teaching 4: Living the Dharma in Modern Times. Mindfulness on the subway and in meetings."
+        }
+      ],
+      "isFeatured": false,
+      "isBestSeller": true,
+      "isPopular": true,
+      "isSpecialOffer": true,
+      "isAudiobook": false,
+      "audioUrl": "",
+      "description": "A journey into inner peace through Eastern philosophy, mindfulness meditation, and modern cognitive psychology.",
+      "stock": 999,
+      "createdAt": "2026-09-30T07:20:30.401Z",
+      "updatedAt": "2026-10-04T11:04:48.392Z"
+    },
+    {
+      "id": 9,
+      "title": "Life Among the Pirates",
+      "author": "Armor Ramsey",
+      "priceUSD": 40,
+      "originalPriceUSD": null,
+      "category": "adventure",
+      "rating": 4,
+      "reviews": 78,
+      "image": "images/tab-item7.jpg",
+      "pdfFile": "/uploads/pdfs/sample-reading.pdf",
+      "samplePages": [
+        {
+          "pageNumber": 1,
+          "chapterTitle": "Chapter 1",
+          "content": "Chapter 1: The Black Sails. Uncharted waters where fortunes were won."
+        },
+        {
+          "pageNumber": 2,
+          "chapterTitle": "Chapter 2",
+          "content": "Chapter 2: Port Royal at Midnight. Taverns thick with salt, rum, and conspiracy."
+        },
+        {
+          "pageNumber": 3,
+          "chapterTitle": "Chapter 3",
+          "content": "Chapter 3: The Spanish Galleon Encounter. Cannons roaring across the turquoise surf."
+        },
+        {
+          "pageNumber": 4,
+          "chapterTitle": "Chapter 4",
+          "content": "Chapter 4: The Island of Skeletons. Decoding cipher maps etched on silver coins."
+        }
+      ],
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isPopular": false,
+      "isSpecialOffer": false,
+      "isAudiobook": false,
+      "audioUrl": "",
+      "description": "A swashbuckling adventure on the high seas of the Caribbean. Follow historical buccaneers and hidden treasure legends.",
+      "stock": 999,
+      "createdAt": "2026-09-30T07:20:30.401Z",
+      "updatedAt": "2026-10-04T11:04:48.392Z"
+    },
+    {
+      "id": 10,
+      "title": "Birds Gonna Be Happy",
+      "author": "Timbur Hood",
+      "priceUSD": 45,
+      "originalPriceUSD": 55,
+      "category": "nature",
+      "rating": 4.9,
+      "reviews": 301,
+      "image": "images/single-image.jpg",
+      "pdfFile": "/uploads/pdfs/sample-reading.pdf",
+      "samplePages": [
+        {
+          "pageNumber": 1,
+          "chapterTitle": "Chapter 1",
+          "content": "Chapter 1: The Morning Chorus. Why birds sing at the break of dawn."
+        },
+        {
+          "pageNumber": 2,
+          "chapterTitle": "Chapter 2",
+          "content": "Chapter 2: Backyard Avian Sanctuaries. Feeders, native shrubs, and water baths."
+        },
+        {
+          "pageNumber": 3,
+          "chapterTitle": "Chapter 3",
+          "content": "Chapter 3: Identifying Feathers and Flight Patterns. Warblers, raptors, and finches."
+        },
+        {
+          "pageNumber": 4,
+          "chapterTitle": "Chapter 4",
+          "content": "Chapter 4: The Wonders of Global Migration. Flying 7,000 miles without a single stop."
+        },
+        {
+          "pageNumber": 5,
+          "chapterTitle": "Chapter 5",
+          "content": "Chapter 5: Preserving Wetlands and Sanctuaries for Future Generations."
+        }
+      ],
+      "isFeatured": true,
+      "isBestSeller": true,
+      "isPopular": true,
+      "isSpecialOffer": true,
+      "isAudiobook": false,
+      "audioUrl": "",
+      "description": "The best-selling guide to bird watching, ecological preservation, and appreciating avian wonders in your own backyard.",
+      "stock": 999,
+      "createdAt": "2026-09-30T07:20:30.401Z",
+      "updatedAt": "2026-10-04T11:04:48.392Z"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1001,
+      "userId": 2,
+      "customerName": "John Reader",
+      "customerEmail": "client@example.com",
+      "items": [
+        {
+          "bookId": 1,
+          "title": "Simple Way of Peaceful Life",
+          "priceUSD": 40,
+          "qty": 1,
+          "format": "PDF E-Book"
+        }
+      ],
+      "totalUSD": 40,
+      "currency": "USD",
+      "paymentMethod": "Credit Card",
+      "paymentStatus": "paid",
+      "status": "completed",
+      "createdAt": "2026-09-28T07:20:30.402Z"
+    },
+    {
+      "id": 1002,
+      "userId": 3,
+      "customerName": "Rahul Sharma",
+      "customerEmail": "rahul_1790753002775@test.com",
+      "items": [
+        {
+          "bookId": 2,
+          "title": "Great Travel at Desert",
+          "priceUSD": 38,
+          "qty": 1
+        }
+      ],
+      "totalUSD": 38,
+      "currency": "USD",
+      "paymentMethod": "UPI / Card",
+      "paymentStatus": "paid",
+      "status": "completed",
+      "createdAt": "2026-09-30T07:23:22.851Z"
+    },
+    {
+      "id": 1003,
+      "userId": null,
+      "customerName": "Test Buyer",
+      "customerEmail": "testuser@example.com",
+      "items": [
+        {
+          "bookId": 1,
+          "title": "Portraiture",
+          "priceUSD": 40,
+          "qty": 1
+        }
+      ],
+      "totalUSD": 40,
+      "currency": "USD",
+      "paymentMethod": "Visa Card (3D-Secure Verified)",
+      "paymentStatus": "paid",
+      "status": "completed",
+      "transactionId": "TXN_BS_MUP4842F_061E72C3",
+      "createdAt": "2026-10-01T05:50:31.577Z"
+    },
+    {
+      "id": 1004,
+      "userId": null,
+      "customerName": "Direct Attempt",
+      "customerEmail": "hacker@example.com",
+      "items": [
+        {
+          "bookId": 2,
+          "title": "Simple Way of Piece Life",
+          "priceUSD": 40,
+          "qty": 1
+        }
+      ],
+      "totalUSD": 0,
+      "currency": "USD",
+      "paymentMethod": "Credit Card",
+      "paymentStatus": "unpaid",
+      "status": "pending_payment",
+      "transactionId": "TXN_MUP48439CCIC",
+      "createdAt": "2026-10-01T05:50:31.605Z"
+    },
+    {
+      "orderNumber": "BS-00005",
+      "customerName": "Test Buyer",
+      "customerEmail": "buyer@test.com",
+      "customerPhone": "",
+      "customerAddress": "",
+      "customerCountry": "US",
+      "items": [
+        {
+          "id": 1,
+          "title": "Simple Way of Peaceful Life",
+          "author": "Armor Ramsey",
+          "priceUSD": 40,
+          "qty": 1,
+          "image": "images/product-item1.jpg"
+        }
+      ],
+      "subtotalUSD": 40,
+      "discountUSD": 0,
+      "shippingUSD": 0,
+      "taxUSD": 0,
+      "totalUSD": 40,
+      "currency": "USD",
+      "exchangeRate": 1,
+      "convertedTotal": 40,
+      "paymentMethod": "card",
+      "paymentStatus": "paid",
+      "status": "processing",
+      "createdAt": "2026-10-04T11:03:25.096Z",
+      "id": 1005
+    },
+    {
+      "orderNumber": "BS-00006",
+      "customerName": "Test Buyer",
+      "customerEmail": "buyer@test.com",
+      "customerPhone": "",
+      "customerAddress": "",
+      "customerCountry": "US",
+      "items": [
+        {
+          "id": 1,
+          "title": "Simple Way of Peaceful Life",
+          "author": "Armor Ramsey",
+          "priceUSD": 40,
+          "qty": 1,
+          "image": "images/product-item1.jpg"
+        }
+      ],
+      "subtotalUSD": 40,
+      "discountUSD": 0,
+      "shippingUSD": 0,
+      "taxUSD": 2,
+      "totalUSD": 42,
+      "currency": "USD",
+      "exchangeRate": 1,
+      "convertedTotal": 42,
+      "paymentMethod": "card",
+      "paymentStatus": "paid",
+      "status": "processing",
+      "createdAt": "2026-10-04T11:05:08.076Z",
+      "id": 1006
+    },
+    {
+      "orderNumber": "BS-00007",
+      "customerName": "Aarav Sharma",
+      "customerEmail": "aarav@example.com",
+      "customerPhone": "+91 9876543210",
+      "items": [
+        {
+          "id": 1,
+          "title": "The Great Gatsby",
+          "author": "",
+          "price": 499,
+          "qty": 1,
+          "image": ""
+        }
+      ],
+      "amount": 499,
+      "amountInPaise": 49900,
+      "currency": "INR",
+      "status": "paid",
+      "paymentStatus": "paid",
+      "paymentMethod": "razorpay",
+      "razorpay_order_id": "order_test_1791304120331_vxo4j",
+      "receipt": "order_rcpt_1791304120254",
+      "userId": null,
+      "createdAt": "2026-10-06T16:28:40.335Z",
+      "id": 1007,
+      "razorpay_payment_id": "pay_hook_1791304120573",
+      "razorpay_signature": "6d182eaa239f9b5f2be5bf704dd646589f54b3b991728768d80e8dffa0275a48",
+      "licenses": [
+        {
+          "bookId": 1,
+          "title": "The Great Gatsby",
+          "licenseKey": "BSK-B1KN-2FL9-EKJX",
+          "unlockedAt": "2026-10-06T16:28:40.427Z"
+        }
+      ],
+      "completedAt": "2026-10-06T16:28:40.604Z",
+      "updatedAt": "2026-10-06T16:28:40.613Z",
+      "refundDetails": {
+        "refundId": "rfnd_1791304120553_35pu",
+        "amount": 499,
+        "reason": "Customer requested refund via test",
+        "refundedAt": "2026-10-06T16:28:40.554Z"
+      }
+    },
+    {
+      "orderNumber": "BS-00008",
+      "customerName": "Test User",
+      "customerEmail": "test@example.com",
+      "customerPhone": "9876543210",
+      "items": [
+        {
+          "id": 1,
+          "title": "Test Book",
+          "author": "",
+          "price": 835,
+          "qty": 1,
+          "image": ""
+        }
+      ],
+      "amount": 835,
+      "amountInPaise": 83500,
+      "currency": "INR",
+      "status": "pending_payment",
+      "paymentStatus": "pending",
+      "paymentMethod": "razorpay",
+      "razorpay_order_id": "order_test_1791305951026_7dspf",
+      "receipt": "order_rcpt_1791305950832",
+      "userId": null,
+      "createdAt": "2026-10-06T16:59:11.033Z",
+      "id": 1008
+    },
+    {
+      "orderNumber": "BS-00009",
+      "customerName": "Rahul Sharma",
+      "customerEmail": "rahul@example.com",
+      "customerPhone": "",
+      "items": [
+        {
+          "id": 1,
+          "title": "The Great Gatsby",
+          "author": "",
+          "price": 799,
+          "qty": 1,
+          "image": ""
+        }
+      ],
+      "amount": 799,
+      "amountInPaise": 79900,
+      "currency": "INR",
+      "status": "pending_payment",
+      "paymentStatus": "pending",
+      "paymentMethod": "razorpay",
+      "razorpay_order_id": "order_test_1791306067685_a9yfp",
+      "receipt": "order_rcpt_1791306067498",
+      "userId": null,
+      "createdAt": "2026-10-06T17:01:07.692Z",
+      "id": 1009
+    },
+    {
+      "orderNumber": "BS-00010",
+      "customerName": "ajay kumar",
+      "customerEmail": "kajay77598@gmail.com",
+      "customerPhone": "+91 7814428411",
+      "items": [
+        {
+          "id": 8,
+          "title": "Peaceful Enlightenment",
+          "author": "",
+          "price": 2672,
+          "qty": 1,
+          "image": ""
+        },
+        {
+          "id": 4,
+          "title": "Once Upon a Time",
+          "author": "",
+          "price": 2338,
+          "qty": 2,
+          "image": ""
+        },
+        {
+          "id": 2,
+          "title": "Great Travel at Desert",
+          "author": "",
+          "price": 2171,
+          "qty": 1,
+          "image": ""
+        }
+      ],
+      "amount": 9519,
+      "amountInPaise": 951900,
+      "currency": "INR",
+      "status": "pending_payment",
+      "paymentStatus": "pending",
+      "paymentMethod": "razorpay",
+      "razorpay_order_id": "order_test_1791306328108_8g56y",
+      "receipt": "order_rcpt_1791306327872",
+      "userId": null,
+      "createdAt": "2026-10-06T17:05:28.118Z",
+      "id": 1010
+    },
+    {
+      "orderNumber": "BS-00011",
+      "customerName": "John Smith",
+      "customerEmail": "john@example.com",
+      "customerPhone": "",
+      "items": [
+        {
+          "id": 1,
+          "title": "Global Book",
+          "author": "",
+          "price": 9.99,
+          "qty": 1,
+          "image": ""
+        }
+      ],
+      "amount": 9.99,
+      "amountInPaise": 999,
+      "currency": "USD",
+      "status": "pending_payment",
+      "paymentStatus": "pending",
+      "paymentMethod": "razorpay",
+      "razorpay_order_id": "order_test_1791306474651_3msok",
+      "receipt": "order_rcpt_1791306474481",
+      "userId": null,
+      "createdAt": "2026-10-06T17:07:54.660Z",
+      "id": 1011
+    },
+    {
+      "orderNumber": "BS-00012",
+      "customerName": "Pierre Dupont",
+      "customerEmail": "pierre@example.com",
+      "customerPhone": "",
+      "items": [
+        {
+          "id": 1,
+          "title": "Global Book",
+          "author": "",
+          "price": 8.5,
+          "qty": 1,
+          "image": ""
+        }
+      ],
+      "amount": 8.5,
+      "amountInPaise": 850,
+      "currency": "EUR",
+      "status": "pending_payment",
+      "paymentStatus": "pending",
+      "paymentMethod": "razorpay",
+      "razorpay_order_id": "order_test_1791306491436_ju9da",
+      "receipt": "order_rcpt_1791306491280",
+      "userId": null,
+      "createdAt": "2026-10-06T17:08:11.445Z",
+      "id": 1012
+    },
+    {
+      "orderNumber": "BS-00013",
+      "customerName": "James Bond",
+      "customerEmail": "james@example.com",
+      "customerPhone": "",
+      "items": [
+        {
+          "id": 1,
+          "title": "Global Book",
+          "author": "",
+          "price": 7.25,
+          "qty": 1,
+          "image": ""
+        }
+      ],
+      "amount": 7.25,
+      "amountInPaise": 725,
+      "currency": "GBP",
+      "status": "pending_payment",
+      "paymentStatus": "pending",
+      "paymentMethod": "razorpay",
+      "razorpay_order_id": "order_test_1791306533887_iupe3",
+      "receipt": "order_rcpt_1791306533713",
+      "userId": null,
+      "createdAt": "2026-10-06T17:08:53.894Z",
+      "id": 1013
+    },
+    {
+      "orderNumber": "BS-00014",
+      "customerName": "ajay kumar",
+      "customerEmail": "kajay77598@gmail.com",
+      "customerPhone": "+91 7814428411",
+      "items": [
+        {
+          "id": 8,
+          "title": "Peaceful Enlightenment",
+          "author": "",
+          "price": 2672,
+          "qty": 1,
+          "image": ""
+        },
+        {
+          "id": 4,
+          "title": "Once Upon a Time",
+          "author": "",
+          "price": 2338,
+          "qty": 2,
+          "image": ""
+        },
+        {
+          "id": 2,
+          "title": "Great Travel at Desert",
+          "author": "",
+          "price": 2171,
+          "qty": 1,
+          "image": ""
+        }
+      ],
+      "amount": 9519,
+      "amountInPaise": 951900,
+      "currency": "INR",
+      "status": "pending_payment",
+      "paymentStatus": "pending",
+      "paymentMethod": "razorpay",
+      "razorpay_order_id": "order_test_1791306648621_e17jv",
+      "receipt": "order_rcpt_1791306648434",
+      "userId": null,
+      "createdAt": "2026-10-06T17:10:48.630Z",
+      "id": 1014
+    },
+    {
+      "orderNumber": "BS-00015",
+      "customerName": "ajay kumar",
+      "customerEmail": "kajay77598@gmail.com",
+      "customerPhone": "+91 7814428411",
+      "items": [
+        {
+          "id": 8,
+          "title": "Peaceful Enlightenment",
+          "author": "",
+          "price": 3083.2,
+          "qty": 1,
+          "image": ""
+        },
+        {
+          "id": 4,
+          "title": "Once Upon a Time",
+          "author": "",
+          "price": 2697.8,
+          "qty": 2,
+          "image": ""
+        },
+        {
+          "id": 2,
+          "title": "Great Travel at Desert",
+          "author": "",
+          "price": 2505.1,
+          "qty": 1,
+          "image": ""
+        }
+      ],
+      "amount": 10983.9,
+      "amountInPaise": 1098390,
+      "currency": "INR",
+      "status": "pending_payment",
+      "paymentStatus": "pending",
+      "paymentMethod": "razorpay",
+      "razorpay_order_id": "order_test_1791306742767_tytjy",
+      "receipt": "order_rcpt_1791306742546",
+      "userId": null,
+      "createdAt": "2026-10-06T17:12:22.775Z",
+      "id": 1015
+    },
+    {
+      "orderNumber": "BS-00016",
+      "customerName": "ajay kumar",
+      "customerEmail": "kajay77598@gmail.com",
+      "customerPhone": "+91 7814428411",
+      "items": [
+        {
+          "id": 8,
+          "title": "Peaceful Enlightenment",
+          "author": "",
+          "price": 3083.2,
+          "qty": 1,
+          "image": ""
+        },
+        {
+          "id": 4,
+          "title": "Once Upon a Time",
+          "author": "",
+          "price": 2697.8,
+          "qty": 2,
+          "image": ""
+        },
+        {
+          "id": 2,
+          "title": "Great Travel at Desert",
+          "author": "",
+          "price": 2505.1,
+          "qty": 1,
+          "image": ""
+        }
+      ],
+      "amount": 10983.9,
+      "amountInPaise": 1098390,
+      "currency": "INR",
+      "status": "pending_payment",
+      "paymentStatus": "pending",
+      "paymentMethod": "razorpay",
+      "razorpay_order_id": "order_test_1791308801816_83hj7",
+      "receipt": "order_rcpt_1791308801604",
+      "userId": null,
+      "createdAt": "2026-10-06T17:46:41.827Z",
+      "id": 1016
+    },
+    {
+      "orderNumber": "BS-00017",
+      "customerName": "ajay kumar",
+      "customerEmail": "kajay77598@gmail.com",
+      "customerPhone": "+91 7814428411",
+      "items": [
+        {
+          "id": 8,
+          "title": "Peaceful Enlightenment",
+          "author": "",
+          "price": 3083.2,
+          "qty": 1,
+          "image": ""
+        },
+        {
+          "id": 4,
+          "title": "Once Upon a Time",
+          "author": "",
+          "price": 2697.8,
+          "qty": 2,
+          "image": ""
+        },
+        {
+          "id": 2,
+          "title": "Great Travel at Desert",
+          "author": "",
+          "price": 2505.1,
+          "qty": 1,
+          "image": ""
+        }
+      ],
+      "amount": 10983.9,
+      "amountInPaise": 1098390,
+      "currency": "INR",
+      "status": "pending_payment",
+      "paymentStatus": "pending",
+      "paymentMethod": "razorpay",
+      "razorpay_order_id": "order_test_1791309377032_f8l23",
+      "receipt": "order_rcpt_1791309376834",
+      "userId": null,
+      "createdAt": "2026-10-06T17:56:17.047Z",
+      "id": 1017
+    },
+    {
+      "orderNumber": "BS-00018",
+      "customerName": "Valued Reader",
+      "customerEmail": "reader@example.com",
+      "customerPhone": "",
+      "items": [
+        {
+          "id": 1,
+          "title": "Book 1",
+          "author": "",
+          "price": 500,
+          "qty": 1,
+          "image": ""
+        }
+      ],
+      "amount": 500,
+      "amountInPaise": 50000,
+      "currency": "INR",
+      "status": "pending_payment",
+      "paymentStatus": "pending",
+      "paymentMethod": "razorpay",
+      "razorpay_order_id": "order_test_1791309389882_r44ny",
+      "receipt": "order_rcpt_1791309389689",
+      "userId": null,
+      "createdAt": "2026-10-06T17:56:29.892Z",
+      "id": 1018
+    },
+    {
+      "orderNumber": "BS-00019",
+      "customerName": "Valued Reader",
+      "customerEmail": "reader@example.com",
+      "customerPhone": "",
+      "items": [
+        {
+          "id": 1,
+          "title": "Test Book",
+          "author": "",
+          "price": 100,
+          "qty": 1,
+          "image": ""
+        }
+      ],
+      "amount": 100,
+      "amountInPaise": 10000,
+      "currency": "INR",
+      "status": "paid",
+      "paymentStatus": "paid",
+      "paymentMethod": "razorpay",
+      "razorpay_order_id": "order_test_1791347005821_d6yon",
+      "receipt": "order_rcpt_1791347005518",
+      "userId": null,
+      "createdAt": "2026-10-07T04:23:25.832Z",
+      "id": 1019,
+      "razorpay_payment_id": "pay_test_12345",
+      "razorpay_signature": "test_sig",
+      "licenses": [
+        {
+          "bookId": 1,
+          "title": "Test Book",
+          "licenseKey": "BSK-Q0SW-A3FV-J3I7",
+          "unlockedAt": "2026-10-07T04:27:58.567Z"
+        }
+      ],
+      "completedAt": "2026-10-07T04:27:58.572Z",
+      "updatedAt": "2026-10-07T04:27:58.583Z"
+    },
+    {
+      "orderNumber": "BS-00020",
+      "customerName": "ajay kumar",
+      "customerEmail": "kajay77598@gmail.com",
+      "customerPhone": "+91 7814428411",
+      "items": [
+        {
+          "id": 8,
+          "title": "Peaceful Enlightenment",
+          "author": "",
+          "price": 3083.2,
+          "qty": 1,
+          "image": ""
+        },
+        {
+          "id": 4,
+          "title": "Once Upon a Time",
+          "author": "",
+          "price": 2697.8,
+          "qty": 2,
+          "image": ""
+        },
+        {
+          "id": 2,
+          "title": "Great Travel at Desert",
+          "author": "",
+          "price": 2505.1,
+          "qty": 1,
+          "image": ""
+        }
+      ],
+      "amount": 10983.9,
+      "amountInPaise": 1098390,
+      "currency": "INR",
+      "status": "pending_payment",
+      "paymentStatus": "pending",
+      "paymentMethod": "razorpay",
+      "razorpay_order_id": "order_test_1791348674234_msduw",
+      "receipt": "order_rcpt_1791348674026",
+      "userId": null,
+      "createdAt": "2026-10-07T04:51:14.244Z",
+      "id": 1020
+    },
+    {
+      "orderNumber": "BS-00021",
+      "customerName": "ajay kumar",
+      "customerEmail": "kajay77598@gmail.com",
+      "customerPhone": "+91 7814428411",
+      "items": [
+        {
+          "id": 8,
+          "title": "Peaceful Enlightenment",
+          "author": "",
+          "price": 3083.2,
+          "qty": 1,
+          "image": ""
+        },
+        {
+          "id": 4,
+          "title": "Once Upon a Time",
+          "author": "",
+          "price": 2697.8,
+          "qty": 2,
+          "image": ""
+        },
+        {
+          "id": 2,
+          "title": "Great Travel at Desert",
+          "author": "",
+          "price": 2505.1,
+          "qty": 1,
+          "image": ""
+        }
+      ],
+      "amount": 10983.9,
+      "amountInPaise": 1098390,
+      "currency": "INR",
+      "status": "pending_payment",
+      "paymentStatus": "pending",
+      "paymentMethod": "razorpay",
+      "razorpay_order_id": "order_test_1791348682065_jee3i",
+      "receipt": "order_rcpt_1791348681902",
+      "userId": null,
+      "createdAt": "2026-10-07T04:51:22.080Z",
+      "id": 1021
+    },
+    {
+      "orderNumber": "BS-00022",
+      "customerName": "ajay kumar",
+      "customerEmail": "kajay77598@gmail.com",
+      "customerPhone": "+91 7814428411",
+      "items": [
+        {
+          "id": 8,
+          "title": "Peaceful Enlightenment",
+          "author": "",
+          "price": 3083.2,
+          "qty": 1,
+          "image": ""
+        },
+        {
+          "id": 4,
+          "title": "Once Upon a Time",
+          "author": "",
+          "price": 2697.8,
+          "qty": 2,
+          "image": ""
+        },
+        {
+          "id": 2,
+          "title": "Great Travel at Desert",
+          "author": "",
+          "price": 2505.1,
+          "qty": 1,
+          "image": ""
+        }
+      ],
+      "amount": 10983.9,
+      "amountInPaise": 1098390,
+      "currency": "INR",
+      "status": "pending_payment",
+      "paymentStatus": "pending",
+      "paymentMethod": "razorpay",
+      "razorpay_order_id": "order_test_1791348703982_ybzw2",
+      "receipt": "order_rcpt_1791348703784",
+      "userId": null,
+      "createdAt": "2026-10-07T04:51:43.993Z",
+      "id": 1022
+    },
+    {
+      "orderNumber": "BS-00023",
+      "customerName": "ajay kumar",
+      "customerEmail": "kajay77598@gmail.com",
+      "customerPhone": "+91 7814428411",
+      "items": [
+        {
+          "id": 8,
+          "title": "Peaceful Enlightenment",
+          "author": "",
+          "price": 3087.04,
+          "qty": 1,
+          "image": ""
+        },
+        {
+          "id": 4,
+          "title": "Once Upon a Time",
+          "author": "",
+          "price": 2701.16,
+          "qty": 2,
+          "image": ""
+        },
+        {
+          "id": 2,
+          "title": "Great Travel at Desert",
+          "author": "",
+          "price": 2508.22,
+          "qty": 1,
+          "image": ""
+        }
+      ],
+      "amount": 10997.58,
+      "amountInPaise": 1099758,
+      "currency": "INR",
+      "status": "pending_payment",
+      "paymentStatus": "pending",
+      "paymentMethod": "razorpay",
+      "razorpay_order_id": "order_test_1791349364380_o34nc",
+      "receipt": "order_rcpt_1791349364198",
+      "userId": null,
+      "createdAt": "2026-10-07T05:02:44.390Z",
+      "id": 1023
+    },
+    {
+      "orderNumber": "BS-00024",
+      "customerName": "ajay kumar",
+      "customerEmail": "kajay77598@gmail.com",
+      "customerPhone": "+91 7814428411",
+      "items": [
+        {
+          "id": 8,
+          "title": "Peaceful Enlightenment",
+          "author": "",
+          "price": 3087.04,
+          "qty": 1,
+          "image": ""
+        },
+        {
+          "id": 4,
+          "title": "Once Upon a Time",
+          "author": "",
+          "price": 2701.16,
+          "qty": 2,
+          "image": ""
+        },
+        {
+          "id": 2,
+          "title": "Great Travel at Desert",
+          "author": "",
+          "price": 2508.22,
+          "qty": 1,
+          "image": ""
+        }
+      ],
+      "amount": 10997.58,
+      "amountInPaise": 1099758,
+      "currency": "INR",
+      "status": "pending_payment",
+      "paymentStatus": "pending",
+      "paymentMethod": "razorpay",
+      "razorpay_order_id": "order_test_1791349370643_9gkkq",
+      "receipt": "order_rcpt_1791349370467",
+      "userId": null,
+      "createdAt": "2026-10-07T05:02:50.664Z",
+      "id": 1024
+    },
+    {
+      "orderNumber": "BS-00025",
+      "customerName": "ajay kumar",
+      "customerEmail": "kajay77598@gmail.com",
+      "customerPhone": "+91 7814428411",
+      "items": [
+        {
+          "id": 8,
+          "title": "Peaceful Enlightenment",
+          "author": "",
+          "price": 130.69,
+          "qty": 1,
+          "image": ""
+        },
+        {
+          "id": 4,
+          "title": "Once Upon a Time",
+          "author": "",
+          "price": 114.35,
+          "qty": 2,
+          "image": ""
+        },
+        {
+          "id": 2,
+          "title": "Great Travel at Desert",
+          "author": "",
+          "price": 106.18,
+          "qty": 1,
+          "image": ""
+        }
+      ],
+      "amount": 465.58,
+      "amountInPaise": 46558,
+      "currency": "MYR",
+      "status": "pending_payment",
+      "paymentStatus": "pending",
+      "paymentMethod": "razorpay",
+      "razorpay_order_id": "order_test_1791350321437_8qy0n",
+      "receipt": "order_rcpt_1791350321191",
+      "userId": null,
+      "createdAt": "2026-10-07T05:18:41.450Z",
+      "id": 1025
+    }
+  ],
+  "blogs": [
+    {
+      "id": 1,
+      "title": "Top 10 Books to Read in 2025",
+      "excerpt": "Discover the most anticipated books of the year that every reader must have on their shelf.",
+      "content": "<p>Reading is one of the most enriching activities you can do. Here are our top picks for 2025...</p><p>1. <strong>The Midnight Library</strong> - A beautiful story about life choices and second chances.</p><p>2. <strong>Project Hail Mary</strong> - A brilliant sci-fi novel about humanity's survival.</p>",
+      "image": "images/post-img1.jpg",
+      "author": "Admin",
+      "category": "Reading Lists",
+      "tags": [
+        "books",
+        "reading",
+        "2025"
+      ],
+      "published": true,
+      "createdAt": "2026-09-30T07:20:30.402Z"
+    },
+    {
+      "id": 2,
+      "title": "How Reading Changes Your Brain",
+      "excerpt": "Science has proven that regular reading has profound effects on brain structure and function.",
+      "content": "<p>Scientific research consistently shows that reading is one of the best exercises for your brain...</p><p>Reading fiction improves empathy and social understanding.</p>",
+      "image": "images/post-img2.jpg",
+      "author": "Admin",
+      "category": "Science",
+      "tags": [
+        "science",
+        "brain",
+        "reading"
+      ],
+      "published": true,
+      "createdAt": "2026-09-30T07:20:30.402Z"
+    },
+    {
+      "id": 3,
+      "title": "The Art of Building a Home Library",
+      "excerpt": "Transform your living space into a literary sanctuary with these expert tips for curating your personal library.",
+      "content": "<p>A home library is more than just a collection of books — it's a reflection of who you are...</p><p>Categorize your books by genre and author for easy browsing.</p>",
+      "image": "images/post-img3.jpg",
+      "author": "Admin",
+      "category": "Lifestyle",
+      "tags": [
+        "library",
+        "home",
+        "books"
+      ],
+      "published": true,
+      "createdAt": "2026-09-30T07:20:30.402Z"
+    }
+  ],
+  "currencies": {
+    "USD": {
+      "symbol": "$",
+      "rate": 1,
+      "name": "US Dollar",
+      "flag": "🇺🇸"
+    },
+    "EUR": {
+      "symbol": "€",
+      "rate": 0.8818,
+      "name": "Euro",
+      "flag": "🇪🇺"
+    },
+    "GBP": {
+      "symbol": "£",
+      "rate": 0.7538,
+      "name": "British Pound",
+      "flag": "🇬🇧"
+    },
+    "INR": {
+      "symbol": "₹",
+      "rate": 96,
+      "name": "Indian Rupee",
+      "flag": "🇮🇳"
+    },
+    "PKR": {
+      "symbol": "₨",
+      "rate": 276.98,
+      "name": "Pakistani Rupee",
+      "flag": "🇵🇰"
+    },
+    "BDT": {
+      "symbol": "৳",
+      "rate": 123.02,
+      "name": "Bangladeshi Taka",
+      "flag": "🇧🇩"
+    },
+    "AED": {
+      "symbol": "د.إ",
+      "rate": 3.672,
+      "name": "UAE Dirham",
+      "flag": "🇦🇪"
+    },
+    "SAR": {
+      "symbol": "﷼",
+      "rate": 3.75,
+      "name": "Saudi Riyal",
+      "flag": "🇸🇦"
+    },
+    "QAR": {
+      "symbol": "QR",
+      "rate": 3.64,
+      "name": "Qatari Riyal",
+      "flag": "🇶🇦"
+    },
+    "OMR": {
+      "symbol": "OMR",
+      "rate": 0.3845,
+      "name": "Omani Rial",
+      "flag": "🇴🇲"
+    },
+    "KWD": {
+      "symbol": "KD",
+      "rate": 0.3085,
+      "name": "Kuwaiti Dinar",
+      "flag": "🇰🇼"
+    },
+    "BHD": {
+      "symbol": "BD",
+      "rate": 0.376,
+      "name": "Bahraini Dinar",
+      "flag": "🇧🇭"
+    },
+    "CAD": {
+      "symbol": "C$",
+      "rate": 1.421,
+      "name": "Canadian Dollar",
+      "flag": "🇨🇦"
+    },
+    "AUD": {
+      "symbol": "A$",
+      "rate": 1.438,
+      "name": "Australian Dollar",
+      "flag": "🇦🇺"
+    },
+    "SGD": {
+      "symbol": "S$",
+      "rate": 1.278,
+      "name": "Singapore Dollar",
+      "flag": "🇸🇬"
+    },
+    "JPY": {
+      "symbol": "¥",
+      "rate": 157.3,
+      "name": "Japanese Yen",
+      "flag": "🇯🇵"
+    },
+    "MYR": {
+      "symbol": "RM",
+      "rate": 4.079,
+      "name": "Malaysian Ringgit",
+      "flag": "🇲🇾"
+    },
+    "BRL": {
+      "symbol": "R$",
+      "rate": 5.2,
+      "name": "Brazilian Real",
+      "flag": "🇧🇷"
+    }
+  },
+  "coupons": [
+    {
+      "id": 1,
+      "code": "BOOKSAW15",
+      "discountPercent": 15,
+      "minOrderUSD": 30,
+      "expiryDate": "2027-12-31",
+      "active": true
+    },
+    {
+      "id": 2,
+      "code": "WELCOME10",
+      "discountPercent": 10,
+      "minOrderUSD": 0,
+      "expiryDate": "2027-12-31",
+      "active": true
+    },
+    {
+      "id": 3,
+      "code": "SUMMER25",
+      "discountPercent": 25,
+      "minOrderUSD": 50,
+      "expiryDate": "2027-08-31",
+      "active": true
+    },
+    {
+      "id": 4,
+      "code": "MYBOOK10",
+      "discountPercent": 10,
+      "minOrderUSD": 0,
+      "expiryDate": "2027-12-31",
+      "active": true
+    }
+  ],
+  "currencyLastSync": "2026-10-01T17:39:07.342Z",
+  "pricingRules": [
+    {
+      "id": 1,
+      "countryCode": "IN",
+      "countryName": "India",
+      "currency": "INR",
+      "multiplier": 0.85,
+      "fixedDiscountPercent": 15,
+      "active": true,
+      "createdAt": "2026-10-01T12:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "countryCode": "GB",
+      "countryName": "United Kingdom",
+      "currency": "GBP",
+      "multiplier": 1,
+      "fixedDiscountPercent": 0,
+      "active": true,
+      "createdAt": "2026-10-01T12:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "countryCode": "AE",
+      "countryName": "United Arab Emirates",
+      "currency": "AED",
+      "multiplier": 1.1,
+      "fixedDiscountPercent": 0,
+      "active": true,
+      "createdAt": "2026-10-01T12:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "countryCode": "CA",
+      "countryName": "Canada",
+      "currency": "CAD",
+      "multiplier": 1,
+      "fixedDiscountPercent": 5,
+      "active": true,
+      "createdAt": "2026-10-01T12:00:00.000Z"
+    }
+  ]
+}

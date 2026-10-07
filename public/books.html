@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Manage Books - Admin | BookSaw</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/favicon.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="icomoon/icomoon.css">
+  <link rel="stylesheet" href="css/vendor.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/ecommerce.css">
+  <link rel="stylesheet" href="css/admin-theme.css">
+</head>
+<body>
+
+  <!-- Mobile Topbar Header -->
+  <div class="adm-mobile-bar">
+    <div class="d-flex align-items-center gap-2">
+      <div class="brand-logo-badge" style="width:30px;height:30px;border-radius:8px;">
+        <img src="images/favicon.svg" alt="BookSaw" style="width:22px;height:22px;">
+      </div>
+      <div class="brand-text-block">
+        <span class="brand-name-title" style="font-size:14px;">Book<span class="highlight">Saw</span></span>
+        <span class="brand-name-subtitle" style="font-size:8px;">ADMIN PANEL</span>
+      </div>
+    </div>
+    <button class="adm-mobile-toggle" onclick="document.getElementById('admin-sidebar').classList.toggle('open');document.getElementById('adm-backdrop').classList.toggle('active');">
+      <svg class="adm-icon" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
+  </div>
+  <div class="adm-backdrop" id="adm-backdrop" onclick="document.getElementById('admin-sidebar').classList.remove('open');this.classList.remove('active');"></div>
+
+  <div class="admin-layout">
+    <div class="admin-sidebar" id="admin-sidebar">
+      <a href="dashboard.html" class="sidebar-brand">
+        <div class="brand-logo-badge">
+          <img src="images/favicon.svg" alt="BookSaw" class="brand-logo-img">
+        </div>
+        <div class="brand-text-block">
+          <span class="brand-name-title">Book<span class="highlight">Saw</span></span>
+          <span class="brand-name-subtitle">ADMIN PANEL</span>
+        </div>
+      </a>
+      
+      <div class="sidebar-section-label">Catalog &amp; Sales</div>
+      
+      <a href="dashboard.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+        <span>Dashboard</span>
+      </a>
+
+      <a href="books.html" class="nav-item active">
+        <svg class="adm-icon" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+        <span>Books</span>
+      </a>
+
+      <a href="country-pricing.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        <span>Country Pricing</span>
+      </a>
+
+      <a href="orders.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+        <span>Orders</span>
+      </a>
+
+      <a href="coupons.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+        <span>Coupons</span>
+      </a>
+
+      <a href="blogs.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+        <span>Blog Posts</span>
+      </a>
+
+      <a href="users.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        <span>Users</span>
+      </a>
+
+      <div class="sidebar-section-label">Preferences</div>
+
+      <a href="currency.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+        <span>Currency Rates</span>
+      </a>
+
+      <a href="settings.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+        <span>Site Settings</span>
+      </a>
+
+      <div class="sidebar-footer">
+        <a href="#" onclick="DB.logout();window.location.href='login.html'" class="btn-logout">
+          <svg class="adm-icon" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          <span>Logout</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="admin-main">
+      <div class="admin-topbar">
+        <h1>Books Management</h1>
+        <div class="topbar-right">
+          <button class="btn-add" onclick="openAddModal()">
+            <svg class="adm-icon adm-icon-sm" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span>Add New Book</span>
+          </button>
+        </div>
+      </div>
+      <div class="admin-content">
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <h3>All Books (<span id="books-count">0</span>)</h3>
+            <div class="adm-search-box">
+              <svg class="adm-icon adm-icon-sm" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input type="text" id="books-search" placeholder="Search books..." oninput="renderBooks()">
+            </div>
+          </div>
+          <div style="padding:0;">
+            <table class="admin-table">
+              <thead>
+                <tr><th>Image</th><th>Title</th><th>Author</th><th>Price (USD)</th><th>Stock</th><th>Category</th><th>Rating</th><th>Actions</th></tr>
+              </thead>
+              <tbody id="books-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add/Edit Book Modal -->
+  <!-- Add/Edit Book Modal -->
+  <div class="modal-overlay" id="book-modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 id="modal-title">
+          <svg class="adm-icon text-primary" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          <span id="modal-title-text">Add New Book</span>
+        </h3>
+        <button type="button" class="modal-close" onclick="closeModal()" title="Close dialog" aria-label="Close">
+          <svg class="adm-icon" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <form id="book-form" onsubmit="handleBookFormSubmit(event)">
+        <div class="modal-body">
+          <input type="hidden" id="book-id">
+          <div class="row">
+            <div class="col-md-6 col-12">
+              <div class="form-group">
+                <label for="b-title">Book Title <span class="required-star">*</span></label>
+                <input type="text" id="b-title" required placeholder="e.g. The Great Gatsby" autocomplete="off">
+              </div>
+            </div>
+            <div class="col-md-6 col-12">
+              <div class="form-group">
+                <label for="b-author">Author Name <span class="required-star">*</span></label>
+                <input type="text" id="b-author" required placeholder="e.g. F. Scott Fitzgerald" autocomplete="off">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 col-12">
+              <div class="form-group">
+                <label for="b-price">Base Price (USD) <span class="required-star">*</span></label>
+                <input type="number" id="b-price" required min="0.01" step="0.01" placeholder="29.99">
+                <span class="form-help-text">Live international currencies calculate automatically from this base price.</span>
+              </div>
+            </div>
+            <div class="col-md-6 col-12">
+              <div class="form-group">
+                <label for="b-orig-price">Original Price (USD) <small style="color:#64748b;font-size:11px;font-weight:normal;">(For sale strike)</small></label>
+                <input type="number" id="b-orig-price" min="0" step="0.01" placeholder="Leave blank if not on sale">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 col-12">
+              <div class="form-group">
+                <label for="b-category">Category <span class="required-star">*</span></label>
+                <select id="b-category" required>
+                  <option value="">Select book category</option>
+                  <option value="lifestyle">Lifestyle</option>
+                  <option value="adventure">Adventure</option>
+                  <option value="romantic">Romantic</option>
+                  <option value="fictional">Fiction</option>
+                  <option value="technology">Technology</option>
+                  <option value="nature">Nature</option>
+                  <option value="business">Business</option>
+                  <option value="science">Science</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6 col-12">
+              <div class="form-group">
+                <label for="b-genre">Genre / Sub-category</label>
+                <input type="text" id="b-genre" placeholder="e.g. Classic, Literary Fiction">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4 col-12">
+              <div class="form-group">
+                <label for="b-stock">Stock</label>
+                <input type="number" id="b-stock" value="999" min="0">
+                <span class="form-help-text">Digital e-books have unlimited stock</span>
+              </div>
+            </div>
+            <div class="col-md-4 col-12">
+              <div class="form-group">
+                <label for="b-rating">Rating (0-5)</label>
+                <input type="number" id="b-rating" value="4.8" min="0" max="5" step="0.1">
+              </div>
+            </div>
+            <div class="col-md-4 col-12">
+              <div class="form-group">
+                <label for="b-reviews">Reviews Count</label>
+                <input type="number" id="b-reviews" value="120" min="0">
+              </div>
+            </div>
+          </div>
+
+          <!-- Cover Image Path with Live Preview and File Upload -->
+          <div class="form-group">
+            <label for="b-image">Book Cover Image</label>
+            <div style="display:flex;gap:14px;align-items:center;">
+              <div class="cover-preview-box">
+                <img id="b-image-preview" src="images/product-item1.jpg" alt="Cover Preview" onerror="this.src='images/default.png'">
+              </div>
+              <div style="flex:1;">
+                <div style="display:flex;gap:8px;align-items:center;">
+                  <input type="text" id="b-image" placeholder="images/product-item1.jpg or image URL" oninput="updateBookCoverPreview(this.value)">
+                  <label class="btn-cancel" style="cursor:pointer;padding:8px 14px;font-size:12.5px;margin:0;white-space:nowrap;">
+                    <span>📁 Choose</span>
+                    <input type="file" id="b-cover-file" accept="image/*" onchange="handleCoverFileUpload(event)" style="display:none;">
+                  </label>
+                </div>
+                <span class="form-help-text">Enter image path (e.g. images/product-item1.jpg), web URL, or choose a file.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PDF Upload & URL -->
+          <div class="form-group">
+            <label for="b-pdf-url">📄 Digital PDF File <span class="required-star">*</span></label>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <input type="text" id="b-pdf-url" placeholder="books/the-great-gatsby.pdf" required>
+              <label class="btn-cancel" style="cursor:pointer;padding:8px 14px;font-size:12.5px;margin:0;white-space:nowrap;">
+                <svg class="adm-icon adm-icon-sm" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                <span>Upload PDF</span>
+                <input type="file" id="b-pdf-file" accept=".pdf" onchange="handlePdfFileUpload(event)" style="display:none;">
+              </label>
+            </div>
+            <span class="form-help-text" id="pdf-status-text">Buyers receive this PDF download link immediately upon checkout.</span>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 col-12">
+              <div class="form-group">
+                <label for="b-file-size">PDF File Size</label>
+                <input type="text" id="b-file-size" placeholder="e.g. 10.5 MB">
+              </div>
+            </div>
+            <div class="col-md-6 col-12">
+              <div class="form-group">
+                <label for="b-pages">Total Page Count</label>
+                <input type="number" id="b-pages" placeholder="e.g. 260" min="1">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="b-desc">Book Overview / Synopsis</label>
+            <textarea id="b-desc" rows="2" placeholder="Brief summary of the book content and author background..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="b-sample-content">📖 Free Sample Preview Content (Online Reader)</label>
+            <textarea id="b-sample-content" rows="3" placeholder="Enter Chapter 1 excerpt text that readers can sample for free before purchase..."></textarea>
+            <span class="form-help-text">Customers can read this sample text in the built-in online e-reader for free.</span>
+          </div>
+
+          <div class="form-group mb-0">
+            <label>Promotions &amp; Display Badges</label>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;padding:12px 14px;background:#f8fafc;border:1.5px solid var(--adm-border);border-radius:10px;">
+              <label class="form-toggle-pill">
+                <input type="checkbox" id="b-featured">
+                <span class="toggle-pill-ui">★ Featured on Home</span>
+              </label>
+              <label class="form-toggle-pill">
+                <input type="checkbox" id="b-bestseller">
+                <span class="toggle-pill-ui gold">🔥 Best Seller</span>
+              </label>
+              <label class="form-toggle-pill">
+                <input type="checkbox" id="b-offer">
+                <span class="toggle-pill-ui red">🏷️ On Offer / Sale</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" onclick="closeModal()" class="btn-cancel">Cancel</button>
+          <button type="submit" class="btn-save">
+            <svg class="adm-icon adm-icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Save Digital Book</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/pdf-helper.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    if (!DB.isAdmin()) window.location.href = 'login.html';
+    if (typeof BSLoader !== 'undefined') BSLoader.init();
+    let editingId = null;
+    let uploadedPdfData = null;
+
+    function updateBookCoverPreview(src) {
+      const img = document.getElementById('b-image-preview');
+      if (!img) return;
+      if (src && src.trim()) {
+        img.src = src.trim();
+      } else {
+        img.src = 'images/default.png';
+      }
+    }
+
+    function handleCoverFileUpload(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        document.getElementById('b-image').value = evt.target.result;
+        updateBookCoverPreview(evt.target.result);
+        showToast(`Cover image selected: ${file.name}`, 'info');
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function handlePdfFileUpload(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      if (file.size > 25 * 1024 * 1024) {
+        showToast('File size is quite large (max 25MB recommended)', 'warning');
+      }
+      document.getElementById('b-file-size').value = (file.size / (1024 * 1024)).toFixed(1) + ' MB';
+      
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        uploadedPdfData = evt.target.result;
+        document.getElementById('b-pdf-url').value = `books/${file.name}`;
+        const statusEl = document.getElementById('pdf-status-text');
+        if (statusEl) {
+          statusEl.textContent = `✓ Uploaded: ${file.name} (${(file.size / (1024 * 1024)).toFixed(1)} MB)`;
+          statusEl.style.color = '#16a34a';
+          statusEl.style.fontWeight = '700';
+        }
+        showToast(`📄 PDF loaded: ${file.name}`, 'success');
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function renderBooks() {
+      const search = document.getElementById('books-search').value.toLowerCase();
+      let books = DB.getBooks();
+      if (search) books = books.filter(b => b.title.toLowerCase().includes(search) || b.author.toLowerCase().includes(search));
+
+      document.getElementById('books-count').textContent = books.length;
+      const tbody = document.getElementById('books-tbody');
+
+      if (!books.length) {
+        tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:36px;color:#888;">No books found matching search.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = books.map(b => `
+        <tr>
+          <td><img src="${b.image}" alt="${b.title}" onerror="this.src='images/default.png'"></td>
+          <td>
+            <strong>${b.title}</strong><br>
+            <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;">
+              <span class="status-badge" style="background:#e02424;color:#fff;font-size:10px;">PDF</span>
+              ${b.featured ? '<span class="status-badge status-processing" style="font-size:10px;">Featured</span>' : ''}
+              ${b.bestSeller ? '<span class="status-badge status-shipped" style="font-size:10px;">Best Seller</span>' : ''}
+              ${b.onOffer ? '<span class="status-badge status-pending" style="font-size:10px;">On Sale</span>' : ''}
+            </div>
+            <div style="font-size:11px;color:#777;margin-top:3px;">${b.fileSize || '9 MB'} &bull; ${b.pages || 240}p</div>
+          </td>
+          <td>${b.author}</td>
+          <td>
+            <strong>$${b.priceUSD}</strong>
+            ${b.originalPriceUSD ? `<br><s style="color:#bbb;font-size:12px;">$${b.originalPriceUSD}</s>` : ''}
+          </td>
+          <td><span style="color:var(--success);font-weight:600;">Unlimited Digital</span></td>
+          <td style="text-transform:capitalize;">${b.category}</td>
+          <td>⭐ ${b.rating || '-'}</td>
+          <td>
+            <div class="d-flex gap-1.5 align-items-center flex-wrap">
+              <a href="reader.html?id=${b.id}&sample=1" target="_blank" class="btn-icon-action btn-icon-sample" title="Read / Preview Sample">
+                <svg class="adm-icon" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+              </a>
+              <a href="country-pricing.html?bookId=${b.id}" class="btn-icon-action btn-icon-pricing" title="Country Pricing">
+                <svg class="adm-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+              </a>
+              <button type="button" class="btn-icon-action btn-icon-edit" onclick="openEditModal(${b.id})" title="Edit Book">
+                <svg class="adm-icon" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+              </button>
+              <button type="button" class="btn-icon-action btn-icon-delete" onclick="deleteBook(${b.id})" title="Delete Book">
+                <svg class="adm-icon" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+              </button>
+            </div>
+          </td>
+        </tr>`).join('');
+    }
+
+    function openAddModal() {
+      editingId = null;
+      uploadedPdfData = null;
+      document.getElementById('modal-title-text').textContent = 'Add New Digital E-Book (PDF)';
+      document.getElementById('book-form').reset();
+      document.getElementById('b-file-size').value = '10.5 MB';
+      document.getElementById('b-pages').value = '250';
+      document.getElementById('b-rating').value = '4.8';
+      document.getElementById('b-reviews').value = '120';
+      document.getElementById('b-stock').value = '999';
+      document.getElementById('b-image').value = 'images/product-item1.jpg';
+      updateBookCoverPreview('images/product-item1.jpg');
+      const statusEl = document.getElementById('pdf-status-text');
+      if (statusEl) {
+        statusEl.textContent = 'Buyers receive this PDF download link immediately upon checkout.';
+        statusEl.style.color = '#64748b';
+        statusEl.style.fontWeight = 'normal';
+      }
+      document.getElementById('book-modal').classList.add('active');
+      document.getElementById('b-title').focus();
+    }
+
+    function openEditModal(id) {
+      const book = DB.getBook(id);
+      if (!book) return;
+      editingId = id;
+      uploadedPdfData = null;
+      document.getElementById('modal-title-text').textContent = 'Edit Digital E-Book';
+      document.getElementById('book-id').value = id;
+      document.getElementById('b-title').value = book.title;
+      document.getElementById('b-author').value = book.author;
+      document.getElementById('b-price').value = book.priceUSD;
+      document.getElementById('b-orig-price').value = book.originalPriceUSD || '';
+      document.getElementById('b-category').value = book.category;
+      document.getElementById('b-genre').value = book.genre || '';
+      document.getElementById('b-stock').value = book.stock || 999;
+      document.getElementById('b-rating').value = book.rating || 0;
+      document.getElementById('b-reviews').value = book.reviews || 0;
+      document.getElementById('b-image').value = book.image || '';
+      updateBookCoverPreview(book.image || 'images/default.png');
+      document.getElementById('b-desc').value = book.description || '';
+      document.getElementById('b-pdf-url').value = book.pdfUrl || '';
+      document.getElementById('b-file-size').value = book.fileSize || '9.4 MB';
+      document.getElementById('b-pages').value = book.pages || 260;
+      document.getElementById('b-sample-content').value = book.sampleContent || '';
+      document.getElementById('b-featured').checked = !!book.featured;
+      document.getElementById('b-bestseller').checked = !!book.bestSeller;
+      document.getElementById('b-offer').checked = !!book.onOffer;
+      const statusEl = document.getElementById('pdf-status-text');
+      if (statusEl) {
+        statusEl.textContent = book.pdfUrl ? `Current file: ${book.pdfUrl}` : 'Buyers receive this PDF download link immediately upon checkout.';
+        statusEl.style.color = '#64748b';
+        statusEl.style.fontWeight = 'normal';
+      }
+      document.getElementById('book-modal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('book-modal').classList.remove('active');
+    }
+
+    function handleBookFormSubmit(e) {
+      if (e) e.preventDefault();
+      saveBook();
+    }
+
+    function saveBook() {
+      const title = document.getElementById('b-title').value.trim();
+      const author = document.getElementById('b-author').value.trim();
+      const priceUSD = parseFloat(document.getElementById('b-price').value);
+      const category = document.getElementById('b-category').value;
+
+      if (!title || !author || isNaN(priceUSD) || priceUSD <= 0 || !category) {
+        showToast('Please fill all required fields with valid values', 'error');
+        return;
+      }
+
+      const origPrice = parseFloat(document.getElementById('b-orig-price').value) || null;
+      const pdfUrlVal = uploadedPdfData || document.getElementById('b-pdf-url').value.trim() || 'books/sample.pdf';
+
+      const bookData = {
+        title, author, priceUSD,
+        originalPriceUSD: origPrice,
+        category,
+        genre: document.getElementById('b-genre').value.trim() || 'General',
+        stock: 999, // Digital unlimited stock
+        rating: parseFloat(document.getElementById('b-rating').value) || 4.5,
+        reviews: parseInt(document.getElementById('b-reviews').value) || 0,
+        image: document.getElementById('b-image').value.trim() || 'images/default.png',
+        description: document.getElementById('b-desc').value.trim(),
+        format: 'PDF E-Book (Digital Edition)',
+        fileSize: document.getElementById('b-file-size').value.trim() || '10.5 MB',
+        pages: parseInt(document.getElementById('b-pages').value) || 250,
+        sampleContent: document.getElementById('b-sample-content').value.trim(),
+        pdfUrl: pdfUrlVal,
+        instantDelivery: true,
+        featured: document.getElementById('b-featured').checked,
+        bestSeller: document.getElementById('b-bestseller').checked,
+        onOffer: document.getElementById('b-offer').checked
+      };
+
+      if (editingId) {
+        DB.updateBook(editingId, bookData);
+        showToast(`✓ Digital E-Book "${title}" updated successfully!`, 'success');
+      } else {
+        DB.addBook(bookData);
+        showToast(`✓ Digital E-Book "${title}" created successfully!`, 'success');
+      }
+      closeModal();
+      renderBooks();
+    }
+
+    function deleteBook(id) {
+      const book = DB.getBook(id);
+      if (confirm(`Delete "${book?.title}"? This cannot be undone.`)) {
+        DB.deleteBook(id);
+        renderBooks();
+        showToast('Book deleted', 'info');
+      }
+    }
+
+    document.getElementById('book-modal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    renderBooks();
+  </script>
+</body>
+</html>

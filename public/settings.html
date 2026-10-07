@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Site Settings - Admin | BookSaw</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/favicon.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="icomoon/icomoon.css">
+  <link rel="stylesheet" href="css/vendor.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/ecommerce.css">
+  <link rel="stylesheet" href="css/admin-theme.css">
+</head>
+<body>
+
+  <!-- Mobile Topbar Header -->
+  <div class="adm-mobile-bar">
+    <div class="d-flex align-items-center gap-2">
+      <div class="brand-logo-badge" style="width:30px;height:30px;border-radius:8px;">
+        <img src="images/favicon.svg" alt="BookSaw" style="width:22px;height:22px;">
+      </div>
+      <div class="brand-text-block">
+        <span class="brand-name-title" style="font-size:14px;">Book<span class="highlight">Saw</span></span>
+        <span class="brand-name-subtitle" style="font-size:8px;">ADMIN PANEL</span>
+      </div>
+    </div>
+    <button class="adm-mobile-toggle" onclick="document.getElementById('admin-sidebar').classList.toggle('open');document.getElementById('adm-backdrop').classList.toggle('active');">
+      <svg class="adm-icon" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
+  </div>
+  <div class="adm-backdrop" id="adm-backdrop" onclick="document.getElementById('admin-sidebar').classList.remove('open');this.classList.remove('active');"></div>
+
+  <div class="admin-layout">
+    <div class="admin-sidebar" id="admin-sidebar">
+      <a href="dashboard.html" class="sidebar-brand">
+        <div class="brand-logo-badge">
+          <img src="images/favicon.svg" alt="BookSaw" class="brand-logo-img">
+        </div>
+        <div class="brand-text-block">
+          <span class="brand-name-title">Book<span class="highlight">Saw</span></span>
+          <span class="brand-name-subtitle">ADMIN PANEL</span>
+        </div>
+      </a>
+      
+      <div class="sidebar-section-label">Catalog &amp; Sales</div>
+      
+      <a href="dashboard.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+        <span>Dashboard</span>
+      </a>
+
+      <a href="books.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+        <span>Books</span>
+      </a>
+
+      <a href="country-pricing.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        <span>Country Pricing</span>
+      </a>
+
+      <a href="orders.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+        <span>Orders</span>
+      </a>
+
+      <a href="coupons.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+        <span>Coupons</span>
+      </a>
+
+      <a href="blogs.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+        <span>Blog Posts</span>
+      </a>
+
+      <a href="users.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        <span>Users</span>
+      </a>
+
+      <div class="sidebar-section-label">Preferences</div>
+
+      <a href="currency.html" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+        <span>Currency Rates</span>
+      </a>
+
+      <a href="settings.html#razorpay-section" class="nav-item">
+        <svg class="adm-icon" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+        <span>Razorpay Gateway</span>
+      </a>
+
+      <a href="settings.html" class="nav-item active">
+        <svg class="adm-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+        <span>Site Settings</span>
+      </a>
+
+      <div class="sidebar-footer">
+        <a href="#" onclick="DB.logout();window.location.href='login.html'" class="btn-logout">
+          <svg class="adm-icon" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          <span>Logout</span>
+        </a>
+      </div>
+    </div>
+    <div class="admin-main">
+      <div class="admin-topbar">
+        <div>
+          <h1 style="margin:0;">Site &amp; Payment Settings</h1>
+          <span style="font-size:12.5px;color:var(--adm-text-muted);">Manage Razorpay gateway credentials, API keys, and store rules</span>
+        </div>
+      </div>
+      <div class="admin-content">
+        <div class="row g-4">
+          <div class="col-lg-8">
+            <!-- Dedicated Razorpay Payment Gateway Card -->
+            <div class="admin-card mb-4" id="razorpay-section" style="border: 1.5px solid #0284c7;box-shadow: 0 4px 20px rgba(2, 132, 199, 0.08);">
+              <div class="admin-card-header" style="background:#f0f9ff;border-bottom:1px solid #bae6fd;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <span style="font-size:22px;">💳</span>
+                  <div>
+                    <h3 style="margin:0;color:#0369a1;font-size:16px;">Razorpay Payment Gateway Settings</h3>
+                    <small style="color:#0284c7;font-size:11.5px;">Live customer checkout for BookSaw E-Books</small>
+                  </div>
+                </div>
+                <div id="rzp-settings-status-badge">
+                  <span style="background:#fef08a;color:#854d0e;font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:12px;">🟡 Test Mode Active</span>
+                </div>
+              </div>
+              <div class="admin-card-body">
+                <form id="rzp-form" onsubmit="saveRazorpaySettings(event)">
+                  <!-- Gateway Enable Toggle & Mode Selector -->
+                  <div class="row g-3 mb-3">
+                    <div class="col-md-6 col-12">
+                      <div class="form-group">
+                        <label for="rzp-enabled" style="font-weight:700;">Gateway Status</label>
+                        <select id="rzp-enabled" style="background:#ffffff;font-weight:600;">
+                          <option value="true">🟢 Enabled (Accept Payments)</option>
+                          <option value="false">🔴 Disabled (Offline Checkout Only)</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-12">
+                      <div class="form-group">
+                        <label for="rzp-mode" style="font-weight:700;">Environment / Mode <span class="required-star">*</span></label>
+                        <select id="rzp-mode" style="background:#ffffff;font-weight:600;">
+                          <option value="test">🟡 Test Mode (Sandbox Simulation)</option>
+                          <option value="live">🟢 Live Production Mode (Real Payments)</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Store Name & Currency -->
+                  <div class="row g-3 mb-3">
+                    <div class="col-md-6 col-12">
+                      <div class="form-group">
+                        <label for="rzp-store-name">Store Name (Appears in Razorpay Modal)</label>
+                        <input type="text" id="rzp-store-name" placeholder="e.g. BookSaw E-Books" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-12">
+                      <div class="form-group">
+                        <label for="rzp-currency">Default Gateway Currency</label>
+                        <select id="rzp-currency">
+                          <option value="INR">🇮🇳 INR (Indian Rupee - Razorpay Default)</option>
+                          <option value="USD">🇺🇸 USD (US Dollar)</option>
+                          <option value="EUR">🇪🇺 EUR (Euro)</option>
+                          <option value="GBP">🇬🇧 GBP (British Pound)</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Key ID -->
+                  <div class="form-group mb-3">
+                    <label for="rzp-key-id">Razorpay Key ID <span class="required-star">*</span></label>
+                    <input type="text" id="rzp-key-id" placeholder="rzp_test_... or rzp_live_..." required style="font-family:monospace;font-size:13.5px;">
+                    <span class="form-help-text">Found in your Razorpay Dashboard under Settings → API Keys.</span>
+                  </div>
+
+                  <!-- Key Secret with Eye Toggle -->
+                  <div class="form-group mb-3">
+                    <label for="rzp-key-secret">Razorpay Key Secret <span class="required-star">*</span></label>
+                    <div style="position:relative;display:flex;align-items:center;">
+                      <input type="password" id="rzp-key-secret" placeholder="Enter Key Secret" style="font-family:monospace;font-size:13.5px;padding-right:45px;">
+                      <button type="button" onclick="toggleSecretVisibility('rzp-key-secret', this)" style="position:absolute;right:10px;background:none;border:none;cursor:pointer;font-size:16px;color:#64748b;" title="Show/Hide Secret">
+                        👁️
+                      </button>
+                    </div>
+                    <span class="form-help-text">Never share your Key Secret. Masked automatically for security.</span>
+                  </div>
+
+                  <!-- Webhook Secret -->
+                  <div class="form-group mb-3">
+                    <label for="rzp-webhook-secret">Webhook Secret (Optional)</label>
+                    <div style="position:relative;display:flex;align-items:center;">
+                      <input type="password" id="rzp-webhook-secret" placeholder="Enter Webhook Secret" style="font-family:monospace;font-size:13.5px;padding-right:45px;">
+                      <button type="button" onclick="toggleSecretVisibility('rzp-webhook-secret', this)" style="position:absolute;right:10px;background:none;border:none;cursor:pointer;font-size:16px;color:#64748b;" title="Show/Hide Secret">
+                        👁️
+                      </button>
+                    </div>
+                    <span class="form-help-text">Used to verify payment webhooks at <code>/api/payment/webhook</code>.</span>
+                  </div>
+
+                  <!-- Status Feedback Banner -->
+                  <div id="rzp-test-feedback" style="display:none;padding:12px;border-radius:8px;font-size:13px;margin-bottom:15px;"></div>
+
+                  <!-- Action Buttons -->
+                  <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:15px;">
+                    <button type="submit" class="btn-save" style="background:#0284c7;">
+                      <svg class="adm-icon adm-icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      <span>Save Razorpay Settings</span>
+                    </button>
+                    <button type="button" onclick="testRazorpayConnection()" class="btn-save" id="btn-test-rzp" style="background:#0f172a;">
+                      <span id="btn-test-rzp-text">⚡ Test Connection</span>
+                    </button>
+                  </div>
+                </form>
+
+                <!-- Step-by-Step Help Accordion -->
+                <div style="margin-top:24px;border-top:1px solid #e2e8f0;padding-top:16px;">
+                  <details style="background:#f8fafc;padding:12px 16px;border-radius:10px;border:1px solid #e2e8f0;cursor:pointer;">
+                    <summary style="font-weight:700;font-size:13.5px;color:#334155;outline:none;">
+                      📖 How to obtain Razorpay API Keys (Step-by-Step Guide)
+                    </summary>
+                    <div style="margin-top:12px;font-size:13px;color:#475569;line-height:1.6;">
+                      <ol style="padding-left:20px;margin-bottom:8px;">
+                        <li>Log in to your <strong>Razorpay Dashboard</strong> at <a href="https://dashboard.razorpay.com/" target="_blank" style="color:#0284c7;font-weight:600;">https://dashboard.razorpay.com/</a>.</li>
+                        <li>In the top bar, choose <strong>Test Mode</strong> (for sandbox testing) or complete KYC and switch to <strong>Live Mode</strong>.</li>
+                        <li>Navigate to <strong>Account &amp; Settings → API Keys</strong>.</li>
+                        <li>Click <strong>Generate Key</strong> (or Regenerate Key) to generate your Key ID and Key Secret.</li>
+                        <li>Copy the <code>Key ID</code> (starts with <code>rzp_test_...</code> or <code>rzp_live_...</code>) and <code>Key Secret</code>, paste them in the fields above, and click <strong>Save</strong>.</li>
+                        <li>Click <strong>Test Connection</strong> to verify live authentication with the Razorpay API.</li>
+                        <li><em>(Optional Webhook)</em> Under Webhooks, add URL: <code>http://your-domain.com/api/payment/webhook</code> and subscribe to <code>payment.captured</code>, <code>payment.failed</code>, <code>refund.processed</code>.</li>
+                      </ol>
+                    </div>
+                  </details>
+                </div>
+              </div>
+            </div>
+
+            <!-- General Store Settings Card -->
+            <div class="admin-card">
+              <div class="admin-card-header"><h3>General Settings</h3></div>
+              <div class="admin-card-body">
+                <form onsubmit="saveSettings(event)">
+                  <div class="row">
+                    <div class="col-md-6 col-12">
+                      <div class="form-group">
+                        <label for="s-name">Store / Site Name <span class="required-star">*</span></label>
+                        <input type="text" id="s-name" required placeholder="e.g. BookSaw Online">
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-12">
+                      <div class="form-group">
+                        <label for="s-tagline">Store Tagline / Slogan</label>
+                        <input type="text" id="s-tagline" placeholder="e.g. The Best Online Bookstore">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4 col-12">
+                      <div class="form-group">
+                        <label for="s-currency">Default Base Currency</label>
+                        <select id="s-currency">
+                          <option value="USD">🇺🇸 USD</option>
+                          <option value="EUR">🇪🇺 EUR</option>
+                          <option value="GBP">🇬🇧 GBP</option>
+                          <option value="INR">🇮🇳 INR</option>
+                          <option value="CAD">🇨🇦 CAD</option>
+                          <option value="AUD">🇦🇺 AUD</option>
+                          <option value="JPY">🇯🇵 JPY</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-4 col-12">
+                      <div class="form-group">
+                        <label for="s-tax">Tax Rate (%)</label>
+                        <input type="number" id="s-tax" min="0" max="100" step="0.5" placeholder="0">
+                      </div>
+                    </div>
+                    <div class="col-md-4 col-12">
+                      <div class="form-group">
+                        <label for="s-shipping">Default Shipping Fee (USD)</label>
+                        <input type="number" id="s-shipping" min="0" step="0.5" placeholder="0">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="s-free-shipping">Free Shipping Threshold (USD)</label>
+                    <input type="number" id="s-free-shipping" min="0" step="5" placeholder="50">
+                    <span class="form-help-text">Orders above this amount get free shipping. Set 0 to disable free shipping.</span>
+                  </div>
+                  <button type="submit" class="btn-save" style="margin-top:10px;">
+                    <svg class="adm-icon adm-icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span>Save Store Settings</span>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-12">
+            <div class="admin-card">
+              <div class="admin-card-header"><h3>📊 Quick Stats</h3></div>
+              <div class="admin-card-body" id="quick-stats"></div>
+            </div>
+            <div class="admin-card mt-4">
+              <div class="admin-card-header"><h3>⚠️ Data Management</h3></div>
+              <div class="admin-card-body">
+                <p style="font-size:12.5px;color:var(--adm-text-muted);margin-bottom:14px;line-height:1.5;">Caution: These administrative actions permanently alter data and cannot be undone.</p>
+                <button type="button" onclick="clearOrders()" class="btn-danger-action" style="width:100%;margin-bottom:10px;">
+                  <svg class="adm-icon adm-icon-sm" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                  <span>Clear All Orders</span>
+                </button>
+                <button type="button" onclick="resetAllData()" class="btn-danger-action" style="width:100%;">
+                  <svg class="adm-icon adm-icon-sm" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                  <span>Factory Reset All Data</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    if (!DB.isAdmin()) window.location.href = 'login.html';
+    if (typeof BSLoader !== 'undefined') BSLoader.init();
+
+    // Toggle Secret Visibility
+    function toggleSecretVisibility(inputId, btn) {
+      const input = document.getElementById(inputId);
+      if (input.type === 'password') {
+        input.type = 'text';
+        btn.textContent = '🔒';
+      } else {
+        input.type = 'password';
+        btn.textContent = '👁️';
+      }
+    }
+
+    async function loadRazorpaySettings() {
+      try {
+        let rzp = null;
+        if (typeof API !== 'undefined') {
+          rzp = await API.adminGetRazorpaySettings();
+        }
+        if (!rzp && typeof DB !== 'undefined') {
+          rzp = DB.get('bs_razorpay_settings') || {
+            enabled: true, mode: 'test', keyId: 'rzp_test_BookSawDemoKeyId1234',
+            keySecretMasked: '••••••••••••', currency: 'INR', storeName: 'BookSaw E-Books'
+          };
+        }
+
+        if (rzp) {
+          document.getElementById('rzp-enabled').value = String(rzp.enabled !== false);
+          document.getElementById('rzp-mode').value = rzp.mode || 'test';
+          document.getElementById('rzp-store-name').value = rzp.storeName || 'BookSaw E-Books';
+          document.getElementById('rzp-currency').value = rzp.currency || 'INR';
+          document.getElementById('rzp-key-id').value = rzp.keyId || '';
+          document.getElementById('rzp-key-secret').value = rzp.keySecretMasked || '';
+          if (rzp.webhookSecretConfigured) {
+            document.getElementById('rzp-webhook-secret').value = '••••••••••••';
+          }
+
+          // Update Status Badge
+          const badgeEl = document.getElementById('rzp-settings-status-badge');
+          if (rzp.enabled === false) {
+            badgeEl.innerHTML = `<span style="background:#fee2e2;color:#991b1b;font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:12px;">🔴 Gateway Disabled</span>`;
+          } else if (rzp.mode === 'live') {
+            badgeEl.innerHTML = `<span style="background:#dcfce7;color:#15803d;font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:12px;">🟢 Live Mode Active</span>`;
+          } else {
+            badgeEl.innerHTML = `<span style="background:#fef08a;color:#854d0e;font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:12px;">🟡 Test Mode Active</span>`;
+          }
+        }
+      } catch (err) {
+        console.warn('Failed loading Razorpay settings:', err);
+      }
+    }
+
+    async function saveRazorpaySettings(e) {
+      e.preventDefault();
+      const payload = {
+        enabled: document.getElementById('rzp-enabled').value === 'true',
+        mode: document.getElementById('rzp-mode').value,
+        storeName: document.getElementById('rzp-store-name').value.trim(),
+        currency: document.getElementById('rzp-currency').value,
+        keyId: document.getElementById('rzp-key-id').value.trim(),
+        keySecret: document.getElementById('rzp-key-secret').value.trim(),
+        webhookSecret: document.getElementById('rzp-webhook-secret').value.trim()
+      };
+
+      try {
+        let res = null;
+        if (typeof API !== 'undefined') {
+          res = await API.adminUpdateRazorpaySettings(payload);
+        }
+
+        if (typeof DB !== 'undefined') {
+          DB.set('bs_razorpay_settings', {
+            ...payload,
+            keySecretMasked: payload.keySecret && !payload.keySecret.includes('••••') ? '••••••••' : payload.keySecret
+          });
+        }
+
+        showToast('Razorpay Payment Gateway settings saved successfully!', 'success');
+        loadRazorpaySettings();
+      } catch (err) {
+        showToast('Failed to save settings: ' + err.message, 'error');
+      }
+    }
+
+    async function testRazorpayConnection() {
+      const btn = document.getElementById('btn-test-rzp');
+      const text = document.getElementById('btn-test-rzp-text');
+      const feedback = document.getElementById('rzp-test-feedback');
+
+      btn.disabled = true;
+      text.innerHTML = '⏳ Ping in progress...';
+      feedback.style.display = 'none';
+
+      try {
+        let res = null;
+        if (typeof API !== 'undefined') {
+          res = await API.adminTestRazorpayConnection();
+        }
+
+        if (res && res.data && res.data.success) {
+          feedback.style.display = 'block';
+          feedback.style.background = '#dcfce7';
+          feedback.style.color = '#15803d';
+          feedback.style.border = '1px solid #86efac';
+          feedback.innerHTML = `✅ <strong>Connection Verified!</strong> ${res.data.message || 'Razorpay API authenticated successfully.'}`;
+          showToast('Connection verified successfully!', 'success');
+        } else {
+          const msg = (res && res.data && res.data.message) || 'Authentication failed. Please verify Key ID and Key Secret.';
+          feedback.style.display = 'block';
+          feedback.style.background = '#fee2e2';
+          feedback.style.color = '#991b1b';
+          feedback.style.border = '1px solid #fca5a5';
+          feedback.innerHTML = `❌ <strong>Connection Error:</strong> ${msg}`;
+          showToast('Connection test failed', 'error');
+        }
+      } catch (err) {
+        feedback.style.display = 'block';
+        feedback.style.background = '#fee2e2';
+        feedback.style.color = '#991b1b';
+        feedback.style.border = '1px solid #fca5a5';
+        feedback.innerHTML = `❌ <strong>Network Error:</strong> ${err.message}`;
+        showToast('Error pinging Razorpay: ' + err.message, 'error');
+      } finally {
+        btn.disabled = false;
+        text.innerHTML = '⚡ Test Connection';
+      }
+    }
+
+    function loadSettings() {
+      if (typeof CURRENCY_RATES !== 'undefined' && document.getElementById('s-currency')) {
+        document.getElementById('s-currency').innerHTML = Object.entries(CURRENCY_RATES).map(([code, info]) => `<option value="${code}">${info.flag} ${code}</option>`).join('');
+      }
+      const s = DB.getSettings();
+      document.getElementById('s-name').value = s.siteName || 'BookSaw';
+      document.getElementById('s-tagline').value = s.siteTagline || '';
+      document.getElementById('s-currency').value = s.currency || 'USD';
+      document.getElementById('s-tax').value = s.taxRate || 0;
+      document.getElementById('s-shipping').value = s.shippingFee || 5;
+      document.getElementById('s-free-shipping').value = s.freeShippingAbove || 50;
+    }
+
+    function saveSettings(e) {
+      e.preventDefault();
+      DB.saveSettings({
+        siteName: document.getElementById('s-name').value,
+        siteTagline: document.getElementById('s-tagline').value,
+        currency: document.getElementById('s-currency').value,
+        taxRate: parseFloat(document.getElementById('s-tax').value) || 0,
+        shippingFee: parseFloat(document.getElementById('s-shipping').value) || 0,
+        freeShippingAbove: parseFloat(document.getElementById('s-free-shipping').value) || 50
+      });
+      showToast('Store settings saved successfully!', 'success');
+    }
+
+    function renderQuickStats() {
+      const s = DB.getSettings();
+      const el = document.getElementById('quick-stats');
+      el.innerHTML = `
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;justify-content:space-between;font-size:14px;padding:8px 0;border-bottom:1px solid #f5f5f5;"><span>Books</span><strong>${DB.getBooks().length}</strong></div>
+          <div style="display:flex;justify-content:space-between;font-size:14px;padding:8px 0;border-bottom:1px solid #f5f5f5;"><span>Orders</span><strong>${DB.getOrders().length}</strong></div>
+          <div style="display:flex;justify-content:space-between;font-size:14px;padding:8px 0;border-bottom:1px solid #f5f5f5;"><span>Users</span><strong>${DB.getUsers().length}</strong></div>
+          <div style="display:flex;justify-content:space-between;font-size:14px;padding:8px 0;border-bottom:1px solid #f5f5f5;"><span>Blog Posts</span><strong>${DB.getBlogs().length}</strong></div>
+          <div style="display:flex;justify-content:space-between;font-size:14px;padding:8px 0;"><span>Storage Used</span><strong>${(JSON.stringify(localStorage).length/1024).toFixed(1)} KB</strong></div>
+        </div>`;
+    }
+
+    function clearOrders() {
+      if (confirm('This will delete ALL orders. Are you absolutely sure?')) {
+        DB.saveOrders([]);
+        showToast('All orders cleared', 'warning');
+        renderQuickStats();
+      }
+    }
+
+    function resetAllData() {
+      if (confirm('FACTORY RESET: This will delete ALL data (books, orders, users, blogs) and re-seed defaults. Are you absolutely sure?')) {
+        Object.values(DB.KEYS).forEach(key => localStorage.removeItem(key));
+        seedData();
+        showToast('Data reset to factory defaults. Reloading...', 'info');
+        setTimeout(() => window.location.reload(), 1500);
+      }
+    }
+
+    loadSettings();
+    loadRazorpaySettings();
+    renderQuickStats();
+  </script>
+</body>
+</html>
