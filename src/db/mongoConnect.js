@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 const config = require('../config/config');
+const { syncDataToMongo } = require('./syncMongo');
 
 let isConnected = false;
 
 /**
- * Connect to MongoDB Atlas Database
+ * Connect to MongoDB Atlas Database & ensure initial sync
  */
 async function connectDB() {
   const uri = config.MONGO_URI;
@@ -23,6 +24,12 @@ async function connectDB() {
     const dbName = conn.connection.name || 'book-Backend';
     const host = conn.connection.host || 'cluster0';
     console.log(`🍃 Connected to MongoDB Atlas: ${host}/${dbName}`);
+
+    // Ensure collections and initial seed data are populated in Atlas
+    syncDataToMongo().catch(err => {
+      console.warn('MongoDB initial sync warning:', err.message);
+    });
+
     return true;
   } catch (err) {
     console.error('❌ MongoDB connection error:', err.message);

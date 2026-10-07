@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const mongoose = require('mongoose');
 const config = require('../config/config');
 const { getInitialSeedData } = require('./seed');
 
@@ -60,6 +61,36 @@ class JsonDatabase {
     }
   }
 
+  getMongoCollName(name) {
+    if (name === 'pricingRules') return 'pricingrules';
+    return name;
+  }
+
+  async persistToMongo(action, colName, itemOrId, updateData = null) {
+    if (!mongoose.connection || mongoose.connection.readyState !== 1) return;
+    try {
+      const coll = mongoose.connection.db.collection(this.getMongoCollName(colName));
+      if (action === 'insert') {
+        const { _id, ...doc } = itemOrId;
+        await coll.insertOne(doc);
+      } else if (action === 'update') {
+        const numId = Number(itemOrId);
+        const strId = String(itemOrId);
+        const filter = isNaN(numId) ? { id: strId } : { $or: [{ id: numId }, { id: strId }] };
+        await coll.updateOne(filter, { $set: updateData }, { upsert: false });
+      } else if (action === 'delete') {
+        const numId = Number(itemOrId);
+        const strId = String(itemOrId);
+        const filter = isNaN(numId) ? { id: strId } : { $or: [{ id: numId }, { id: strId }] };
+        await coll.deleteOne(filter);
+      } else if (action === 'updateSettings') {
+        await mongoose.connection.db.collection('settings').updateOne({}, { $set: itemOrId }, { upsert: true });
+      }
+    } catch (err) {
+      console.warn(`[MongoDB Live Sync] Warning on ${action} (${colName}):`, err.message);
+    }
+  }
+
   read() {
     try {
       if (!fs.existsSync(DB_FILE)) {
@@ -110,6 +141,10 @@ class JsonDatabase {
     item.createdAt = item.createdAt || new Date().toISOString();
     db[name].push(item);
     this.write(db);
+
+    // Live sync to MongoDB Atlas
+    this.persistToMongo('insert', name, item).catch(() => {});
+
     return item;
   }
 
@@ -128,6 +163,10 @@ class JsonDatabase {
     };
 
     this.write(db);
+
+    // Live sync to MongoDB Atlas
+    this.persistToMongo('update', name, id, updateData).catch(() => {});
+
     return db[name][index];
   }
 
@@ -140,6 +179,10 @@ class JsonDatabase {
     
     if (db[name].length !== initialLength) {
       this.write(db);
+
+      // Live sync to MongoDB Atlas
+      this.persistToMongo('delete', name, id).catch(() => {});
+
       return true;
     }
     return false;
@@ -158,6 +201,10 @@ class JsonDatabase {
       lastSyncTime: newSettings.lastSyncTime || new Date().toISOString()
     };
     this.write(db);
+
+    // Live sync to MongoDB Atlas
+    this.persistToMongo('updateSettings', 'settings', newSettings).catch(() => {});
+
     return db.settings;
   }
 
