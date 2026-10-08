@@ -18,6 +18,11 @@ module.exports = {
     currency: process.env.CURRENCY || 'INR',
     storeName: process.env.RAZORPAY_STORE_NAME || 'BookSaw E-Books'
   },
+  supabase: {
+    url: process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://ppevbwymzlgrutfcojpe.supabase.co',
+    key: process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_KEY || process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || 'sb_publishable_-FKEjoWLH5D8W19tK4hmZg_Cd_gb9wj',
+    bucket: process.env.SUPABASE_BUCKET || 'ebooks'
+  },
   cors: {
     allowedOrigins: [
       'http://localhost:5000',

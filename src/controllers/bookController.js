@@ -1,4 +1,5 @@
 const db = require('../db/jsonDb');
+const supabaseService = require('../services/supabaseService');
 
 const getBooks = async (req, res, next) => {
   try {
@@ -159,10 +160,36 @@ const createBook = async (req, res, next) => {
 
     if (req.files) {
       if (req.files.image && req.files.image[0]) {
-        coverUrl = `/uploads/covers/${req.files.image[0].filename}`;
+        try {
+          const supCover = await supabaseService.uploadCoverImage(
+            req.files.image[0].path,
+            req.files.image[0].originalname,
+            req.files.image[0].mimetype
+          );
+          if (supCover && supCover.success && supCover.url) {
+            coverUrl = supCover.url;
+          } else {
+            coverUrl = `/uploads/covers/${req.files.image[0].filename}`;
+          }
+        } catch {
+          coverUrl = `/uploads/covers/${req.files.image[0].filename}`;
+        }
       }
       if (req.files.pdfFile && req.files.pdfFile[0]) {
-        pdfUrl = `/uploads/pdfs/${req.files.pdfFile[0].filename}`;
+        try {
+          const supPdf = await supabaseService.uploadPdf(
+            req.files.pdfFile[0].path,
+            req.files.pdfFile[0].originalname,
+            req.files.pdfFile[0].mimetype
+          );
+          if (supPdf && supPdf.success && supPdf.url) {
+            pdfUrl = supPdf.url;
+          } else {
+            pdfUrl = `/uploads/pdfs/${req.files.pdfFile[0].filename}`;
+          }
+        } catch {
+          pdfUrl = `/uploads/pdfs/${req.files.pdfFile[0].filename}`;
+        }
       }
     } else if (req.file) {
       coverUrl = `/uploads/covers/${req.file.filename}`;
@@ -245,10 +272,36 @@ const updateBook = async (req, res, next) => {
     // Check for uploaded files
     if (req.files) {
       if (req.files.image && req.files.image[0]) {
-        updateData.image = `/uploads/covers/${req.files.image[0].filename}`;
+        try {
+          const supCover = await supabaseService.uploadCoverImage(
+            req.files.image[0].path,
+            req.files.image[0].originalname,
+            req.files.image[0].mimetype
+          );
+          if (supCover && supCover.success && supCover.url) {
+            updateData.image = supCover.url;
+          } else {
+            updateData.image = `/uploads/covers/${req.files.image[0].filename}`;
+          }
+        } catch {
+          updateData.image = `/uploads/covers/${req.files.image[0].filename}`;
+        }
       }
       if (req.files.pdfFile && req.files.pdfFile[0]) {
-        updateData.pdfFile = `/uploads/pdfs/${req.files.pdfFile[0].filename}`;
+        try {
+          const supPdf = await supabaseService.uploadPdf(
+            req.files.pdfFile[0].path,
+            req.files.pdfFile[0].originalname,
+            req.files.pdfFile[0].mimetype
+          );
+          if (supPdf && supPdf.success && supPdf.url) {
+            updateData.pdfFile = supPdf.url;
+          } else {
+            updateData.pdfFile = `/uploads/pdfs/${req.files.pdfFile[0].filename}`;
+          }
+        } catch {
+          updateData.pdfFile = `/uploads/pdfs/${req.files.pdfFile[0].filename}`;
+        }
       }
     } else if (req.file) {
       updateData.image = `/uploads/covers/${req.file.filename}`;
