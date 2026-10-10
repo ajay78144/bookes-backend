@@ -170,7 +170,10 @@ const createBook = async (req, res, next) => {
       title,
       author,
       priceUSD,
+      price,
+      priceINR,
       originalPriceUSD,
+      originalPrice,
       countryPricing: rawCountryPricing,
       category = 'General',
       rating = 5,
@@ -188,11 +191,35 @@ const createBook = async (req, res, next) => {
       stock = 100
     } = req.body;
 
-    if (!title || !author || priceUSD === undefined) {
+    // Flexible price resolution
+    let finalPriceUSD = (priceUSD !== undefined && priceUSD !== '') ? Number(priceUSD) : undefined;
+    let finalPriceINR = (priceINR !== undefined && priceINR !== '') ? Number(priceINR) : undefined;
+
+    if (finalPriceUSD === undefined && price !== undefined && price !== '') {
+      const p = Number(price);
+      if (!isNaN(p)) {
+        if (p > 100) {
+          finalPriceINR = p;
+          finalPriceUSD = Number((p / 83.5).toFixed(2));
+        } else {
+          finalPriceUSD = p;
+          finalPriceINR = Math.round(p * 83.5);
+        }
+      }
+    }
+
+    if (!title || !author || (finalPriceUSD === undefined && finalPriceINR === undefined)) {
       return res.status(400).json({
         success: false,
-        message: 'Title, author, and priceUSD are required fields.'
+        message: 'Title, author, and price are required fields.'
       });
+    }
+
+    if (finalPriceUSD === undefined && finalPriceINR !== undefined) {
+      finalPriceUSD = Number((finalPriceINR / 83.5).toFixed(2));
+    }
+    if (finalPriceINR === undefined && finalPriceUSD !== undefined) {
+      finalPriceINR = Math.round(finalPriceUSD * 83.5);
     }
 
     // Parse and sanitize countryPricing
@@ -214,6 +241,16 @@ const createBook = async (req, res, next) => {
         cleanCountryPricing[k.toUpperCase().trim()] = num;
       }
     });
+
+    // Ensure INR and USD are registered in countryPricing
+    if (finalPriceINR !== undefined && cleanCountryPricing['INR'] === undefined) {
+      cleanCountryPricing['INR'] = finalPriceINR;
+      cleanCountryPricing['IN'] = finalPriceINR;
+    }
+    if (finalPriceUSD !== undefined && cleanCountryPricing['USD'] === undefined) {
+      cleanCountryPricing['USD'] = finalPriceUSD;
+      cleanCountryPricing['US'] = finalPriceUSD;
+    }
 
     // Default image and pdf
     let coverUrl = image || 'images/default-book.jpg';
@@ -284,15 +321,15 @@ const createBook = async (req, res, next) => {
       parsedSamplePages = samplePages;
     }
 
-    const priceINR = cleanCountryPricing['INR'] !== undefined ? cleanCountryPricing['INR'] : (Number(req.body.priceINR) || 0);
+    const finalOrigPrice = originalPriceUSD !== undefined ? Number(originalPriceUSD) : (originalPrice !== undefined ? Number(originalPrice) : null);
 
     const now = new Date().toISOString();
     const newBook = db.insert('books', {
       title: title.trim(),
       author: author.trim(),
-      priceUSD: Number(priceUSD),
-      originalPriceUSD: originalPriceUSD ? Number(originalPriceUSD) : null,
-      priceINR,
+      priceUSD: finalPriceUSD,
+      originalPriceUSD: finalOrigPrice,
+      priceINR: finalPriceINR,
       countryPricing: cleanCountryPricing,
       category: category.trim(),
       rating: Number(rating) || 5,
@@ -339,33 +376,67 @@ const updateBook = async (req, res, next) => {
 
     const updateData = { ...req.body };
 
-    // Format numbers
-    if (updateData.priceUSD !== undefined) updateData.priceUSD = Number(updateData.priceUSD);
-    if (updateData.originalPriceUSD !== undefined) updateData.originalPriceUSD = updateData.originalPriceUSD ? Number(updateData.originalPriceUSD) : null;
+    // 1. Flexible Price Resolution: handles 'price', 'priceUSD', 'priceINR'
+    const incomingPrice = updateData.priceUSD !== undefined && updateData.priceUSD !== '' ? updateData.priceUSD : updateData.price;
+    if (incomingPrice !== undefined && incomingPrice !== '') {
+      const p = Number(incomingPrice);
+      if (!isNaN(p)) {
+        if (p > 100) {
+          // Indian Rupee / local currency scale
+          updateData.priceINR = p;
+          if (updateData.priceUSD === undefined || updateData.priceUSD === '') {
+            updateData.priceUSD = Number((p / 83.5).toFixed(2));
+          }
+        } else {
+          // USD scale
+          updateData.priceUSD = p;
+          if (updateData.priceINR === undefined || updateData.priceINR === '') {
+            updateData.priceINR = Math.round(p * 83.5);
+          }
+        }
+      }
+    }
+
+    if (updateData.priceUSD !== undefined && updateData.priceUSD !== '') updateData.priceUSD = Number(updateData.priceUSD);
+    if (updateData.priceINR !== undefined && updateData.priceINR !== '') updateData.priceINR = Number(updateData.priceINR);
+
+    if (updateData.originalPrice !== undefined && (updateData.originalPriceUSD === undefined || updateData.originalPriceUSD === '')) {
+      updateData.originalPriceUSD = Number(updateData.originalPrice);
+    }
+    if (updateData.originalPriceUSD !== undefined) {
+      updateData.originalPriceUSD = updateData.originalPriceUSD ? Number(updateData.originalPriceUSD) : null;
+    }
     if (updateData.stock !== undefined) updateData.stock = Number(updateData.stock);
     if (updateData.rating !== undefined) updateData.rating = Number(updateData.rating);
     if (updateData.reviews !== undefined) updateData.reviews = Number(updateData.reviews);
 
-    // Format and sanitize countryPricing
+    // 2. Format and sanitize countryPricing
+    let currentCountryPricing = { ...(existing.countryPricing || {}) };
     if (updateData.countryPricing !== undefined) {
       let parsed = updateData.countryPricing;
       if (typeof parsed === 'string') {
         try { parsed = JSON.parse(parsed); } catch { parsed = {}; }
       }
       if (typeof parsed === 'object' && parsed !== null) {
-        const clean = {};
         Object.keys(parsed).forEach(k => {
           const num = Number(parsed[k]);
           if (!isNaN(num) && num >= 0) {
-            clean[k.toUpperCase().trim()] = num;
+            currentCountryPricing[k.toUpperCase().trim()] = num;
           }
         });
-        updateData.countryPricing = clean;
-        if (clean['INR'] !== undefined) {
-          updateData.priceINR = clean['INR'];
-        }
       }
     }
+
+    // Always keep countryPricing in sync with direct price updates
+    if (updateData.priceINR !== undefined && !isNaN(Number(updateData.priceINR))) {
+      currentCountryPricing['INR'] = Number(updateData.priceINR);
+      currentCountryPricing['IN'] = Number(updateData.priceINR);
+    }
+    if (updateData.priceUSD !== undefined && !isNaN(Number(updateData.priceUSD))) {
+      currentCountryPricing['USD'] = Number(updateData.priceUSD);
+      currentCountryPricing['US'] = Number(updateData.priceUSD);
+    }
+    updateData.countryPricing = currentCountryPricing;
 
     // Format booleans
     ['isFeatured', 'isBestSeller', 'isPopular', 'isSpecialOffer', 'isAudiobook'].forEach(key => {

@@ -12,9 +12,10 @@ router.get('/:id', bookController.getBookById);
 router.get('/:id/access', authenticate, bookController.getBookAccess);
 router.get('/:id/signed-url', authenticate, bookController.getBookAccess);
 
-// Admin-only management routes
+// Admin-only management routes (supports both PUT and PATCH)
 router.post('/', authenticate, requireAdmin, bookFilesUpload, bookController.createBook);
 router.put('/:id', authenticate, requireAdmin, bookFilesUpload, bookController.updateBook);
+router.patch('/:id', authenticate, requireAdmin, bookFilesUpload, bookController.updateBook);
 router.delete('/:id', authenticate, requireAdmin, bookController.deleteBook);
 
 module.exports = router;
