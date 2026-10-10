@@ -1,4 +1,5 @@
 const fs = require('fs');
+const mongoose = require('mongoose');
 const db = require('../db/jsonDb');
 const supabaseService = require('../services/supabaseService');
 
@@ -30,8 +31,14 @@ const enrichBookWithPricing = (book, req) => {
     }
   }
 
+  const baseUSD = book.priceUSD !== undefined ? Number(book.priceUSD) : (book.price !== undefined ? Number(book.price) : 0);
+  const baseINR = book.priceINR !== undefined ? Number(book.priceINR) : (countryPricing['INR'] !== undefined ? Number(countryPricing['INR']) : Math.round(baseUSD * 83.5));
+
   return {
     ...book,
+    price: baseUSD,
+    priceUSD: baseUSD,
+    priceINR: baseINR,
     countryPricing,
     ...(targetPrice !== null ? {
       currentPrice: targetPrice,
@@ -146,7 +153,29 @@ const getBooks = async (req, res, next) => {
 const getBookById = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const book = db.findById('books', id);
+    let book = db.findById('books', id);
+
+    // Fallback: Check MongoDB Atlas directly if not found in local JSON
+    if (!book && mongoose.connection && mongoose.connection.readyState === 1) {
+      try {
+        const coll = mongoose.connection.db.collection('books');
+        const numId = Number(id);
+        const strId = String(id);
+        const conditions = [];
+        if (!isNaN(numId)) conditions.push({ id: numId });
+        conditions.push({ id: strId });
+        if (mongoose.Types.ObjectId.isValid(strId) && strId.length === 24) {
+          conditions.push({ _id: new mongoose.Types.ObjectId(strId) });
+        }
+        const mDoc = await coll.findOne(conditions.length === 1 ? conditions[0] : { $or: conditions });
+        if (mDoc) {
+          const { _id, ...rest } = mDoc;
+          book = db.insert('books', { ...rest, id: rest.id !== undefined ? rest.id : _id.toString() });
+        }
+      } catch (e) {
+        console.warn('MongoDB fallback getBookById error:', e.message);
+      }
+    }
 
     if (!book) {
       return res.status(404).json({
@@ -282,9 +311,9 @@ const createBook = async (req, res, next) => {
       const pdfUpload = (req.files.pdfFile && req.files.pdfFile[0]) || (req.files.pdf && req.files.pdf[0]);
       if (pdfUpload) {
         const supPdf = await supabaseService.uploadPdf(
-          pdfUpload.path,
-          pdfUpload.originalname,
-          pdfUpload.mimetype
+            pdfUpload.path,
+            pdfUpload.originalname,
+            pdfUpload.mimetype
         );
 
         // Clean up temp file from server disk
@@ -327,6 +356,7 @@ const createBook = async (req, res, next) => {
     const newBook = db.insert('books', {
       title: title.trim(),
       author: author.trim(),
+      price: finalPriceUSD,
       priceUSD: finalPriceUSD,
       originalPriceUSD: finalOrigPrice,
       priceINR: finalPriceINR,
@@ -355,7 +385,7 @@ const createBook = async (req, res, next) => {
     res.status(201).json({
       success: true,
       message: 'Book created successfully.',
-      data: newBook
+      data: enrichBookWithPricing(newBook, req)
     });
   } catch (err) {
     next(err);
@@ -365,7 +395,29 @@ const createBook = async (req, res, next) => {
 const updateBook = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const existing = db.findById('books', id);
+    let existing = db.findById('books', id);
+
+    // Fallback: Check MongoDB Atlas directly if not found in local JSON
+    if (!existing && mongoose.connection && mongoose.connection.readyState === 1) {
+      try {
+        const coll = mongoose.connection.db.collection('books');
+        const numId = Number(id);
+        const strId = String(id);
+        const conditions = [];
+        if (!isNaN(numId)) conditions.push({ id: numId });
+        conditions.push({ id: strId });
+        if (mongoose.Types.ObjectId.isValid(strId) && strId.length === 24) {
+          conditions.push({ _id: new mongoose.Types.ObjectId(strId) });
+        }
+        const mDoc = await coll.findOne(conditions.length === 1 ? conditions[0] : { $or: conditions });
+        if (mDoc) {
+          const { _id, ...rest } = mDoc;
+          existing = db.insert('books', { ...rest, id: rest.id !== undefined ? rest.id : _id.toString() });
+        }
+      } catch (e) {
+        console.warn('MongoDB fallback updateBook error:', e.message);
+      }
+    }
 
     if (!existing) {
       return res.status(404).json({
@@ -435,6 +487,49 @@ const updateBook = async (req, res, next) => {
     if (updateData.priceUSD !== undefined && !isNaN(Number(updateData.priceUSD))) {
       currentCountryPricing['USD'] = Number(updateData.priceUSD);
       currentCountryPricing['US'] = Number(updateData.priceUSD);
+    }
+
+    // If countryPricing was sent alone (e.g. from Country Pricing page), propagate back to base prices
+    if (updateData.countryPricing !== undefined) {
+      if (updateData.priceUSD === undefined) {
+        if (currentCountryPricing['USD'] !== undefined && !isNaN(Number(currentCountryPricing['USD']))) {
+          updateData.priceUSD = Number(currentCountryPricing['USD']);
+        } else if (currentCountryPricing['US'] !== undefined && !isNaN(Number(currentCountryPricing['US']))) {
+          updateData.priceUSD = Number(currentCountryPricing['US']);
+        }
+      }
+      if (updateData.priceINR === undefined) {
+        if (currentCountryPricing['INR'] !== undefined && !isNaN(Number(currentCountryPricing['INR']))) {
+          updateData.priceINR = Number(currentCountryPricing['INR']);
+        } else if (currentCountryPricing['IN'] !== undefined && !isNaN(Number(currentCountryPricing['IN']))) {
+          updateData.priceINR = Number(currentCountryPricing['IN']);
+        }
+      }
+    }
+
+    // If one base price is set and the other is still missing, calculate the other
+    if (updateData.priceUSD !== undefined && updateData.priceINR === undefined) {
+      updateData.priceINR = currentCountryPricing['INR'] !== undefined ? Number(currentCountryPricing['INR']) : Math.round(updateData.priceUSD * 83.5);
+      currentCountryPricing['INR'] = updateData.priceINR;
+      currentCountryPricing['IN'] = updateData.priceINR;
+    } else if (updateData.priceINR !== undefined && updateData.priceUSD === undefined) {
+      updateData.priceUSD = currentCountryPricing['USD'] !== undefined ? Number(currentCountryPricing['USD']) : Number((updateData.priceINR / 83.5).toFixed(2));
+      currentCountryPricing['USD'] = updateData.priceUSD;
+      currentCountryPricing['US'] = updateData.priceUSD;
+    }
+
+    // Final synchronization to guarantee ISO & currency pairs match
+    if (updateData.priceUSD !== undefined && !isNaN(Number(updateData.priceUSD))) {
+      currentCountryPricing['USD'] = Number(updateData.priceUSD);
+      currentCountryPricing['US'] = Number(updateData.priceUSD);
+    }
+    if (updateData.priceINR !== undefined && !isNaN(Number(updateData.priceINR))) {
+      currentCountryPricing['INR'] = Number(updateData.priceINR);
+      currentCountryPricing['IN'] = Number(updateData.priceINR);
+    }
+
+    if (updateData.priceUSD !== undefined) {
+      updateData.price = updateData.priceUSD;
     }
     updateData.countryPricing = currentCountryPricing;
 
@@ -510,7 +605,7 @@ const updateBook = async (req, res, next) => {
     res.status(200).json({
       success: true,
       message: 'Book updated successfully.',
-      data: updated
+      data: enrichBookWithPricing(updated, req)
     });
   } catch (err) {
     next(err);
@@ -520,7 +615,22 @@ const updateBook = async (req, res, next) => {
 const deleteBook = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const existing = db.findById('books', id);
+    let existing = db.findById('books', id);
+
+    if (!existing && mongoose.connection && mongoose.connection.readyState === 1) {
+      try {
+        const coll = mongoose.connection.db.collection('books');
+        const numId = Number(id);
+        const strId = String(id);
+        const conditions = [];
+        if (!isNaN(numId)) conditions.push({ id: numId });
+        conditions.push({ id: strId });
+        if (mongoose.Types.ObjectId.isValid(strId) && strId.length === 24) {
+          conditions.push({ _id: new mongoose.Types.ObjectId(strId) });
+        }
+        existing = await coll.findOne(conditions.length === 1 ? conditions[0] : { $or: conditions });
+      } catch {}
+    }
 
     if (!existing) {
       return res.status(404).json({

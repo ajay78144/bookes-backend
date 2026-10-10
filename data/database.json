@@ -31,8 +31,9 @@
       "role": "admin",
       "library": [],
       "createdAt": "2026-09-30T07:20:30.394Z",
-      "password": "$2b$10$5UqLMYAXaQ2iNhbUusQXkOqHRaogMPqYShvF27PRbYi3yonks7DOK",
-      "updatedAt": "2026-10-04T11:03:24.843Z"
+      "password": "$2a$10$2/1H0YnWBb52k/n6YueXoeY3yg0y00lYUxLHJWnpG5S1/xhBbT8Bm",
+      "updatedAt": "2026-10-08T11:37:33.191Z",
+      "_id": "6ac64630ee10f60225ea9dc7"
     },
     {
       "id": 2,
@@ -45,7 +46,8 @@
       ],
       "createdAt": "2026-09-30T07:20:30.401Z",
       "password": "$2a$10$yOCrBE.wRuBTcgRPiPmiquDVwynGnGAutrTwq6gWyCZou4EKfovaq",
-      "updatedAt": "2026-10-10T11:45:20.217Z"
+      "updatedAt": "2026-10-10T11:45:20.217Z",
+      "_id": "6aca7377e3b22c12389f69c1"
     },
     {
       "id": 3,
@@ -56,7 +58,8 @@
       "library": [
         2
       ],
-      "createdAt": "2026-09-30T07:23:22.798Z"
+      "createdAt": "2026-09-30T07:23:22.798Z",
+      "_id": "6aca7378e3b22c12389f69c2"
     },
     {
       "id": 4,
@@ -65,7 +68,8 @@
       "passwordHash": "fa79936cb901747b07abc10b830dc01a76b3a3b4b418babd21531bfae882f192",
       "role": "customer",
       "library": [],
-      "createdAt": "2026-09-30T07:23:22.909Z"
+      "createdAt": "2026-09-30T07:23:22.909Z",
+      "_id": "6aca7378e3b22c12389f69c3"
     },
     {
       "id": 5,
@@ -77,7 +81,8 @@
       "currency": "INR",
       "phone": "+91 9876543210",
       "library": [],
-      "createdAt": "2026-09-30T10:00:22.991Z"
+      "createdAt": "2026-09-30T10:00:22.991Z",
+      "_id": "6aca7378e3b22c12389f69c4"
     },
     {
       "id": 6,
@@ -89,7 +94,8 @@
       "currency": "GBP",
       "phone": "+44 7911 123456",
       "library": [],
-      "createdAt": "2026-09-30T10:00:23.049Z"
+      "createdAt": "2026-09-30T10:00:23.049Z",
+      "_id": "6aca7378e3b22c12389f69c5"
     },
     {
       "id": 7,
@@ -101,7 +107,8 @@
       "currency": "AED",
       "phone": "+971 50 123 4567",
       "library": [],
-      "createdAt": "2026-09-30T10:00:23.069Z"
+      "createdAt": "2026-09-30T10:00:23.069Z",
+      "_id": "6aca7378e3b22c12389f69c6"
     },
     {
       "id": 8,
@@ -113,7 +120,8 @@
       "currency": "INR",
       "phone": "+91 9876543210",
       "library": [],
-      "createdAt": "2026-09-30T10:48:04.472Z"
+      "createdAt": "2026-09-30T10:48:04.472Z",
+      "_id": "6aca7378e3b22c12389f69c7"
     }
   ],
   "books": [
@@ -121,7 +129,7 @@
       "id": 1,
       "title": "Simple Way of Peaceful Life",
       "author": "Armor Ramsey",
-      "priceUSD": 40,
+      "priceUSD": 5.98,
       "originalPriceUSD": 50,
       "category": "Self-Help",
       "rating": 4.8,
@@ -154,19 +162,21 @@
       "description": "A transformative guide to living peacefully in a chaotic world. Discover mindfulness techniques and simple daily practices.",
       "stock": 150,
       "createdAt": "2026-09-30T07:20:30.401Z",
-      "updatedAt": "2026-09-30T07:20:30.401Z",
+      "updatedAt": "2026-10-10T15:14:27.051Z",
       "countryPricing": {
         "INR": 499,
         "IN": 499,
-        "USD": 40,
-        "US": 40,
+        "USD": 5.98,
+        "US": 5.98,
         "AUD": 55,
         "AU": 55,
         "GBP": 28,
         "GB": 28,
         "EUR": 35
       },
-      "priceINR": 499
+      "priceINR": 499,
+      "price": 499,
+      "_id": "6aca7378e3b22c12389f69c8"
     },
     {
       "id": 2,
@@ -212,7 +222,8 @@
         "GB": 19,
         "EUR": 23
       },
-      "priceINR": 299
+      "priceINR": 299,
+      "_id": "6aca7378e3b22c12389f69c9"
     },
     {
       "id": 3,
@@ -253,7 +264,8 @@
         "GB": 32,
         "EUR": 39
       },
-      "priceINR": 599
+      "priceINR": 599,
+      "_id": "6aca7378e3b22c12389f69ca"
     },
     {
       "id": 4,
@@ -294,7 +306,8 @@
         "GB": 20,
         "EUR": 25
       },
-      "priceINR": 349
+      "priceINR": 349,
+      "_id": "6aca7378e3b22c12389f69cb"
     },
     {
       "id": 5,
@@ -335,7 +348,8 @@
         "GB": 28,
         "EUR": 35
       },
-      "priceINR": 499
+      "priceINR": 499,
+      "_id": "6aca7378e3b22c12389f69cc"
     },
     {
       "id": 6,
@@ -376,7 +390,125 @@
         "GB": 38,
         "EUR": 45
       },
-      "priceINR": 699
+      "priceINR": 699,
+      "_id": "6aca7378e3b22c12389f69cd"
+    },
+    {
+      "title": "app",
+      "author": "app",
+      "priceUSD": 3.5,
+      "originalPriceUSD": null,
+      "category": "technology",
+      "rating": 4.8,
+      "reviews": 120,
+      "image": "images/default.png",
+      "pdfFile": "books/book_1791639046718_4957115ed5ec_Great_Travel_at_Desert_BookSaw.pdf",
+      "samplePages": [],
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isPopular": false,
+      "isSpecialOffer": false,
+      "isAudiobook": false,
+      "audioUrl": "",
+      "description": "",
+      "stock": 999,
+      "createdAt": "2026-10-10T13:30:49.219Z",
+      "updatedAt": "2026-10-10T13:30:49.219Z",
+      "id": 8,
+      "_id": "6aca3e093b811e220c7d2da5",
+      "priceINR": 292,
+      "price": 3.5,
+      "countryPricing": {
+        "INR": 292,
+        "IN": 292,
+        "USD": 3.5,
+        "US": 3.5
+      }
+    },
+    {
+      "title": "book",
+      "author": "book",
+      "priceUSD": 1.5,
+      "originalPriceUSD": null,
+      "priceINR": 49,
+      "countryPricing": {
+        "INR": 49,
+        "IN": 23,
+        "USD": 1.5
+      },
+      "category": "romantic",
+      "rating": 4.8,
+      "reviews": 120,
+      "image": "images/default.png",
+      "pdfFile": "books/book_1791644831480_bcc735cae7b7_Peaceful_Enlightenment_BookSaw.pdf",
+      "samplePages": [],
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isPopular": false,
+      "isSpecialOffer": false,
+      "isAudiobook": false,
+      "audioUrl": "",
+      "description": "",
+      "stock": 999,
+      "createdAt": "2026-10-10T15:01:01.895Z",
+      "updatedAt": "2026-10-10T15:01:01.895Z",
+      "id": 7,
+      "fileSize": "9.4 MB",
+      "format": "PDF E-Book (Digital Edition)",
+      "genre": "General",
+      "instantDelivery": true,
+      "pages": 260,
+      "pdfUrl": "books/book_1791644831480_bcc735cae7b7_Peaceful_Enlightenment_BookSaw.pdf",
+      "sampleContent": "",
+      "_id": "6aca532de7990884d8e6db44",
+      "price": 1.5
+    },
+    {
+      "title": "biook",
+      "author": "jpp",
+      "priceUSD": 0.05,
+      "originalPriceUSD": null,
+      "priceINR": 99,
+      "countryPricing": {
+        "INR": 99,
+        "IN": 99,
+        "USD": 0.05,
+        "US": 0.05,
+        "AUD": 44.98,
+        "AU": 44.98,
+        "GBP": 23.99,
+        "GB": 23.99,
+        "CAD": 40.49,
+        "CA": 40.49,
+        "EUR": 27.59,
+        "EU": 27.59
+      },
+      "category": "nature",
+      "rating": 4.8,
+      "reviews": 120,
+      "image": "images/default.png",
+      "pdfFile": "books/book_1791646011800_a9e8072433b3_Great_Travel_at_Desert_BookSaw.pdf",
+      "samplePages": [],
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isPopular": false,
+      "isSpecialOffer": false,
+      "isAudiobook": false,
+      "audioUrl": "",
+      "description": "",
+      "stock": 999,
+      "createdAt": "2026-10-10T15:27:06.172Z",
+      "updatedAt": "2026-10-10T15:27:06.172Z",
+      "id": 9,
+      "fileSize": "9.4 MB",
+      "format": "PDF E-Book (Digital Edition)",
+      "genre": "General",
+      "instantDelivery": true,
+      "pages": 260,
+      "pdfUrl": "books/book_1791646011800_a9e8072433b3_Great_Travel_at_Desert_BookSaw.pdf",
+      "sampleContent": "",
+      "_id": "6aca594ae6b4b041bfe9b822",
+      "price": 0.05
     }
   ],
   "orders": [
@@ -399,7 +531,8 @@
       "paymentMethod": "Credit Card",
       "paymentStatus": "paid",
       "status": "completed",
-      "createdAt": "2026-09-28T07:20:30.402Z"
+      "createdAt": "2026-09-28T07:20:30.402Z",
+      "_id": "6ac7ce31cd73228eaa2ba8a6"
     },
     {
       "id": 1002,
@@ -419,7 +552,8 @@
       "paymentMethod": "UPI / Card",
       "paymentStatus": "paid",
       "status": "completed",
-      "createdAt": "2026-09-30T07:23:22.851Z"
+      "createdAt": "2026-09-30T07:23:22.851Z",
+      "_id": "6ac7ce31cd73228eaa2ba8a7"
     },
     {
       "id": 1003,
@@ -440,7 +574,8 @@
       "paymentStatus": "paid",
       "status": "completed",
       "transactionId": "TXN_BS_MUP4842F_061E72C3",
-      "createdAt": "2026-10-01T05:50:31.577Z"
+      "createdAt": "2026-10-01T05:50:31.577Z",
+      "_id": "6ac7ce31cd73228eaa2ba8a8"
     },
     {
       "id": 1004,
@@ -461,7 +596,8 @@
       "paymentStatus": "unpaid",
       "status": "pending_payment",
       "transactionId": "TXN_MUP48439CCIC",
-      "createdAt": "2026-10-01T05:50:31.605Z"
+      "createdAt": "2026-10-01T05:50:31.605Z",
+      "_id": "6ac7ce31cd73228eaa2ba8a9"
     },
     {
       "orderNumber": "BS-00005",
@@ -492,7 +628,8 @@
       "paymentStatus": "paid",
       "status": "processing",
       "createdAt": "2026-10-04T11:03:25.096Z",
-      "id": 1005
+      "id": 1005,
+      "_id": "6ac7ce31cd73228eaa2ba8aa"
     },
     {
       "orderNumber": "BS-00006",
@@ -523,7 +660,8 @@
       "paymentStatus": "paid",
       "status": "processing",
       "createdAt": "2026-10-04T11:05:08.076Z",
-      "id": 1006
+      "id": 1006,
+      "_id": "6ac7ce31cd73228eaa2ba8ab"
     },
     {
       "orderNumber": "BS-00007",
@@ -568,7 +706,8 @@
         "amount": 499,
         "reason": "Customer requested refund via test",
         "refundedAt": "2026-10-06T16:28:40.554Z"
-      }
+      },
+      "_id": "6ac7ce31cd73228eaa2ba8ac"
     },
     {
       "orderNumber": "BS-00008",
@@ -595,7 +734,8 @@
       "receipt": "order_rcpt_1791305950832",
       "userId": null,
       "createdAt": "2026-10-06T16:59:11.033Z",
-      "id": 1008
+      "id": 1008,
+      "_id": "6ac7ce31cd73228eaa2ba8ad"
     },
     {
       "orderNumber": "BS-00009",
@@ -622,7 +762,8 @@
       "receipt": "order_rcpt_1791306067498",
       "userId": null,
       "createdAt": "2026-10-06T17:01:07.692Z",
-      "id": 1009
+      "id": 1009,
+      "_id": "6ac7ce31cd73228eaa2ba8ae"
     },
     {
       "orderNumber": "BS-00010",
@@ -665,7 +806,8 @@
       "receipt": "order_rcpt_1791306327872",
       "userId": null,
       "createdAt": "2026-10-06T17:05:28.118Z",
-      "id": 1010
+      "id": 1010,
+      "_id": "6ac7ce31cd73228eaa2ba8af"
     },
     {
       "orderNumber": "BS-00011",
@@ -692,7 +834,8 @@
       "receipt": "order_rcpt_1791306474481",
       "userId": null,
       "createdAt": "2026-10-06T17:07:54.660Z",
-      "id": 1011
+      "id": 1011,
+      "_id": "6ac7ce31cd73228eaa2ba8b0"
     },
     {
       "orderNumber": "BS-00012",
@@ -719,7 +862,8 @@
       "receipt": "order_rcpt_1791306491280",
       "userId": null,
       "createdAt": "2026-10-06T17:08:11.445Z",
-      "id": 1012
+      "id": 1012,
+      "_id": "6ac7ce31cd73228eaa2ba8b1"
     },
     {
       "orderNumber": "BS-00013",
@@ -746,7 +890,8 @@
       "receipt": "order_rcpt_1791306533713",
       "userId": null,
       "createdAt": "2026-10-06T17:08:53.894Z",
-      "id": 1013
+      "id": 1013,
+      "_id": "6ac7ce31cd73228eaa2ba8b2"
     },
     {
       "orderNumber": "BS-00014",
@@ -789,7 +934,8 @@
       "receipt": "order_rcpt_1791306648434",
       "userId": null,
       "createdAt": "2026-10-06T17:10:48.630Z",
-      "id": 1014
+      "id": 1014,
+      "_id": "6ac7ce31cd73228eaa2ba8b3"
     },
     {
       "orderNumber": "BS-00015",
@@ -832,7 +978,8 @@
       "receipt": "order_rcpt_1791306742546",
       "userId": null,
       "createdAt": "2026-10-06T17:12:22.775Z",
-      "id": 1015
+      "id": 1015,
+      "_id": "6ac7ce31cd73228eaa2ba8b4"
     },
     {
       "orderNumber": "BS-00016",
@@ -875,7 +1022,8 @@
       "receipt": "order_rcpt_1791308801604",
       "userId": null,
       "createdAt": "2026-10-06T17:46:41.827Z",
-      "id": 1016
+      "id": 1016,
+      "_id": "6ac7ce31cd73228eaa2ba8b5"
     },
     {
       "orderNumber": "BS-00017",
@@ -918,7 +1066,8 @@
       "receipt": "order_rcpt_1791309376834",
       "userId": null,
       "createdAt": "2026-10-06T17:56:17.047Z",
-      "id": 1017
+      "id": 1017,
+      "_id": "6ac7ce31cd73228eaa2ba8b6"
     },
     {
       "orderNumber": "BS-00018",
@@ -945,7 +1094,8 @@
       "receipt": "order_rcpt_1791309389689",
       "userId": null,
       "createdAt": "2026-10-06T17:56:29.892Z",
-      "id": 1018
+      "id": 1018,
+      "_id": "6ac7ce31cd73228eaa2ba8b7"
     },
     {
       "orderNumber": "BS-00019",
@@ -984,7 +1134,8 @@
         }
       ],
       "completedAt": "2026-10-07T04:27:58.572Z",
-      "updatedAt": "2026-10-07T04:27:58.583Z"
+      "updatedAt": "2026-10-07T04:27:58.583Z",
+      "_id": "6ac7ce31cd73228eaa2ba8b8"
     },
     {
       "orderNumber": "BS-00020",
@@ -1027,7 +1178,8 @@
       "receipt": "order_rcpt_1791348674026",
       "userId": null,
       "createdAt": "2026-10-07T04:51:14.244Z",
-      "id": 1020
+      "id": 1020,
+      "_id": "6ac7ce31cd73228eaa2ba8b9"
     },
     {
       "orderNumber": "BS-00021",
@@ -1070,7 +1222,8 @@
       "receipt": "order_rcpt_1791348681902",
       "userId": null,
       "createdAt": "2026-10-07T04:51:22.080Z",
-      "id": 1021
+      "id": 1021,
+      "_id": "6ac7ce31cd73228eaa2ba8ba"
     },
     {
       "orderNumber": "BS-00022",
@@ -1113,7 +1266,8 @@
       "receipt": "order_rcpt_1791348703784",
       "userId": null,
       "createdAt": "2026-10-07T04:51:43.993Z",
-      "id": 1022
+      "id": 1022,
+      "_id": "6ac7ce31cd73228eaa2ba8bb"
     },
     {
       "orderNumber": "BS-00023",
@@ -1156,7 +1310,8 @@
       "receipt": "order_rcpt_1791349364198",
       "userId": null,
       "createdAt": "2026-10-07T05:02:44.390Z",
-      "id": 1023
+      "id": 1023,
+      "_id": "6ac7ce31cd73228eaa2ba8bc"
     },
     {
       "orderNumber": "BS-00024",
@@ -1199,7 +1354,8 @@
       "receipt": "order_rcpt_1791349370467",
       "userId": null,
       "createdAt": "2026-10-07T05:02:50.664Z",
-      "id": 1024
+      "id": 1024,
+      "_id": "6ac7ce31cd73228eaa2ba8bd"
     },
     {
       "orderNumber": "BS-00025",
@@ -1242,7 +1398,8 @@
       "receipt": "order_rcpt_1791350321191",
       "userId": null,
       "createdAt": "2026-10-07T05:18:41.450Z",
-      "id": 1025
+      "id": 1025,
+      "_id": "6ac7ce31cd73228eaa2ba8be"
     },
     {
       "orderNumber": "BS-00026",
@@ -1285,7 +1442,8 @@
       "receipt": "order_rcpt_1791352634746",
       "userId": null,
       "createdAt": "2026-10-07T05:57:14.963Z",
-      "id": 1026
+      "id": 1026,
+      "_id": "6ac7ce31cd73228eaa2ba8bf"
     },
     {
       "orderNumber": "BS-00027",
@@ -1330,7 +1488,8 @@
         "amount": 499,
         "reason": "Customer requested refund via test",
         "refundedAt": "2026-10-07T11:57:53.025Z"
-      }
+      },
+      "_id": "6ac7ce31cd73228eaa2ba8c0"
     },
     {
       "orderNumber": "BS-00028",
@@ -1357,7 +1516,8 @@
       "receipt": "order_rcpt_1791379244625",
       "userId": null,
       "createdAt": "2026-10-07T13:20:45.037Z",
-      "id": 1028
+      "id": 1028,
+      "_id": "6ac7ce31cd73228eaa2ba8c1"
     },
     {
       "orderNumber": "BS-00029",
@@ -1402,7 +1562,8 @@
         "amount": 499,
         "reason": "Customer requested refund via test",
         "refundedAt": "2026-10-10T11:47:52.314Z"
-      }
+      },
+      "_id": "6aca7378e3b22c12389f69ce"
     }
   ],
   "blogs": [
@@ -1422,7 +1583,8 @@
       "isPublished": true,
       "views": 1420,
       "createdAt": "2026-09-25T11:00:00.000Z",
-      "updatedAt": "2026-09-25T11:00:00.000Z"
+      "updatedAt": "2026-09-25T11:00:00.000Z",
+      "_id": "6aca31d95371dd4c27e4a1b2"
     },
     {
       "id": 2,
@@ -1440,7 +1602,8 @@
       "isPublished": true,
       "views": 980,
       "createdAt": "2026-09-28T09:30:00.000Z",
-      "updatedAt": "2026-09-28T09:30:00.000Z"
+      "updatedAt": "2026-09-28T09:30:00.000Z",
+      "_id": "6aca31d95371dd4c27e4a1b3"
     },
     {
       "id": 3,
@@ -1458,7 +1621,8 @@
       "isPublished": true,
       "views": 2150,
       "createdAt": "2026-10-01T15:00:00.000Z",
-      "updatedAt": "2026-10-01T15:00:00.000Z"
+      "updatedAt": "2026-10-01T15:00:00.000Z",
+      "_id": "6aca31d95371dd4c27e4a1b4"
     }
   ],
   "currencies": {
@@ -1578,7 +1742,8 @@
       "discountPercent": 15,
       "minOrderUSD": 30,
       "expiryDate": "2027-12-31",
-      "active": true
+      "active": true,
+      "_id": "6ac7ce31cd73228eaa2ba8c2"
     },
     {
       "id": 2,
@@ -1586,7 +1751,8 @@
       "discountPercent": 10,
       "minOrderUSD": 0,
       "expiryDate": "2027-12-31",
-      "active": true
+      "active": true,
+      "_id": "6ac7ce31cd73228eaa2ba8c3"
     },
     {
       "id": 3,
@@ -1594,7 +1760,8 @@
       "discountPercent": 25,
       "minOrderUSD": 50,
       "expiryDate": "2027-08-31",
-      "active": true
+      "active": true,
+      "_id": "6ac7ce31cd73228eaa2ba8c4"
     },
     {
       "id": 4,
@@ -1602,7 +1769,8 @@
       "discountPercent": 10,
       "minOrderUSD": 0,
       "expiryDate": "2027-12-31",
-      "active": true
+      "active": true,
+      "_id": "6ac7ce31cd73228eaa2ba8c5"
     }
   ],
   "currencyLastSync": "2026-10-01T17:39:07.342Z",
@@ -1615,7 +1783,8 @@
       "multiplier": 0.85,
       "fixedDiscountPercent": 15,
       "active": true,
-      "createdAt": "2026-10-01T12:00:00.000Z"
+      "createdAt": "2026-10-01T12:00:00.000Z",
+      "_id": "6ac7ce32cd73228eaa2ba8c6"
     },
     {
       "id": 2,
@@ -1625,7 +1794,8 @@
       "multiplier": 1,
       "fixedDiscountPercent": 0,
       "active": true,
-      "createdAt": "2026-10-01T12:00:00.000Z"
+      "createdAt": "2026-10-01T12:00:00.000Z",
+      "_id": "6ac7ce32cd73228eaa2ba8c7"
     },
     {
       "id": 3,
@@ -1635,7 +1805,8 @@
       "multiplier": 1.1,
       "fixedDiscountPercent": 0,
       "active": true,
-      "createdAt": "2026-10-01T12:00:00.000Z"
+      "createdAt": "2026-10-01T12:00:00.000Z",
+      "_id": "6ac7ce32cd73228eaa2ba8c8"
     },
     {
       "id": 4,
@@ -1645,7 +1816,8 @@
       "multiplier": 1,
       "fixedDiscountPercent": 5,
       "active": true,
-      "createdAt": "2026-10-01T12:00:00.000Z"
+      "createdAt": "2026-10-01T12:00:00.000Z",
+      "_id": "6ac7ce32cd73228eaa2ba8c9"
     }
   ]
 }

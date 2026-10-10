@@ -25,10 +25,8 @@ async function connectDB() {
     const host = conn.connection.host || 'cluster0';
     console.log(`🍃 Connected to MongoDB Atlas: ${host}/${dbName}`);
 
-    // Ensure collections and initial seed data are populated in Atlas
-    syncDataToMongo().catch(err => {
-      console.warn('MongoDB initial sync warning:', err.message);
-    });
+    // Ensure collections and initial seed data are populated in Atlas, and cloud state is hydrated
+    await syncDataToMongo();
 
     return true;
   } catch (err) {

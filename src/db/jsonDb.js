@@ -66,22 +66,34 @@ class JsonDatabase {
     return name;
   }
 
+  buildMongoFilter(itemOrId) {
+    const strId = String(itemOrId);
+    const numId = Number(itemOrId);
+    const conditions = [];
+    if (!isNaN(numId)) conditions.push({ id: numId });
+    conditions.push({ id: strId });
+    if (mongoose.Types.ObjectId.isValid(strId) && strId.length === 24) {
+      try {
+        conditions.push({ _id: new mongoose.Types.ObjectId(strId) });
+      } catch {}
+    }
+    return conditions.length === 1 ? conditions[0] : { $or: conditions };
+  }
+
   async persistToMongo(action, colName, itemOrId, updateData = null) {
     if (!mongoose.connection || mongoose.connection.readyState !== 1) return;
     try {
       const coll = mongoose.connection.db.collection(this.getMongoCollName(colName));
       if (action === 'insert') {
         const { _id, ...doc } = itemOrId;
-        await coll.insertOne(doc);
+        const targetId = doc.id !== undefined ? doc.id : (doc._id || _id);
+        const filter = this.buildMongoFilter(targetId);
+        await coll.updateOne(filter, { $set: doc }, { upsert: true });
       } else if (action === 'update') {
-        const numId = Number(itemOrId);
-        const strId = String(itemOrId);
-        const filter = isNaN(numId) ? { id: strId } : { $or: [{ id: numId }, { id: strId }] };
-        await coll.updateOne(filter, { $set: updateData }, { upsert: false });
+        const filter = this.buildMongoFilter(itemOrId);
+        await coll.updateOne(filter, { $set: updateData }, { upsert: true });
       } else if (action === 'delete') {
-        const numId = Number(itemOrId);
-        const strId = String(itemOrId);
-        const filter = isNaN(numId) ? { id: strId } : { $or: [{ id: numId }, { id: strId }] };
+        const filter = this.buildMongoFilter(itemOrId);
         await coll.deleteOne(filter);
       } else if (action === 'updateSettings') {
         await mongoose.connection.db.collection('settings').updateOne({}, { $set: itemOrId }, { upsert: true });
@@ -121,7 +133,8 @@ class JsonDatabase {
 
   findById(name, id) {
     const items = this.getCollection(name);
-    return items.find(item => String(item.id) === String(id)) || null;
+    const strId = String(id);
+    return items.find(item => String(item.id) === strId || (item._id && String(item._id) === strId)) || null;
   }
 
   insert(name, item) {
@@ -152,13 +165,14 @@ class JsonDatabase {
     const db = this.read();
     if (!db[name]) return null;
 
-    const index = db[name].findIndex(item => String(item.id) === String(id));
+    const strId = String(id);
+    const index = db[name].findIndex(item => String(item.id) === strId || (item._id && String(item._id) === strId));
     if (index === -1) return null;
 
     db[name][index] = {
       ...db[name][index],
       ...updateData,
-      id: db[name][index].id, // protect ID from mutation
+      id: db[name][index].id !== undefined ? db[name][index].id : updateData.id,
       updatedAt: new Date().toISOString()
     };
 
@@ -174,8 +188,9 @@ class JsonDatabase {
     const db = this.read();
     if (!db[name]) return false;
 
+    const strId = String(id);
     const initialLength = db[name].length;
-    db[name] = db[name].filter(item => String(item.id) !== String(id));
+    db[name] = db[name].filter(item => String(item.id) !== strId && (!item._id || String(item._id) !== strId));
     
     if (db[name].length !== initialLength) {
       this.write(db);
