@@ -43,7 +43,9 @@
       "library": [
         1
       ],
-      "createdAt": "2026-09-30T07:20:30.401Z"
+      "createdAt": "2026-09-30T07:20:30.401Z",
+      "password": "$2a$10$yOCrBE.wRuBTcgRPiPmiquDVwynGnGAutrTwq6gWyCZou4EKfovaq",
+      "updatedAt": "2026-10-10T11:45:20.217Z"
     },
     {
       "id": 3,
@@ -114,7 +116,197 @@
       "createdAt": "2026-09-30T10:48:04.472Z"
     }
   ],
-  "books": [],
+  "books": [
+    {
+      "id": 1,
+      "title": "Simple Way of Peaceful Life",
+      "author": "Armor Ramsey",
+      "priceUSD": 40,
+      "originalPriceUSD": 50,
+      "category": "Self-Help",
+      "rating": 4.8,
+      "reviews": 128,
+      "image": "images/product-item1.jpg",
+      "pdfFile": "/uploads/pdfs/sample-peaceful-life.pdf",
+      "samplePages": [
+        {
+          "pageNumber": 1,
+          "chapterTitle": "Chapter 1: The Still Mind",
+          "content": "Peace is not the absence of trouble, but the presence of serenity in the midst of it. When we slow down our breath and align our priorities, everyday life becomes a source of boundless joy."
+        },
+        {
+          "pageNumber": 2,
+          "chapterTitle": "Chapter 2: The Art of Breathing",
+          "content": "Every conscious breath dissolves lingering anxieties and reconnects the nervous system to the present moment."
+        },
+        {
+          "pageNumber": 3,
+          "chapterTitle": "Chapter 3: Mindful Morning Rituals",
+          "content": "How you greet the sunrise determines how you process the obstacles of the afternoon."
+        }
+      ],
+      "isFeatured": true,
+      "isBestSeller": true,
+      "isPopular": true,
+      "isSpecialOffer": false,
+      "isAudiobook": false,
+      "audioUrl": "",
+      "description": "A transformative guide to living peacefully in a chaotic world. Discover mindfulness techniques and simple daily practices.",
+      "stock": 150,
+      "createdAt": "2026-09-30T07:20:30.401Z",
+      "updatedAt": "2026-09-30T07:20:30.401Z"
+    },
+    {
+      "id": 2,
+      "title": "Great Travel at Desert",
+      "author": "Sanchit Howdy",
+      "priceUSD": 26,
+      "originalPriceUSD": 35,
+      "category": "Fiction",
+      "rating": 4.5,
+      "reviews": 89,
+      "image": "images/product-item2.jpg",
+      "pdfFile": "/uploads/pdfs/sample-desert-travel.pdf",
+      "samplePages": [
+        {
+          "pageNumber": 1,
+          "chapterTitle": "Prologue: The Golden Horizon",
+          "content": "The desert does not reveal its secrets willingly. You must listen to the wind across the dunes and learn the ancient navigation of the stars."
+        },
+        {
+          "pageNumber": 2,
+          "chapterTitle": "Chapter 1: Preparing the Caravan",
+          "content": "Salt, water, dried dates, and compass readings. Crossing the sand sea requires respect for the sun."
+        }
+      ],
+      "isFeatured": true,
+      "isBestSeller": false,
+      "isPopular": true,
+      "isSpecialOffer": true,
+      "isAudiobook": false,
+      "audioUrl": "",
+      "description": "An epic journey through the golden sands of the Sahara desert. Experience the thrill of exploration and ancient wonders.",
+      "stock": 120,
+      "createdAt": "2026-09-30T07:20:30.401Z",
+      "updatedAt": "2026-09-30T07:20:30.401Z"
+    },
+    {
+      "id": 3,
+      "title": "The Lady Beauty Scarlett",
+      "author": "Arthur Doyle",
+      "priceUSD": 45,
+      "originalPriceUSD": 55,
+      "category": "Fiction",
+      "rating": 4.7,
+      "reviews": 234,
+      "image": "images/product-item3.jpg",
+      "pdfFile": "/uploads/pdfs/sample-scarlett.pdf",
+      "samplePages": [
+        {
+          "pageNumber": 1,
+          "chapterTitle": "Chapter 1: The Gaslit Ball",
+          "content": "Beneath the gaslit lanterns of cobblestone streets, their eyes met across the crowded ballroom. It was a glance that would forever reshape two destinies."
+        }
+      ],
+      "isFeatured": true,
+      "isBestSeller": true,
+      "isPopular": false,
+      "isSpecialOffer": false,
+      "isAudiobook": true,
+      "audioUrl": "https://example.com/audio/scarlett-sample.mp3",
+      "description": "A beautiful story set in Victorian England. A tale of passion, loss, and rediscovery under the London skies.",
+      "stock": 85,
+      "createdAt": "2026-09-30T07:20:30.401Z",
+      "updatedAt": "2026-09-30T07:20:30.401Z"
+    },
+    {
+      "id": 4,
+      "title": "Once Upon a Time",
+      "author": "Klein Marry",
+      "priceUSD": 28,
+      "originalPriceUSD": 38,
+      "category": "Sci-Fi",
+      "rating": 4.3,
+      "reviews": 156,
+      "image": "images/product-item4.jpg",
+      "pdfFile": "/uploads/pdfs/sample-once-upon.pdf",
+      "samplePages": [
+        {
+          "pageNumber": 1,
+          "chapterTitle": "Chapter 1: The Mirror in the Tower",
+          "content": "Legends say that mirrors in the high tower don’t reflect who you are today, but who you are destined to become once your courage is tested."
+        }
+      ],
+      "isFeatured": true,
+      "isBestSeller": false,
+      "isPopular": true,
+      "isSpecialOffer": true,
+      "isAudiobook": false,
+      "audioUrl": "",
+      "description": "A magical tale that transports you to a world where ancient legends come alive with modern wit and wonder.",
+      "stock": 200,
+      "createdAt": "2026-09-30T07:20:30.401Z",
+      "updatedAt": "2026-09-30T07:20:30.401Z"
+    },
+    {
+      "id": 5,
+      "title": "Portrait Photography & Design",
+      "author": "Adam Silber",
+      "priceUSD": 40,
+      "originalPriceUSD": 48,
+      "category": "Technology",
+      "rating": 4.6,
+      "reviews": 98,
+      "image": "images/tab-item1.jpg",
+      "pdfFile": "/uploads/pdfs/sample-photography.pdf",
+      "samplePages": [
+        {
+          "pageNumber": 1,
+          "chapterTitle": "Module 1: The Essence of the Face",
+          "content": "A photograph is not made with the camera; it is made with the eye, heart, and the ability to capture an authentic human emotion."
+        }
+      ],
+      "isFeatured": false,
+      "isBestSeller": true,
+      "isPopular": true,
+      "isSpecialOffer": false,
+      "isAudiobook": false,
+      "audioUrl": "",
+      "description": "Master the art of portrait photography with professional lighting techniques, aperture mastery, and real-world studio examples.",
+      "stock": 75,
+      "createdAt": "2026-09-30T07:20:30.401Z",
+      "updatedAt": "2026-09-30T07:20:30.401Z"
+    },
+    {
+      "id": 6,
+      "title": "Business Strategy & Scaling",
+      "author": "Evelyn Reed",
+      "priceUSD": 52,
+      "originalPriceUSD": 65,
+      "category": "Business",
+      "rating": 4.9,
+      "reviews": 312,
+      "image": "images/tab-item2.jpg",
+      "pdfFile": "/uploads/pdfs/sample-business.pdf",
+      "samplePages": [
+        {
+          "pageNumber": 1,
+          "chapterTitle": "Chapter 1: The Scalability Framework",
+          "content": "Sustainable growth is built on repeatable systems, exceptional unit economics, and building high-trust autonomous teams."
+        }
+      ],
+      "isFeatured": true,
+      "isBestSeller": true,
+      "isPopular": true,
+      "isSpecialOffer": false,
+      "isAudiobook": true,
+      "audioUrl": "https://example.com/audio/business-sample.mp3",
+      "description": "Comprehensive playbook for entrepreneurs and executives looking to scale their enterprise sustainably in the digital age.",
+      "stock": 180,
+      "createdAt": "2026-09-30T07:20:30.401Z",
+      "updatedAt": "2026-09-30T07:20:30.401Z"
+    }
+  ],
   "orders": [
     {
       "id": 1001,
@@ -1094,9 +1286,109 @@
       "userId": null,
       "createdAt": "2026-10-07T13:20:45.037Z",
       "id": 1028
+    },
+    {
+      "orderNumber": "BS-00029",
+      "customerName": "Aarav Sharma",
+      "customerEmail": "aarav@example.com",
+      "customerPhone": "+91 9876543210",
+      "items": [
+        {
+          "id": 1,
+          "title": "The Great Gatsby",
+          "author": "",
+          "price": 499,
+          "qty": 1,
+          "image": ""
+        }
+      ],
+      "amount": 499,
+      "amountInPaise": 49900,
+      "currency": "INR",
+      "status": "paid",
+      "paymentStatus": "paid",
+      "paymentMethod": "razorpay",
+      "razorpay_order_id": "order_test_1791632872115_snvxg",
+      "receipt": "order_rcpt_1791632872045",
+      "userId": null,
+      "createdAt": "2026-10-10T11:47:52.125Z",
+      "id": 1029,
+      "razorpay_payment_id": "pay_hook_1791632872331",
+      "razorpay_signature": "1a34dc607f425e1fb77565273758b2f560724c297eac121d0e1d39899673f990",
+      "licenses": [
+        {
+          "bookId": 1,
+          "title": "The Great Gatsby",
+          "licenseKey": "BSK-YAAG-IKB8-92GB",
+          "unlockedAt": "2026-10-10T11:47:52.203Z"
+        }
+      ],
+      "completedAt": "2026-10-10T11:47:52.354Z",
+      "updatedAt": "2026-10-10T11:47:52.361Z",
+      "refundDetails": {
+        "refundId": "rfnd_1791632872313_qn4b",
+        "amount": 499,
+        "reason": "Customer requested refund via test",
+        "refundedAt": "2026-10-10T11:47:52.314Z"
+      }
     }
   ],
-  "blogs": [],
+  "blogs": [
+    {
+      "id": 1,
+      "title": "10 Essential Books for Mindful Living in 2026",
+      "author": "Elena Rostova",
+      "category": "Self-Help",
+      "image": "images/post-img1.jpg",
+      "excerpt": "Discover the most impactful mindfulness and productivity literature to enhance mental clarity and balance.",
+      "content": "In our fast-paced modern world, cultivating intentional habits and mindfulness is no longer a luxury—it is an essential survival skill. We break down the top ten books that provide concrete mental models, morning rituals, and reflective writing exercises to quiet the noise and elevate your focus.",
+      "tags": [
+        "Mindfulness",
+        "Productivity",
+        "Self-Help"
+      ],
+      "isPublished": true,
+      "views": 1420,
+      "createdAt": "2026-09-25T11:00:00.000Z",
+      "updatedAt": "2026-09-25T11:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "title": "The Digital Publishing Revolution: E-Books & Interactive Reading",
+      "author": "Marcus Vance",
+      "category": "Technology",
+      "image": "images/post-img2.jpg",
+      "excerpt": "How instantaneous PDF delivery, dynamic annotations, and embedded media are transforming traditional literature.",
+      "content": "Digital publishing has evolved far beyond static text on screens. Today readers enjoy instant chapter previews, synchronous audio narration, and personalized typography settings. We explore where the industry is heading and why digital book sales continue to reach unprecedented heights.",
+      "tags": [
+        "E-Books",
+        "Publishing",
+        "Tech"
+      ],
+      "isPublished": true,
+      "views": 980,
+      "createdAt": "2026-09-28T09:30:00.000Z",
+      "updatedAt": "2026-09-28T09:30:00.000Z"
+    },
+    {
+      "id": 3,
+      "title": "Top Sci-Fi & Speculative Fiction Releases This Season",
+      "author": "Clara Oswald",
+      "category": "Fiction",
+      "image": "images/post-img3.jpg",
+      "excerpt": "From deep space exploratory odysseys to clockwork fantasy worlds, here are the must-reads of the year.",
+      "content": "Immerse yourself in vivid world-building and visionary narratives. Our curated selection of this season’s finest speculative fiction will take your imagination on unforgettable journeys across uncharted galaxies and intricate steampunk empires.",
+      "tags": [
+        "Sci-Fi",
+        "Fiction",
+        "Recommendations"
+      ],
+      "isPublished": true,
+      "views": 2150,
+      "createdAt": "2026-10-01T15:00:00.000Z",
+      "updatedAt": "2026-10-01T15:00:00.000Z"
+    }
+  ],
   "currencies": {
     "USD": {
       "symbol": "$",

@@ -1,3 +1,4 @@
+const fs = require('fs');
 const db = require('../db/jsonDb');
 const supabaseService = require('../services/supabaseService');
 
@@ -154,42 +155,58 @@ const createBook = async (req, res, next) => {
       });
     }
 
-    // Check for uploaded files
+    // Default image and pdf
     let coverUrl = image || 'images/default-book.jpg';
     let pdfUrl = pdfFile || '';
 
+    // Check for uploaded files in multipart form
     if (req.files) {
-      if (req.files.image && req.files.image[0]) {
+      // 1. Cover image upload
+      const imgFile = req.files.image && req.files.image[0];
+      if (imgFile) {
         try {
           const supCover = await supabaseService.uploadCoverImage(
-            req.files.image[0].path,
-            req.files.image[0].originalname,
-            req.files.image[0].mimetype
+            imgFile.path,
+            imgFile.originalname,
+            imgFile.mimetype
           );
           if (supCover && supCover.success && supCover.url) {
             coverUrl = supCover.url;
+            try { if (fs.existsSync(imgFile.path)) fs.unlinkSync(imgFile.path); } catch {}
           } else {
-            coverUrl = `/uploads/covers/${req.files.image[0].filename}`;
+            coverUrl = `/uploads/covers/${imgFile.filename}`;
           }
         } catch {
-          coverUrl = `/uploads/covers/${req.files.image[0].filename}`;
+          coverUrl = `/uploads/covers/${imgFile.filename}`;
         }
       }
-      if (req.files.pdfFile && req.files.pdfFile[0]) {
+
+      // 2. PDF file upload - STRICT SUPABASE UPLOAD (NO SILENT FALLBACK)
+      const pdfUpload = (req.files.pdfFile && req.files.pdfFile[0]) || (req.files.pdf && req.files.pdf[0]);
+      if (pdfUpload) {
+        const supPdf = await supabaseService.uploadPdf(
+          pdfUpload.path,
+          pdfUpload.originalname,
+          pdfUpload.mimetype
+        );
+
+        // Clean up temp file from server disk
         try {
-          const supPdf = await supabaseService.uploadPdf(
-            req.files.pdfFile[0].path,
-            req.files.pdfFile[0].originalname,
-            req.files.pdfFile[0].mimetype
-          );
-          if (supPdf && supPdf.success && supPdf.url) {
-            pdfUrl = supPdf.url;
-          } else {
-            pdfUrl = `/uploads/pdfs/${req.files.pdfFile[0].filename}`;
-          }
-        } catch {
-          pdfUrl = `/uploads/pdfs/${req.files.pdfFile[0].filename}`;
+          if (fs.existsSync(pdfUpload.path)) fs.unlinkSync(pdfUpload.path);
+        } catch {}
+
+        if (!supPdf || !supPdf.success) {
+          const isVal = Boolean(supPdf && supPdf.isValidation);
+          return res.status(isVal ? 400 : 502).json({
+            success: false,
+            message: `Failed to upload PDF to Supabase Storage: ${supPdf ? supPdf.error : 'Upload failed'}. Book creation aborted.`,
+            error: supPdf ? supPdf.error : 'Storage upload error',
+            code: isVal ? 'INVALID_PDF' : 'STORAGE_UPLOAD_FAILED'
+          });
         }
+
+        // Store the Supabase Storage object path (under 'books/')
+        pdfUrl = supPdf.storagePath;
       }
     } else if (req.file) {
       coverUrl = `/uploads/covers/${req.file.filename}`;
@@ -231,6 +248,9 @@ const createBook = async (req, res, next) => {
       updatedAt: now
     });
 
+    // Non-blocking sync metadata to Supabase DB table if table exists
+    supabaseService.syncBookToSupabaseDb(newBook).catch(() => {});
+
     res.status(201).json({
       success: true,
       message: 'Book created successfully.',
@@ -271,37 +291,49 @@ const updateBook = async (req, res, next) => {
 
     // Check for uploaded files
     if (req.files) {
-      if (req.files.image && req.files.image[0]) {
+      const imgFile = req.files.image && req.files.image[0];
+      if (imgFile) {
         try {
           const supCover = await supabaseService.uploadCoverImage(
-            req.files.image[0].path,
-            req.files.image[0].originalname,
-            req.files.image[0].mimetype
+            imgFile.path,
+            imgFile.originalname,
+            imgFile.mimetype
           );
           if (supCover && supCover.success && supCover.url) {
             updateData.image = supCover.url;
+            try { if (fs.existsSync(imgFile.path)) fs.unlinkSync(imgFile.path); } catch {}
           } else {
-            updateData.image = `/uploads/covers/${req.files.image[0].filename}`;
+            updateData.image = `/uploads/covers/${imgFile.filename}`;
           }
         } catch {
-          updateData.image = `/uploads/covers/${req.files.image[0].filename}`;
+          updateData.image = `/uploads/covers/${imgFile.filename}`;
         }
       }
-      if (req.files.pdfFile && req.files.pdfFile[0]) {
+
+      const pdfUpload = (req.files.pdfFile && req.files.pdfFile[0]) || (req.files.pdf && req.files.pdf[0]);
+      if (pdfUpload) {
+        const supPdf = await supabaseService.uploadPdf(
+          pdfUpload.path,
+          pdfUpload.originalname,
+          pdfUpload.mimetype
+        );
+
+        // Clean up temp file
         try {
-          const supPdf = await supabaseService.uploadPdf(
-            req.files.pdfFile[0].path,
-            req.files.pdfFile[0].originalname,
-            req.files.pdfFile[0].mimetype
-          );
-          if (supPdf && supPdf.success && supPdf.url) {
-            updateData.pdfFile = supPdf.url;
-          } else {
-            updateData.pdfFile = `/uploads/pdfs/${req.files.pdfFile[0].filename}`;
-          }
-        } catch {
-          updateData.pdfFile = `/uploads/pdfs/${req.files.pdfFile[0].filename}`;
+          if (fs.existsSync(pdfUpload.path)) fs.unlinkSync(pdfUpload.path);
+        } catch {}
+
+        if (!supPdf || !supPdf.success) {
+          const isVal = Boolean(supPdf && supPdf.isValidation);
+          return res.status(isVal ? 400 : 502).json({
+            success: false,
+            message: `Failed to upload PDF to Supabase Storage: ${supPdf ? supPdf.error : 'Upload failed'}. Book update aborted.`,
+            error: supPdf ? supPdf.error : 'Storage upload error',
+            code: isVal ? 'INVALID_PDF' : 'STORAGE_UPLOAD_FAILED'
+          });
         }
+
+        updateData.pdfFile = supPdf.storagePath;
       }
     } else if (req.file) {
       updateData.image = `/uploads/covers/${req.file.filename}`;
@@ -311,12 +343,13 @@ const updateBook = async (req, res, next) => {
     if (typeof updateData.samplePages === 'string') {
       try {
         updateData.samplePages = JSON.parse(updateData.samplePages);
-      } catch {
-        // keep as is
-      }
+      } catch {}
     }
 
     const updated = db.update('books', id, updateData);
+
+    // Sync metadata to Supabase DB table
+    supabaseService.syncBookToSupabaseDb(updated).catch(() => {});
 
     res.status(200).json({
       success: true,
@@ -351,10 +384,118 @@ const deleteBook = async (req, res, next) => {
   }
 };
 
+/**
+ * Secure Access to Paid E-Book PDF
+ * Generates short-lived signed URL only for authorized users (Admin or Purchased Customer)
+ */
+const getBookAccess = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const book = db.findById('books', id);
+
+    if (!book) {
+      return res.status(404).json({
+        success: false,
+        message: `Book with ID ${id} not found.`
+      });
+    }
+
+    const user = req.user;
+    if (!user) {
+      return res.status(401).json({
+        success: false,
+        message: 'Authentication required to access paid e-books.'
+      });
+    }
+
+    // 1. Authorization check: Admin OR purchased customer
+    let isAuthorized = false;
+    if (user.role === 'admin') {
+      isAuthorized = true;
+    } else {
+      const numId = Number(id);
+      const userLibrary = Array.isArray(user.library) ? user.library.map(Number) : [];
+      if (userLibrary.includes(numId)) {
+        isAuthorized = true;
+      } else {
+        // Check confirmed orders
+        const orders = db.getCollection('orders');
+        const userOrders = orders.filter(o => 
+          (String(o.userId) === String(user.id) || (o.customerEmail && o.customerEmail.toLowerCase() === user.email.toLowerCase())) &&
+          (o.status === 'completed' || o.paymentStatus === 'paid')
+        );
+        for (const order of userOrders) {
+          const items = Array.isArray(order.items) ? order.items : [];
+          if (items.some(it => Number(it.id || it.bookId) === numId)) {
+            isAuthorized = true;
+            break;
+          }
+        }
+      }
+    }
+
+    if (!isAuthorized) {
+      return res.status(403).json({
+        success: false,
+        message: 'Access denied: You have not purchased this e-book. Please complete purchase to read or download.',
+        code: 'ACCESS_DENIED'
+      });
+    }
+
+    const rawPdf = (book.pdfFile || book.pdfUrl || '').trim();
+    if (!rawPdf) {
+      return res.status(404).json({
+        success: false,
+        message: 'No PDF document is associated with this book.'
+      });
+    }
+
+    // Supabase Storage path: generate secure signed URL (1 hour expiry)
+    if (rawPdf.startsWith('books/') || (!rawPdf.startsWith('/uploads') && !rawPdf.startsWith('http'))) {
+      const signedResult = await supabaseService.createSignedUrl(rawPdf, 3600);
+      if (signedResult && signedResult.success && signedResult.signedUrl) {
+        return res.status(200).json({
+          success: true,
+          accessType: 'signed-url',
+          signedUrl: signedResult.signedUrl,
+          expiresIn: 3600,
+          storagePath: rawPdf,
+          book: {
+            id: book.id,
+            title: book.title,
+            author: book.author
+          }
+        });
+      } else {
+        return res.status(502).json({
+          success: false,
+          message: `Failed to generate secure signed URL from Supabase Storage: ${signedResult ? signedResult.error : 'Storage error'}`
+        });
+      }
+    }
+
+    // Legacy local storage file
+    return res.status(200).json({
+      success: true,
+      accessType: 'direct',
+      url: rawPdf,
+      legacy: true,
+      book: {
+        id: book.id,
+        title: book.title,
+        author: book.author
+      }
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports = {
   getBooks,
   getBookById,
   createBook,
   updateBook,
-  deleteBook
+  deleteBook,
+  getBookAccess
 };

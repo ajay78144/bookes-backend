@@ -20,11 +20,16 @@ module.exports = {
   },
   supabase: {
     url: process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://ppevbwymzlgrutfcojpe.supabase.co',
-    key: process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_KEY || process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || 'sb_publishable_-FKEjoWLH5D8W19tK4hmZg_Cd_gb9wj',
-    bucket: process.env.SUPABASE_BUCKET || 'ebooks'
+    serviceRoleKey: process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SECRET_KEY || '',
+    anonKey: process.env.SUPABASE_KEY || process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || '',
+    key: process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_KEY || process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || '',
+    bucket: process.env.SUPABASE_BUCKET || 'ebooks',
+    coversBucket: process.env.SUPABASE_COVERS_BUCKET || 'book-covers'
   },
   cors: {
     allowedOrigins: [
+      'http://localhost:4200',
+      'http://127.0.0.1:4200',
       'http://localhost:5000',
       'http://127.0.0.1:5000',
       'http://localhost:3000',

@@ -38,7 +38,7 @@ class JsonDatabase {
 
         const collections = ['settings', 'users', 'books', 'orders', 'coupons', 'pricingRules', 'blogs'];
         collections.forEach(col => {
-          if (!data[col]) {
+          if (!data[col] || (Array.isArray(data[col]) && data[col].length === 0 && Array.isArray(seedData[col]) && seedData[col].length > 0)) {
             data[col] = seedData[col] || [];
             changed = true;
           }
