@@ -154,7 +154,19 @@
       "description": "A transformative guide to living peacefully in a chaotic world. Discover mindfulness techniques and simple daily practices.",
       "stock": 150,
       "createdAt": "2026-09-30T07:20:30.401Z",
-      "updatedAt": "2026-09-30T07:20:30.401Z"
+      "updatedAt": "2026-09-30T07:20:30.401Z",
+      "countryPricing": {
+        "INR": 499,
+        "IN": 499,
+        "USD": 40,
+        "US": 40,
+        "AUD": 55,
+        "AU": 55,
+        "GBP": 28,
+        "GB": 28,
+        "EUR": 35
+      },
+      "priceINR": 499
     },
     {
       "id": 2,
@@ -188,7 +200,19 @@
       "description": "An epic journey through the golden sands of the Sahara desert. Experience the thrill of exploration and ancient wonders.",
       "stock": 120,
       "createdAt": "2026-09-30T07:20:30.401Z",
-      "updatedAt": "2026-09-30T07:20:30.401Z"
+      "updatedAt": "2026-09-30T07:20:30.401Z",
+      "countryPricing": {
+        "INR": 299,
+        "IN": 299,
+        "USD": 26,
+        "US": 26,
+        "AUD": 38,
+        "AU": 38,
+        "GBP": 19,
+        "GB": 19,
+        "EUR": 23
+      },
+      "priceINR": 299
     },
     {
       "id": 3,
@@ -217,7 +241,19 @@
       "description": "A beautiful story set in Victorian England. A tale of passion, loss, and rediscovery under the London skies.",
       "stock": 85,
       "createdAt": "2026-09-30T07:20:30.401Z",
-      "updatedAt": "2026-09-30T07:20:30.401Z"
+      "updatedAt": "2026-09-30T07:20:30.401Z",
+      "countryPricing": {
+        "INR": 599,
+        "IN": 599,
+        "USD": 45,
+        "US": 45,
+        "AUD": 65,
+        "AU": 65,
+        "GBP": 32,
+        "GB": 32,
+        "EUR": 39
+      },
+      "priceINR": 599
     },
     {
       "id": 4,
@@ -246,7 +282,19 @@
       "description": "A magical tale that transports you to a world where ancient legends come alive with modern wit and wonder.",
       "stock": 200,
       "createdAt": "2026-09-30T07:20:30.401Z",
-      "updatedAt": "2026-09-30T07:20:30.401Z"
+      "updatedAt": "2026-09-30T07:20:30.401Z",
+      "countryPricing": {
+        "INR": 349,
+        "IN": 349,
+        "USD": 28,
+        "US": 28,
+        "AUD": 40,
+        "AU": 40,
+        "GBP": 20,
+        "GB": 20,
+        "EUR": 25
+      },
+      "priceINR": 349
     },
     {
       "id": 5,
@@ -275,7 +323,19 @@
       "description": "Master the art of portrait photography with professional lighting techniques, aperture mastery, and real-world studio examples.",
       "stock": 75,
       "createdAt": "2026-09-30T07:20:30.401Z",
-      "updatedAt": "2026-09-30T07:20:30.401Z"
+      "updatedAt": "2026-09-30T07:20:30.401Z",
+      "countryPricing": {
+        "INR": 499,
+        "IN": 499,
+        "USD": 40,
+        "US": 40,
+        "AUD": 55,
+        "AU": 55,
+        "GBP": 28,
+        "GB": 28,
+        "EUR": 35
+      },
+      "priceINR": 499
     },
     {
       "id": 6,
@@ -304,7 +364,19 @@
       "description": "Comprehensive playbook for entrepreneurs and executives looking to scale their enterprise sustainably in the digital age.",
       "stock": 180,
       "createdAt": "2026-09-30T07:20:30.401Z",
-      "updatedAt": "2026-09-30T07:20:30.401Z"
+      "updatedAt": "2026-09-30T07:20:30.401Z",
+      "countryPricing": {
+        "INR": 699,
+        "IN": 699,
+        "USD": 52,
+        "US": 52,
+        "AUD": 75,
+        "AU": 75,
+        "GBP": 38,
+        "GB": 38,
+        "EUR": 45
+      },
+      "priceINR": 699
     }
   ],
   "orders": [

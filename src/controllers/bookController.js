@@ -2,6 +2,45 @@ const fs = require('fs');
 const db = require('../db/jsonDb');
 const supabaseService = require('../services/supabaseService');
 
+/**
+ * Helper to enrich book with country pricing and resolve current currency if requested
+ */
+const enrichBookWithPricing = (book, req) => {
+  if (!book) return book;
+  const currencyParam = (req.query?.currency || req.headers?.['x-currency'] || '').toUpperCase().trim();
+  const countryParam = (req.query?.country || req.headers?.['x-country'] || '').toUpperCase().trim();
+
+  const countryPricing = (book.countryPricing && typeof book.countryPricing === 'object') ? { ...book.countryPricing } : {};
+
+  let targetPrice = null;
+  let targetCurrency = null;
+  let isManualPrice = false;
+
+  if (currencyParam) {
+    if (countryPricing[currencyParam] !== undefined && !isNaN(Number(countryPricing[currencyParam]))) {
+      targetPrice = Number(countryPricing[currencyParam]);
+      targetCurrency = currencyParam;
+      isManualPrice = true;
+    }
+  } else if (countryParam) {
+    if (countryPricing[countryParam] !== undefined && !isNaN(Number(countryPricing[countryParam]))) {
+      targetPrice = Number(countryPricing[countryParam]);
+      targetCurrency = countryParam;
+      isManualPrice = true;
+    }
+  }
+
+  return {
+    ...book,
+    countryPricing,
+    ...(targetPrice !== null ? {
+      currentPrice: targetPrice,
+      currentCurrency: targetCurrency,
+      isManualPrice
+    } : {})
+  };
+};
+
 const getBooks = async (req, res, next) => {
   try {
     const { category, search, minPrice, maxPrice, tag, sort, page, limit } = req.query;
@@ -82,22 +121,22 @@ const getBooks = async (req, res, next) => {
       const p = parseInt(page, 10) || 1;
       const l = parseInt(limit, 10) || 10;
       const startIndex = (p - 1) * l;
-      books = books.slice(startIndex, startIndex + l);
+      const sliced = books.slice(startIndex, startIndex + l);
       return res.status(200).json({
         success: true,
         total,
         page: p,
         limit: l,
         totalPages: Math.ceil(total / l),
-        count: books.length,
-        data: books
+        count: sliced.length,
+        data: sliced.map(b => enrichBookWithPricing(b, req))
       });
     }
 
     res.status(200).json({
       success: true,
       count: books.length,
-      data: books
+      data: books.map(b => enrichBookWithPricing(b, req))
     });
   } catch (err) {
     next(err);
@@ -118,7 +157,7 @@ const getBookById = async (req, res, next) => {
 
     res.status(200).json({
       success: true,
-      data: book
+      data: enrichBookWithPricing(book, req)
     });
   } catch (err) {
     next(err);
@@ -132,6 +171,7 @@ const createBook = async (req, res, next) => {
       author,
       priceUSD,
       originalPriceUSD,
+      countryPricing: rawCountryPricing,
       category = 'General',
       rating = 5,
       reviews = 0,
@@ -154,6 +194,26 @@ const createBook = async (req, res, next) => {
         message: 'Title, author, and priceUSD are required fields.'
       });
     }
+
+    // Parse and sanitize countryPricing
+    let parsedCountryPricing = {};
+    if (typeof rawCountryPricing === 'string') {
+      try {
+        parsedCountryPricing = JSON.parse(rawCountryPricing);
+      } catch {
+        parsedCountryPricing = {};
+      }
+    } else if (typeof rawCountryPricing === 'object' && rawCountryPricing !== null) {
+      parsedCountryPricing = rawCountryPricing;
+    }
+
+    const cleanCountryPricing = {};
+    Object.keys(parsedCountryPricing).forEach(k => {
+      const num = Number(parsedCountryPricing[k]);
+      if (!isNaN(num) && num >= 0) {
+        cleanCountryPricing[k.toUpperCase().trim()] = num;
+      }
+    });
 
     // Default image and pdf
     let coverUrl = image || 'images/default-book.jpg';
@@ -224,12 +284,16 @@ const createBook = async (req, res, next) => {
       parsedSamplePages = samplePages;
     }
 
+    const priceINR = cleanCountryPricing['INR'] !== undefined ? cleanCountryPricing['INR'] : (Number(req.body.priceINR) || 0);
+
     const now = new Date().toISOString();
     const newBook = db.insert('books', {
       title: title.trim(),
       author: author.trim(),
       priceUSD: Number(priceUSD),
       originalPriceUSD: originalPriceUSD ? Number(originalPriceUSD) : null,
+      priceINR,
+      countryPricing: cleanCountryPricing,
       category: category.trim(),
       rating: Number(rating) || 5,
       reviews: Number(reviews) || 0,
@@ -281,6 +345,27 @@ const updateBook = async (req, res, next) => {
     if (updateData.stock !== undefined) updateData.stock = Number(updateData.stock);
     if (updateData.rating !== undefined) updateData.rating = Number(updateData.rating);
     if (updateData.reviews !== undefined) updateData.reviews = Number(updateData.reviews);
+
+    // Format and sanitize countryPricing
+    if (updateData.countryPricing !== undefined) {
+      let parsed = updateData.countryPricing;
+      if (typeof parsed === 'string') {
+        try { parsed = JSON.parse(parsed); } catch { parsed = {}; }
+      }
+      if (typeof parsed === 'object' && parsed !== null) {
+        const clean = {};
+        Object.keys(parsed).forEach(k => {
+          const num = Number(parsed[k]);
+          if (!isNaN(num) && num >= 0) {
+            clean[k.toUpperCase().trim()] = num;
+          }
+        });
+        updateData.countryPricing = clean;
+        if (clean['INR'] !== undefined) {
+          updateData.priceINR = clean['INR'];
+        }
+      }
+    }
 
     // Format booleans
     ['isFeatured', 'isBestSeller', 'isPopular', 'isSpecialOffer', 'isAudiobook'].forEach(key => {

@@ -119,14 +119,32 @@ const createOrder = async (req, res, next) => {
         });
       }
 
+      const cp = (book.countryPricing && typeof book.countryPricing === 'object') ? book.countryPricing : {};
+      const targetCurr = (currency || settings.defaultCurrency || 'USD').toUpperCase().trim();
+      const targetCountry = (customerCountry || '').toUpperCase().trim();
+
+      // Check if manual fixed price is defined for currency or country
+      let itemPriceInTargetCurrency = null;
+      if (cp[targetCurr] !== undefined && !isNaN(Number(cp[targetCurr]))) {
+        itemPriceInTargetCurrency = Number(cp[targetCurr]);
+      } else if (targetCountry && cp[targetCountry] !== undefined && !isNaN(Number(cp[targetCountry]))) {
+        itemPriceInTargetCurrency = Number(cp[targetCountry]);
+      }
+
       const itemPriceUSD = Number(book.priceUSD || 0);
       calculatedSubtotalUSD += itemPriceUSD * qty;
+
+      const rates = settings.exchangeRates || { USD: 1.0 };
+      const exRate = rates[targetCurr] || 1.0;
 
       validatedItems.push({
         id: book.id,
         title: book.title,
         author: book.author,
         priceUSD: itemPriceUSD,
+        price: itemPriceInTargetCurrency !== null ? itemPriceInTargetCurrency : Number((itemPriceUSD * exRate).toFixed(2)),
+        manualPriceUsed: itemPriceInTargetCurrency !== null,
+        countryPricing: cp,
         qty,
         image: book.image || ''
       });
@@ -153,11 +171,20 @@ const createOrder = async (req, res, next) => {
     const taxUSD = Number(((taxableAmount * taxRate) / 100).toFixed(2));
     const totalUSD = Number(Math.max(0, taxableAmount + shippingFee + taxUSD).toFixed(2));
 
-    // Currency Conversion
+    // Currency Conversion / Manual Price Calculation
     const targetCurrency = (currency || settings.defaultCurrency || 'USD').toUpperCase();
     const rates = settings.exchangeRates || { USD: 1.0 };
     const exchangeRate = rates[targetCurrency] || 1.0;
-    const convertedTotal = Number((totalUSD * exchangeRate).toFixed(2));
+
+    const hasAnyManual = validatedItems.some(it => it.manualPriceUsed);
+    let convertedTotal;
+    if (hasAnyManual) {
+      const itemsTotal = validatedItems.reduce((sum, it) => sum + (it.price * it.qty), 0);
+      const taxTarget = Number(((itemsTotal * taxRate) / 100).toFixed(2));
+      convertedTotal = Number((itemsTotal + taxTarget).toFixed(2));
+    } else {
+      convertedTotal = Number((totalUSD * exchangeRate).toFixed(2));
+    }
 
     // Generate Order Number
     const orderCount = db.getCollection('orders').length + 1;
